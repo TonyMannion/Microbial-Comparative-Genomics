@@ -1,3 +1,8 @@
+#Dependancies
+#1) download and install PATRIC command line (https://github.com/PATRIC3/PATRIC-distribution/releases)
+#2) create PATRIC account (https://www.patricbrc.org/)
+#3) create new folder in PATRIC accound workspace called "AssemblyJob"
+
 import pandas as pd
 import numpy as np
 import os
@@ -5,15 +10,20 @@ import argparse
 import time
 
 parser = argparse.ArgumentParser()
+parser.add_argument('-username', '--username', dest='username', help='Enter PATRIC login username')
+parser.add_argument('-patric_domain', '--patric_domain', dest='patric_domain', help='Enter PATRIC domain name')
+
+
 parser.add_argument('-r', '--reads_table', dest='reads_table', default = 'reads_table.txt', help='Metadata tab-delimited file for read file names and genome names. Default is reads_table.txt')
 parser.add_argument('-u', '--upload_reads', dest='upload_reads', default = 'yes', help='Upload read files? Enter yes or no. Default is yes')
 parser.add_argument('-a', '--assembly_annotate', dest='assembly_annotate', default = 'yes', help='Execute assembly and annotate pipeline? Enter yes or no. Default is yes', )
 parser.add_argument('-d', '--download_reports', dest='download_reports', default = 'yes', help='Download genome reports, contigs, and annotations data.  Note: cannot execute blast unless assembly and annotate pipeline has been previously performed', )
 parser.add_argument('-b', '--blast', dest='blast', default = 'yes', help='Execute blast for virulence factor (VF) and antibiotic resistance genes (Res)? Enter yes or no. Default is yes. Note: cannot execute blast unless assembly and annotate pipeline has been previously performed', )
+
 args = parser.parse_args()
 
 print 'Logging into PATRIC...'
-os.system('p3-login manniona@mit.edu')
+os.system('p3-login ' + str(args.username))
 
 df = pd.read_csv(str(args.reads_table), sep='\t')
 R1_list = df['R1'].tolist()
