@@ -12,8 +12,6 @@ import time
 parser = argparse.ArgumentParser()
 parser.add_argument('-username', '--username', dest='username', help='Enter PATRIC login username')
 parser.add_argument('-patric_domain', '--patric_domain', dest='patric_domain', help='Enter PATRIC domain name')
-
-
 parser.add_argument('-r', '--reads_table', dest='reads_table', default = 'reads_table.txt', help='Metadata tab-delimited file for read file names and genome names. Default is reads_table.txt')
 parser.add_argument('-u', '--upload_reads', dest='upload_reads', default = 'yes', help='Upload read files? Enter yes or no. Default is yes')
 parser.add_argument('-a', '--assembly_annotate', dest='assembly_annotate', default = 'yes', help='Execute assembly and annotate pipeline? Enter yes or no. Default is yes', )
@@ -33,10 +31,10 @@ genome_name_list = df['genome_name'].tolist()
 if str(args.upload_reads) == 'yes':
 	for R1 in R1_list:
 		print 'Uploading ' + str(R1)
-		os.system('p3-cp ' + str(R1) + ' ws:/anthonymannion@patricbrc.org/home/AssemblyJob')
+		os.system('p3-cp ' + str(R1) + ' ws:/' + str(args.patric_domain) + '/home/AssemblyJob')
 	for R2 in R2_list:
 		print 'Uploading ' + str(R2)
-		os.system('p3-cp ' + str(R2) + ' ws:/anthonymannion@patricbrc.org/home/AssemblyJob')
+		os.system('p3-cp ' + str(R2) + ' ws:/ + str(args.patric_domain) + /home/AssemblyJob')
 
 if str(args.assembly_annotate) == 'yes':
 	zip(R1_list,R2_list,genome_name_list)
@@ -66,9 +64,9 @@ if str(args.assembly_annotate) == 'yes':
 if str(args.download_reports) == 'yes':
 	zip(R1_list,R2_list,genome_name_list)
 	for R1, R2, genome_name in zip(R1_list,R2_list,genome_name_list):
-		os.system('p3-cp ws:\"/anthonymannion@patricbrc.org/home/AssemblyJob/' + str(genome_name) + '/.' + str(genome_name) + '/FullGenomeReport.html\"' + ' ' + str(genome_name) + '_FullGenomeReport.html')
-		os.system('p3-cp ws:\"/anthonymannion@patricbrc.org/home/AssemblyJob/' + str(genome_name) + '/.' + str(genome_name) + '/.annotation/annotation.txt\"' + ' ' + str(genome_name) + '_annotation.txt')
-		os.system('p3-cp ws:\"/anthonymannion@patricbrc.org/home/AssemblyJob/' + str(genome_name) + '/.' + str(genome_name) + '/.annotation/annotation.feature_protein.fasta\"' + ' ' + str(genome_name) + '_protein.fasta')
+		os.system('p3-cp ws:\"/ + str(args.patric_domain) + /home/AssemblyJob/' + str(genome_name) + '/.' + str(genome_name) + '/FullGenomeReport.html\"' + ' ' + str(genome_name) + '_FullGenomeReport.html')
+		os.system('p3-cp ws:\"/ + str(args.patric_domain) + /home/AssemblyJob/' + str(genome_name) + '/.' + str(genome_name) + '/.annotation/annotation.txt\"' + ' ' + str(genome_name) + '_annotation.txt')
+		os.system('p3-cp ws:\"/ + str(args.patric_domain) + /home/AssemblyJob/' + str(genome_name) + '/.' + str(genome_name) + '/.annotation/annotation.feature_protein.fasta\"' + ' ' + str(genome_name) + '_protein.fasta')
 if str(args.blast) == 'yes':
 	zip(R1_list,R2_list,genome_name_list)
 	for R1, R2, genome_name in zip(R1_list,R2_list,genome_name_list):
