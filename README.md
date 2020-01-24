@@ -12,6 +12,10 @@ The workflow and outputs are the following:
 
 pan-genome-tree.py
 
-This script creates pan-genome phylogenetic trees using IQ-TREE (http://www.iqtree.org/) based on a binary matrix of Global protein family (cross-genus, called PGfam) determined by PATRIC (https://www.patricbrc.org/).
+This script creates pan-genome phylogenetic trees using IQ-TREE (http://www.iqtree.org/) based on a binary matrix of Global protein family (ie PGfam) determined by PATRIC (https://www.patricbrc.org/).
 
-
+The workflow and outputs are the following:
+1) via PATRIC (https://www.patricbrc.org/), compile list of genome ids desired for pan-genome phylogenetic tree
+2) acuqires Global protein family (ie PGfam) from genomes 
+3) creates binary matrix of PGfam in PHYLIP format 
+4) executes IQ-TREE to analyze to pan-genome phylogenetic tree --> outputs .treefile files, which can be viewed in FigTree (http://tree.bio.ed.ac.uk/software/figtree/) or similar programs
