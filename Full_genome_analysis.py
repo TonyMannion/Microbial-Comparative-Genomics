@@ -1,7 +1,7 @@
 #Dependancies
 #1) download and install PATRIC command line (https://github.com/PATRIC3/PATRIC-distribution/releases)
 #2) create PATRIC account (https://www.patricbrc.org/)
-#3) create new folder in PATRIC accound workspace called "AssemblyJob"
+#3) create new folder in workspace of PATRIC account called "AssemblyJob"
 
 import pandas as pd
 import numpy as np
