@@ -8,7 +8,7 @@ The workflow and outputs are the following:
 1) upload sequencing reads (fastq files) --> data store in PATRIC account 
 2) perform quality control of raw reads --> outputs FASTQC analysis
 3) perform de novo assembly and annotation --> outputs summary statistics for assembled and annotated genomes as well as fasta files for contigs and annotated gene sequences
-4) perform DIAMOND analysis for virulence factor genes and antibiotic resistance genes --> outputs annotation table with hits
+4) perform D DIAMOND analysis (https://github.com/bbuchfink/diamond/releases/) for virulence factor genes (http://www.mgc.ac.cn/VFs/download.htm) and antibiotic resistance genes (https://card.mcmaster.ca/download) --> outputs annotation table with hits
 
 pan-genome-tree.py
 
