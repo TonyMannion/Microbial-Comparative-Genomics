@@ -65,8 +65,11 @@ if str(args.download_reports) == 'yes':
 	zip(R1_list,R2_list,genome_name_list)
 	for R1, R2, genome_name in zip(R1_list,R2_list,genome_name_list):
 		os.system('p3-cp ws:\"/ + str(args.patric_domain) + /home/AssemblyJob/' + str(genome_name) + '/.' + str(genome_name) + '/FullGenomeReport.html\"' + ' ' + str(genome_name) + '_FullGenomeReport.html')
+		os.system('p3-cp ws:\"/ + str(args.patric_domain) + /home/AssemblyJob/' + str(genome_name) + '/.' + str(genome_name) + '/.annotation/annotation.contigs.fasta\"' + ' ' + str(genome_name) + '_contigs.fasta')
 		os.system('p3-cp ws:\"/ + str(args.patric_domain) + /home/AssemblyJob/' + str(genome_name) + '/.' + str(genome_name) + '/.annotation/annotation.txt\"' + ' ' + str(genome_name) + '_annotation.txt')
 		os.system('p3-cp ws:\"/ + str(args.patric_domain) + /home/AssemblyJob/' + str(genome_name) + '/.' + str(genome_name) + '/.annotation/annotation.feature_protein.fasta\"' + ' ' + str(genome_name) + '_protein.fasta')
+		os.system('p3-cp ws:\"/ + str(args.patric_domain) + /home/AssemblyJob/' + str(genome_name) + '/.' + str(genome_name) + '/.annotation/annotation.feature_DNA.fasta\"' + ' ' + str(genome_name) + '_DNA.fasta')
+		
 if str(args.blast) == 'yes':
 	zip(R1_list,R2_list,genome_name_list)
 	for R1, R2, genome_name in zip(R1_list,R2_list,genome_name_list):
