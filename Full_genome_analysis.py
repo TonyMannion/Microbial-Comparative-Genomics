@@ -34,7 +34,7 @@ if str(args.upload_reads) == 'yes':
 		os.system('p3-cp ' + str(R1) + ' ws:/' + str(args.patric_domain) + '/home/AssemblyJob')
 	for R2 in R2_list:
 		print 'Uploading ' + str(R2)
-		os.system('p3-cp ' + str(R2) + ' ws:/ + str(args.patric_domain) + /home/AssemblyJob')
+		os.system('p3-cp ' + str(R2) + ' ws:/' + str(args.patric_domain) + '/home/AssemblyJob')
 
 if str(args.assembly_annotate) == 'yes':
 	zip(R1_list,R2_list,genome_name_list)
