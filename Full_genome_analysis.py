@@ -2,6 +2,7 @@
 #1) download and install PATRIC command line (https://github.com/PATRIC3/PATRIC-distribution/releases)
 #2) create PATRIC account (https://www.patricbrc.org/)
 #3) create new folder in workspace of PATRIC account called "AssemblyJob"
+#4) DIAMOND analysis (https://github.com/bbuchfink/diamond/releases/) for virulence factor genes (http://www.mgc.ac.cn/VFs/download.htm) and antibiotic resistance genes (https://card.mcmaster.ca/download).  will need to make reference database of virulence factor and antibiotic resistance genes databases using DIAMOND
 
 import pandas as pd
 import numpy as np
@@ -57,6 +58,9 @@ if str(args.assembly_annotate) == 'yes':
 			os.system('p3-job-status' + ' ' + job_id2 + ' > ' + str(genome_name) + '_job_status.txt')
 			job_id_status = open(str(genome_name) + '_job_status.txt', "rb").readline().rstrip()
 			print 'Checking status of ' + str(genome_name) + ' as job id ' + job_id_status
+			t = time.localtime()
+			current_time = time.strftime('%H:%M:%S', t)
+			print current_time
 			if job_id_status == job_id2 + ': completed':
 				break
 			time.sleep(300) #check status of first jobs every 300 seconds (ie 5 minutes)
@@ -64,11 +68,11 @@ if str(args.assembly_annotate) == 'yes':
 if str(args.download_reports) == 'yes':
 	zip(R1_list,R2_list,genome_name_list)
 	for R1, R2, genome_name in zip(R1_list,R2_list,genome_name_list):
-		os.system('p3-cp ws:\"/ + str(args.patric_domain) + /home/AssemblyJob/' + str(genome_name) + '/.' + str(genome_name) + '/FullGenomeReport.html\"' + ' ' + str(genome_name) + '_FullGenomeReport.html')
-		os.system('p3-cp ws:\"/ + str(args.patric_domain) + /home/AssemblyJob/' + str(genome_name) + '/.' + str(genome_name) + '/.annotation/annotation.contigs.fasta\"' + ' ' + str(genome_name) + '_contigs.fasta')
-		os.system('p3-cp ws:\"/ + str(args.patric_domain) + /home/AssemblyJob/' + str(genome_name) + '/.' + str(genome_name) + '/.annotation/annotation.txt\"' + ' ' + str(genome_name) + '_annotation.txt')
-		os.system('p3-cp ws:\"/ + str(args.patric_domain) + /home/AssemblyJob/' + str(genome_name) + '/.' + str(genome_name) + '/.annotation/annotation.feature_protein.fasta\"' + ' ' + str(genome_name) + '_protein.fasta')
-		os.system('p3-cp ws:\"/ + str(args.patric_domain) + /home/AssemblyJob/' + str(genome_name) + '/.' + str(genome_name) + '/.annotation/annotation.feature_DNA.fasta\"' + ' ' + str(genome_name) + '_DNA.fasta')
+		os.system('p3-cp ws:\"/' + str(args.patric_domain) + '/home/AssemblyJob/' + str(genome_name) + '/.' + str(genome_name) + '/FullGenomeReport.html\"' + ' ' + str(genome_name) + '_FullGenomeReport.html')
+		os.system('p3-cp ws:\"/' + str(args.patric_domain) + '/home/AssemblyJob/' + str(genome_name) + '/.' + str(genome_name) + '/.annotation/annotation.contigs.fasta\"' + ' ' + str(genome_name) + '_contigs.fasta')
+		os.system('p3-cp ws:\"/' + str(args.patric_domain) + '/home/AssemblyJob/' + str(genome_name) + '/.' + str(genome_name) + '/.annotation/annotation.txt\"' + ' ' + str(genome_name) + '_annotation.txt')
+		os.system('p3-cp ws:\"/' + str(args.patric_domain) + '/home/AssemblyJob/' + str(genome_name) + '/.' + str(genome_name) + '/.annotation/annotation.feature_protein.fasta\"' + ' ' + str(genome_name) + '_protein.fasta')
+		os.system('p3-cp ws:\"/' + str(args.patric_domain) + '/home/AssemblyJob/' + str(genome_name) + '/.' + str(genome_name) + '/.annotation/annotation.feature_dna.fasta\"' + ' ' + str(genome_name) + '_DNA.fasta')
 		
 if str(args.blast) == 'yes':
 	zip(R1_list,R2_list,genome_name_list)
