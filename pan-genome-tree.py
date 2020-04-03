@@ -6,9 +6,9 @@ import argparse
 parser = argparse.ArgumentParser()
 
 parser.add_argument('-i', '--features_file', dest='features_file', help='Input file name for features file for genomes of interest downloaded from PATRIC.  Use a tab-delimited file')
-parser.add_argument('-a', '--index_column', dest='index_column', default = 'patric_id', help='Specificy index column for genomes from feature file.  For example, use "genome_name" or "patric_id".  Default is "patric_id".')
-parser.add_argument('-b', '--count_column', dest='count_column', default = 'pgfam_id', help='Specificy count column for gene family from feature file.  Choose "plfam_id" for local protein family (genus-specific, called PLfam) or "pgfam_id" for global protein family (cross-genus, called PGfam).  Default is "pgfam_id" for global protein family (cross-genus, called PGfam).')
-parser.add_argument('-o', '--output', dest='output', default = 'pan-genome-tree_out.txt' help='Specificy name for output file')
+parser.add_argument('-a', '--index_column', dest='index_column', default = 'feature.genome_name', help='Specificy index column for genomes from feature file.  For example, use "genome_name" or "patric_id".  Default is "feature.genome_name".')
+parser.add_argument('-b', '--count_column', dest='count_column', default = 'feature.pgfam_id', help='Specificy count column for gene family from feature file.  Choose "plfam_id" for local protein family (genus-specific, called PLfam) or "pgfam_id" for global protein family (cross-genus, called PGfam).  Default is "feature.pgfam_id" for global protein family (cross-genus, called PGfam).')
+parser.add_argument('-o', '--output', dest='output', default = 'pan-genome-tree_out.txt', help='Specificy name for output file.  Default is pan-genome-tree_out.txt')
 
 args = parser.parse_args()
 
@@ -28,5 +28,5 @@ def groupby(index_column, count_column, output_file):
 	with open(output_file, "w") as f:
 		f.writelines(lines)
 
-df1 = pd.read_csv(str(args.features_file), sep='\t')
+df1 = pd.read_csv(str(args.features_file), sep='\t', usecols=[str(args.index_column),str(args.count_column)])
 groupby(str(args.index_column), str(args.count_column), str(args.output))
