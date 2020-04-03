@@ -19,7 +19,8 @@ args = parser.parse_args()
 if str(args.patric_features_dl) == 'yes':
 	print 'Logging into PATRIC...'
 	os.system('p3-login ' + str(args.username))
-	os.system('p3-get-genome-features --input ' + str(args.genome_ids) + ' --attr genome_name --attr patric_id --attr gene_id --attr plfam_id --attr pgfam_id --attr product > ' + str(args.index_column))
+	print 'Downloading features from PATRIC...'
+	os.system('p3-get-genome-features --input ' + str(args.genome_ids) + ' --attr genome_name --attr patric_id --attr gene_id --attr plfam_id --attr pgfam_id --attr product > ' + str(args.features_file))
 
 def groupby(index_column, count_column, output_file):  
 	df1['count']=1
@@ -36,6 +37,8 @@ def groupby(index_column, count_column, output_file):
 	lines[0] = str(total_rows) + " " + str(total_cols) + "\n"
 	with open(output_file, "w") as f:
 		f.writelines(lines)
+
+print 'Creating binary matrix of protein families in PHYLIP format...'
 
 df1 = pd.read_csv(str(args.features_file), sep='\t', usecols=[str(args.index_column),str(args.count_column)])
 groupby(str(args.index_column), str(args.count_column), str(args.output))
