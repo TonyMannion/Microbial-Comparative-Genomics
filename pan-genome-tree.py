@@ -5,12 +5,21 @@ import argparse
 
 parser = argparse.ArgumentParser()
 
-parser.add_argument('-i', '--features_file', dest='features_file', help='Input file name for features file for genomes of interest downloaded from PATRIC.  Use a tab-delimited file')
+parser.add_argument('-username', '--username', dest='username', help='Enter PATRIC login username')
+
+parser.add_argument('-p', '--patric_features_dl', dest='patric_features_dl', default = 'yes', help='Download features from PATRIC? Enter "yes" or "no". Default is "yes". If features have already been downloaded, enter "no" to bypass this step.')
+parser.add_argument('-g', '--genome_id_file', dest='genome_ids', default = 'genome_ids.txt', help='Specify file containing PATRIC genome id's of interest. Header is "Genomes" and each genome id is on different row. Default is genome_ids.txt')
+parser.add_argument('-i', '--features_file', dest='features_file', help='Input desired name for features file for genomes of interest downloaded from PATRIC.  Use a tab-delimited file')
 parser.add_argument('-a', '--index_column', dest='index_column', default = 'feature.genome_name', help='Specificy index column for genomes from feature file.  For example, use "genome_name" or "patric_id".  Default is "feature.genome_name".')
 parser.add_argument('-b', '--count_column', dest='count_column', default = 'feature.pgfam_id', help='Specificy count column for gene family from feature file.  Choose "plfam_id" for local protein family (genus-specific, called PLfam) or "pgfam_id" for global protein family (cross-genus, called PGfam).  Default is "feature.pgfam_id" for global protein family (cross-genus, called PGfam).')
 parser.add_argument('-o', '--output', dest='output', default = 'pan-genome-tree_out.txt', help='Specificy name for output file.  Default is pan-genome-tree_out.txt')
 
 args = parser.parse_args()
+
+if str(args.patric_features_dl) == 'yes':
+	print 'Logging into PATRIC...'
+	os.system('p3-login ' + str(args.username))
+	os.system('p3-get-genome-features --input ' + str(args.genome_ids) + ' --attr genome_name --attr patric_id --attr gene_id --attr plfam_id --attr pgfam_id --attr product > ' + str(args.index_column))
 
 def groupby(index_column, count_column, output_file):  
 	df1['count']=1
