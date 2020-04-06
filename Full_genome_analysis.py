@@ -43,7 +43,7 @@ if str(args.assembly_annotate) == 'yes':
 		in_file = open('params.json', "rb")
 		out_file = open('params_out.json', "wb")
 		reader = in_file.read()
-		repls1= (('R1', str(R1)),('R2', str(R2)),('Genome_name', str(genome_name)))
+		repls1= (('R1', '/' + str(args.patric_domain) + '/home/AssemblyJob/' + str(R1)),('R2', '/' + str(args.patric_domain) + '/home/AssemblyJob/' + str(R2)),('Genome_name_path', '/' + str(args.patric_domain) + '/home/AssemblyJob/' + str(genome_name)),('Genome_name',str(genome_name)),)
 		writer1 = reduce(lambda a, kv: a.replace(*kv), repls1, reader)
 		writer2 = out_file.write(writer1)
 		in_file.close()
