@@ -40,15 +40,15 @@ if str(args.upload_reads) == 'yes':
 if str(args.assembly_annotate) == 'yes':
 	zip(R1_list,R2_list,genome_name_list)
 	for R1, R2, genome_name in zip(R1_list,R2_list,genome_name_list):
-		in_file = open('params.json', "rb")
-		out_file = open('params_out.json', "wb")
+		in_file = open('params_reads.json', "rb")
+		out_file = open('params_reads_out.json', "wb")
 		reader = in_file.read()
 		repls1= (('R1', '/' + str(patric_domain) + '/home/AssemblyJob/' + str(R1)),('R2', '/' + str(patric_domain) + '/home/AssemblyJob/' + str(R2)),('Genome_name_path', '/' + str(patric_domain) + '/home/AssemblyJob'),('Genome_name',str(genome_name)),)
 		writer1 = reduce(lambda a, kv: a.replace(*kv), repls1, reader)
 		writer2 = out_file.write(writer1)
 		in_file.close()
 		out_file.close()
-		os.system('appserv-start-app ComprehensiveGenomeAnalysis params_out.json \"parrello@patricbrc.org/home/\"'+ ' > ' + str(genome_name) + '_job_ID.txt')
+		os.system('appserv-start-app ComprehensiveGenomeAnalysis params_reads_out.json \"parrello@patricbrc.org/home/\"'+ ' > ' + str(genome_name) + '_job_ID.txt')
 		job_id = open(str(genome_name) + '_job_ID.txt', "rb").readline().replace('Started task ', '').rstrip()
 		print "Comprehensive Genome Analysis job sent for " + str(genome_name) + ' as job id ' + job_id
 	for genome_name in genome_name_list:
