@@ -43,7 +43,7 @@ if str(args.assembly_annotate) == 'yes':
 		in_file = open('params.json', "rb")
 		out_file = open('params_out.json', "wb")
 		reader = in_file.read()
-		repls1= (('R1', '/' + str(patric_domain) + '/home/AssemblyJob/' + str(R1)),('R2', '/' + str(patric_domain) + '/home/AssemblyJob/' + str(R2)),('Genome_name_path', '/' + str(patric_domain) + '/home/AssemblyJob/' + str(genome_name)),('Genome_name',str(genome_name)),)
+		repls1= (('R1', '/' + str(patric_domain) + '/home/AssemblyJob/' + str(R1)),('R2', '/' + str(patric_domain) + '/home/AssemblyJob/' + str(R2)),('Genome_name_path', '/' + str(patric_domain) + '/home/AssemblyJob'),('Genome_name',str(genome_name)),)
 		writer1 = reduce(lambda a, kv: a.replace(*kv), repls1, reader)
 		writer2 = out_file.write(writer1)
 		in_file.close()
@@ -66,13 +66,12 @@ if str(args.assembly_annotate) == 'yes':
 			time.sleep(300) #check status of first jobs every 300 seconds (ie 5 minutes)
 		print 'Comprehensive Genome Analysis done for ' + str(genome_name)
 if str(args.download_reports) == 'yes':
-	zip(R1_list,R2_list,genome_name_list)
-	for R1, R2, genome_name in zip(R1_list,R2_list,genome_name_list):
-		os.system('p3-cp ws:\"/' + str(patric_domain) + '/home/AssemblyJob/' + str(genome_name) + '/.' + str(genome_name) + '/FullGenomeReport.html\"' + ' ' + str(genome_name) + '_FullGenomeReport.html')
-		os.system('p3-cp ws:\"/' + str(patric_domain) + '/home/AssemblyJob/' + str(genome_name) + '/.' + str(genome_name) + '/.annotation/annotation.contigs.fasta\"' + ' ' + str(genome_name) + '_contigs.fasta')
-		os.system('p3-cp ws:\"/' + str(patric_domain) + '/home/AssemblyJob/' + str(genome_name) + '/.' + str(genome_name) + '/.annotation/annotation.txt\"' + ' ' + str(genome_name) + '_annotation.txt')
-		os.system('p3-cp ws:\"/' + str(patric_domain) + '/home/AssemblyJob/' + str(genome_name) + '/.' + str(genome_name) + '/.annotation/annotation.feature_protein.fasta\"' + ' ' + str(genome_name) + '_protein.fasta')
-		os.system('p3-cp ws:\"/' + str(patric_domain) + '/home/AssemblyJob/' + str(genome_name) + '/.' + str(genome_name) + '/.annotation/annotation.feature_dna.fasta\"' + ' ' + str(genome_name) + '_DNA.fasta')
+	for genome_name in genome_name_list:
+		os.system('p3-cp ws:\"/' + str(patric_domain) + '/home/AssemblyJob/.' + str(genome_name) + '/FullGenomeReport.html\"' + ' ' + str(genome_name) + '_FullGenomeReport.html')
+		os.system('p3-cp ws:\"/' + str(patric_domain) + '/home/AssemblyJob/.' + str(genome_name) + '/.annotation/annotation.contigs.fasta\"' + ' ' + str(genome_name) + '_contigs.fasta')
+		os.system('p3-cp ws:\"/' + str(patric_domain) + '/home/AssemblyJob/.' + str(genome_name) + '/.annotation/annotation.txt\"' + ' ' + str(genome_name) + '_annotation.txt')
+		os.system('p3-cp ws:\"/' + str(patric_domain) + '/home/AssemblyJob/.' + str(genome_name) + '/.annotation/annotation.feature_protein.fasta\"' + ' ' + str(genome_name) + '_protein.fasta')
+		os.system('p3-cp ws:\"/' + str(patric_domain) + '/home/AssemblyJob/.' + str(genome_name) + '/.annotation/annotation.feature_dna.fasta\"' + ' ' + str(genome_name) + '_DNA.fasta')
 		
 if str(args.blast) == 'yes':
 	zip(R1_list,R2_list,genome_name_list)
