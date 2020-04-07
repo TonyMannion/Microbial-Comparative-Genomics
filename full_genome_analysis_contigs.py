@@ -61,6 +61,7 @@ if str(args.annotate) == 'yes':
 				break
 			time.sleep(300) #check status of first jobs every 300 seconds (ie 5 minutes)
 		print 'Comprehensive Genome Analysis done for ' + str(genome_name)
+
 if str(args.download_reports) == 'yes':
 	for genome_name in genome_name_list:
 		os.system('p3-cp ws:\"/' + str(patric_domain) + '/home/AssemblyJob/.' + str(genome_name) + '/FullGenomeReport.html\"' + ' ' + str(genome_name) + '_FullGenomeReport.html')
@@ -70,8 +71,7 @@ if str(args.download_reports) == 'yes':
 		os.system('p3-cp ws:\"/' + str(patric_domain) + '/home/AssemblyJob/.' + str(genome_name) + '/.annotation/annotation.feature_dna.fasta\"' + ' ' + str(genome_name) + '_DNA.fasta')
 		
 if str(args.blast) == 'yes':
-	zip(contigs_list,genome_name_list)
-	for contigs, genome_name in zip(contigs_list,genome_name_list):
+	for genome_name in genome_name_list:
 		os.system('diamond blastp --db VFDB_setB_pro.dmnd --query' + ' ' + str(genome_name) + '_protein.fasta' + ' ' + '--out' + ' ' + str(genome_name) + '_VFDB_blast_out.txt' + ' ' + '--outfmt 6 qseqid qlen sseqid slen qseq sseq evalue bitscore pident qcovhsp -k 1')
 		df1 = pd.read_csv(str(genome_name) + '_annotation.txt', sep='\t', dtype=str)
 		df2 = pd.read_csv(str(genome_name) + '_VFDB_blast_out.txt', sep='\t',  names=['qseqid_VF', 'qlen_VF', 'VF_ID', 'slen_VF', 'qseq_VF', 'sseq_VF', 'evalue_VF', 'bitscore_VF', 'pident_VF', 'qcovhsp_VF'], dtype=str) 
