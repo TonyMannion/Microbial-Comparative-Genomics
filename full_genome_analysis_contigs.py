@@ -34,7 +34,7 @@ if str(args.upload_contigs) == 'yes':
 		os.system('p3-cp ' + str(contigs) + ' ws:/' + str(patric_domain) + '/home/AssemblyJob')
 
 if str(args.annotate) == 'yes':
-	zip(contigs,genome_name_list)
+	zip(contigs_list,genome_name_list)
 	for contigs, genome_name in zip(contigs_list,genome_name_list):
 		in_file = open('params_contigs.json', "rb")
 		out_file = open('params_contigs_out.json', "wb")
@@ -70,7 +70,7 @@ if str(args.download_reports) == 'yes':
 		os.system('p3-cp ws:\"/' + str(patric_domain) + '/home/AssemblyJob/.' + str(genome_name) + '/.annotation/annotation.feature_dna.fasta\"' + ' ' + str(genome_name) + '_DNA.fasta')
 		
 if str(args.blast) == 'yes':
-	zip(contigs,genome_name_list)
+	zip(contigs_list,genome_name_list)
 	for contigs, genome_name in zip(contigs_list,genome_name_list):
 		os.system('diamond blastp --db VFDB_setB_pro.dmnd --query' + ' ' + str(genome_name) + '_protein.fasta' + ' ' + '--out' + ' ' + str(genome_name) + '_VFDB_blast_out.txt' + ' ' + '--outfmt 6 qseqid qlen sseqid slen qseq sseq evalue bitscore pident qcovhsp -k 1')
 		df1 = pd.read_csv(str(genome_name) + '_annotation.txt', sep='\t', dtype=str)
