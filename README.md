@@ -40,7 +40,7 @@ The workflow and outputs are the following:
 
 pgfam_median_counter.py
 
-This script calculates the median number PGfam groups for a set of genomes in order to facilitate the identification of unique and core genes as well as over/under abundant gene copies. 
+This script calculates the median number PGfam genes for a set of genomes in order to facilitate the identification of unique and core genes as well as over/under abundant gene copies.  This script may enable identitication of PGfam genes that differentiate species/strains from each other based on output of pan-genome-tree.py script (above). 
 
 The workflow and outputs are the following:
 1) merges annotations data outputted by full_genome_analysis.py scripts (above) from genomes of interest
