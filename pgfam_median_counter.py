@@ -32,7 +32,5 @@ for col in df_groupby2.columns[1:]:
 	conditions = [(df_temp['gene_count'] == df_temp['median']),(df_temp['gene_count'] > df_temp['median']), (df_temp['gene_count'] < df_temp['median'])]
 	choices = ['equal to median', 'greater than median', 'less than median']
 	df_temp['category'] = np.select(conditions, choices, default='unknown')
-	#df_temp.to_csv(str(col)+'test_output2.txt', sep='\t') 
-	#need to merge
 	df_an = pd.read_csv(str(col)+'_annotation.txt', sep='\t')
 	df_merged2 = pd.merge(df_an,df_temp, left_on='pgfam', right_on='pgfam', how="left").to_csv(str(col) + 'annotation_median_out.txt', sep='\t', index=False)
