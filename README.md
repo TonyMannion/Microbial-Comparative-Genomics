@@ -27,12 +27,23 @@ The workflow and outputs are the following:
 2) perform annotation --> outputs summary statistics for annotated genomes as well as fasta files for contigs and annotated gene sequences
 3) perform DIAMOND analysis (https://github.com/bbuchfink/diamond/releases/) for virulence factor genes (http://www.mgc.ac.cn/VFs/download.htm) and antibiotic resistance genes (https://card.mcmaster.ca/download) --> outputs annotation table with hits
 
+
 pan-genome-tree.py
 
 This script creates pan-genome phylogenetic trees using IQ-TREE (http://www.iqtree.org/) based on a binary matrix of Global protein family (ie PGfam) determined by PATRIC (https://www.patricbrc.org/).
 
 The workflow and outputs are the following:
 1) via PATRIC (https://www.patricbrc.org/), compile list of genome ids desired for pan-genome phylogenetic tree
-2) acuqires Global protein family (ie PGfam) from genomes 
+2) acquires Global protein family (ie PGfam) from genomes 
 3) creates binary matrix of PGfam in PHYLIP format 
 4) executes IQ-TREE to analyze to pan-genome phylogenetic tree --> outputs .treefile files, which can be viewed in FigTree (http://tree.bio.ed.ac.uk/software/figtree/) or similar programs
+
+pgfam_median_counter.py
+
+This script calculates the median number PGfam groups for a set of genomes in order to facilitate the identification of unique and core genes as well as over/under abundant gene copies. 
+
+The workflow and outputs are the following:
+1) merges annotations data outputted by full_genome_analysis.py scripts (above) from genomes of interest
+2) performs groupby operation to calculate number of PGfam genes per genome
+3) calculates median PGfam genes from all genomes of interest
+4) per genome, outputs annotation data indicating number of PGfam genes and if PGfams genes are equal to, greater than, or less than median
