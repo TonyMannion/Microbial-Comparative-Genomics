@@ -39,7 +39,6 @@ This script calculated which gene families (eg PGfam) in a genome are equal, ove
 The workflow and outputs are the following:
 1.	Input annotation data from a group of genomes of interest. Annotation data can be obtained by: i) the annotation.txt output by the full_genome_analysis.py scripts (above) ii) the gene family feature output downloaded from PATRIC by the pan-genome-tree.py script (above) iii) the gene family feature output downloaded from PATRIC by this script (ie gene_family_count_analysis.py)
 2.	Calculates the median genes per gene family in the set of genomes, the number of genes per gene family (eg PGfam) for each genome, and if the number of genes per gene family for each genomes is equal to, greater than, or less than median
-3.	Output gene counts to annotation metadata (eg gene name, location on contig, sequence etc).
-Note: Annotation metadata is more comprehensive when annotation.txt data (obtained using the full_genome_analysis.py scripts) are used as the input versus gene family feature data (obtained using gene_family_count_analysis.py or pan-genome-tree.py script). 
+3.	Output gene counts are merged to annotation metadata (eg gene name, location on contig, sequence etc).
 
 Note: Annotation metadata is more comprehensive when annotation.txt data (obtained using the full_genome_analysis.py scripts) are used as the input versus gene family feature data (obtained using gene_family_count_analysis.py or pan-genome-tree.py script). 
