@@ -69,7 +69,7 @@ if str(args.annotations) == 'yes':
 	#rename
 	df_annotation_files = pd.read_csv(str(args.metadata_file), sep='\t')
 	df2_annotation_files = df_annotation_files.dropna()
-	annotation_files_list = df2_annotation_files['genome_name'].tolist()
+	annotation_files_list = df2_annotation_files['genome_name'].tolist() #metadata file name header must be 'genome_name'
 	for file in annotation_files_list:
 		df = pd.read_csv(str(file), sep='\t')
 		df['genome_name']=str(file).replace('_annotation.txt','')
