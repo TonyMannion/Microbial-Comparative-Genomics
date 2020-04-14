@@ -1,25 +1,22 @@
-import pandas as pd
 import numpy as np
+import seaborn as sns
+import pandas as pd
+from matplotlib import pyplot as plt
+import sys 
 import os
 import argparse
 import glob
 
 parser = argparse.ArgumentParser()
 
-parser.add_argument('-username', '--username', dest='username', help='Enter PATRIC login username')
-
 parser.add_argument('-a', '--annotations', dest='annotations', default = 'no', help='Peform median gene count analysis on annotations files? Enter "yes" or "no". Requires annotations files obtained from "full_genome_analysis.py" script.')
-
 parser.add_argument('-p', '--PATRIC_features', dest='PATRIC_features', default = 'no', help='Peform median gene count analysis on PATRIC features? Enter "yes" or "no". Requires features file for genomes of interest downloaded from PATRIC from "downlaod_patric_features" argument above.')
-
 parser.add_argument('-d', '--downlaod_patric_features', dest='downlaod_patric_features', default = 'no', help='Download features from PATRIC? Enter "yes" or "no". Default is "yes". If features have already been downloaded, enter "no" to bypass this step.')
-
+parser.add_argument('-username', '--username', dest='username', help='If downloading from PATRIC, enter PATRIC login username.')
 parser.add_argument('-o', '--features_file', dest='features_file', default = 'features.txt', help='If features will be or have been downloaded PATRIC, specify the desired the features file name.')
-
 parser.add_argument('-m', '--metadata_file', dest='metadata_file', help='Specify metadata file containing PATRIC genome ids of interest or file names for annotations files. Header is "Genomes" and each genome id is on different row.')
-
 parser.add_argument('-f', '--feature_type', dest='feature_type', default = 'feature.pgfam_id', help='Specificy count column for gene family from feature file.  Choose "pgfam" for global protein family (cross-genus, called PGfam) or "plfam" for local protein family (genus-specific, called PLfam).  Default is "feature.pgfam_id" for global protein family (cross-genus, called PGfam).')
-
+parser.add_argument('-cm', '--clustermap', dest='clustermap', default = 'yes', help='Generate clustermap of gene families. Enter "yes" or "no". Default is "yes".')
 
 #download features
 args = parser.parse_args()
@@ -30,7 +27,6 @@ if str(args.downlaod_patric_features) == 'yes':
 	print 'Downloading features from PATRIC...'
 	os.system('p3-get-genome-features --input ' + str(args.metadata_file) + ' --attr genome_name --attr patric_id --attr gene_id --attr plfam_id --attr pgfam_id --attr product > ' + str(args.features_file))
 
-
 #median function
 def median_gene_analysis(input_file, genome_name, feature_type):
 
@@ -40,6 +36,17 @@ def median_gene_analysis(input_file, genome_name, feature_type):
 	df_merged['count']=1
 	df_groupby = df_merged.groupby([str(genome_name), str(feature_type)], as_index=False).sum().pivot(columns = str(genome_name), index = str(feature_type), values = 'count').fillna(0).to_csv('pgfam_groupby_median_gene_analysis.txt', sep='\t') 
 	df_groupby2 = pd.read_csv('pgfam_groupby_median_gene_analysis.txt', sep='\t')
+	#clustermap
+	if str(args.clustermap) == 'yes':
+		sys.setrecursionlimit(10**6) 
+		df_clustermap = df_groupby2.set_index(str(feature_type)).transpose()
+		del df_clustermap.index.name
+		df_clustermap
+		custom_cmap = ['#fdf8ef', '#ff7f7f', '#ffa500', '#ffff66', '#008000', '#0000ff', '#814ca7', '#ee82ee', '#808080', '#000000']
+		#off-white, red, orange, yellow, green, blue, purple, pink, gray, black
+		sns.set_palette(custom_cmap)
+		sns.clustermap(df_clustermap, cmap=custom_cmap, vmin=0, vmax=9, xticklabels=False, figsize=(25,10), cbar_kws={"ticks":[0,1,2,3,4,5,6,7,8,9], "label":('0 to >=9 genes per gene family')}).ax_col_dendrogram.set_visible(False)
+		plt.savefig('clustermap.png', dpi=300)
 	#median
 	for col in df_groupby2.columns[1:]:
 		df_temp = pd.DataFrame()
