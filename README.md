@@ -42,4 +42,4 @@ The workflow and outputs are the following:
 3.	Output gene counts are merged to annotation metadata** (eg gene name, location on contig, sequence etc).
 4.  Output clustermap (ie heatmap with cluster analysis) of gene familes within the set of genomes 
 
-**Note: Annotation metadata is more comprehensive when annotation.txt data (obtained using the full_genome_analysis.py scripts) are used as the input versus gene family feature data (obtained using gene_family_count_analysis.py or pan-genome-tree.py script). 
+**Note: Annotation metadata is more comprehensive when annotation.txt data (obtained using the full_genome_analysis.py scripts) are used as the input versus gene family feature data (obtained using gene_family_analysis.py or pan-genome-tree.py script). 
