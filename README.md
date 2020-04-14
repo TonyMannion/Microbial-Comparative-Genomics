@@ -33,7 +33,7 @@ The workflow and outputs are the following:
 3.	Creates binary matrix of PGfam in PHYLIP format
 4.	Executes IQ-TREE to analyze to pan-genome phylogenetic tree --> outputs .treefile files, which can be viewed in FigTree (http://tree.bio.ed.ac.uk/software/figtree/) or similar programs
 
-gene_family_count_analysis.py
+gene_family_analysis.py
 
 This script calculates which gene families (eg PGfam) in a genome are equal, overly, or under abundant based on the median number of genes present in gene families within a set of genomes. This script also generates a clustermap (ie heatmap with cluster analysis) of the abundance and relationship of gene familes within the set of genomes.  When used in conjunction with the pan-genome-tree.py (above), the analysis by this script enables identification of gene families that differentiate species/strains from each other, such as core and accessory genes from the pangenome.
 The workflow and outputs are the following:
