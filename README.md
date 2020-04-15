@@ -38,8 +38,8 @@ gene_family_analysis.py
 This script calculates which gene families (eg PGfam) in a genome are equal, overly, or under abundant based on the median number of genes present in gene families within a set of genomes. This script also generates a clustermap (ie heatmap with cluster analysis) of the abundance and relationship of gene familes within the set of genomes.  When used in conjunction with the pan-genome-tree.py (above), the analysis by this script enables identification of gene families that differentiate species/strains from each other, such as core and accessory genes from the pangenome.
 The workflow and outputs are the following:
 1.	Input annotation data from a group of genomes of interest. Annotation data can be obtained by: 
-i) the annotation.txt output by the full_genome_analysis.py scripts (above) 
-ii) the gene family feature output downloaded from PATRIC by the pan-genome-tree.py script (above) 
+i) the annotation.txt output by the full_genome_analysis.py scripts (above); 
+ii) the gene family feature output downloaded from PATRIC by the pan-genome-tree.py script (above); and 
 iii) the gene family feature output downloaded from PATRIC by this script (ie gene_family_analysis.py)
 2.	Calculates the median genes per gene family in the set of genomes, the number of genes per gene family (eg PGfam) for each genome, and if the number of genes per gene family for each genomes is equal to, greater than, or less than median
 3.	Output gene counts are merged to annotation metadata** (eg gene name, location on contig, sequence etc).
