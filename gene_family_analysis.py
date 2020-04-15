@@ -39,7 +39,7 @@ def median_gene_analysis(input_file, genome_name, feature_type):
 	#clustermap
 	if str(args.clustermap) == 'yes':
 		sys.setrecursionlimit(10**6) 
-		df_cm = pd.read_csv('gene_family_groupby_out.txt', sep='\t', index_col=0).transpose()#renamed input file
+		df_cm = pd.read_csv('gene_family_groupby_out.txt', sep='\t', index_col=0).transpose()
 		df_cm = df_cm.rename_axis("Gene Family", axis="columns")
 		custom_cmap = ['#fdf8ef', '#ff7f7f', '#ffa500', '#ffff66', '#008000', '#0000ff', '#814ca7', '#ee82ee', '#808080', '#a5682a', '#000000']
 		#off-white, red, orange, yellow, green, blue, purple, pink, gray, brown, black
