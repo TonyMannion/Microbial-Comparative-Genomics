@@ -34,19 +34,22 @@ def median_gene_analysis(input_file, genome_name, feature_type):
 
 	#groupby
 	df_merged['count']=1
-	df_groupby = df_merged.groupby([str(genome_name), str(feature_type)], as_index=False).sum().pivot(columns = str(genome_name), index = str(feature_type), values = 'count').fillna(0).to_csv('pgfam_groupby_median_gene_analysis.txt', sep='\t') 
-	df_groupby2 = pd.read_csv('pgfam_groupby_median_gene_analysis.txt', sep='\t')
+	df_groupby = df_merged.groupby([str(genome_name), str(feature_type)], as_index=False).sum().pivot(columns = str(genome_name), index = str(feature_type), values = 'count').fillna(0).to_csv('gene_family_groupby_out.txt', sep='\t') 
+	df_groupby2 = pd.read_csv('gene_family_groupby_out.txt', sep='\t')
 	#clustermap
 	if str(args.clustermap) == 'yes':
 		sys.setrecursionlimit(10**6) 
-		df_clustermap = df_groupby2.set_index(str(feature_type)).transpose()
-		del df_clustermap.index.name
-		df_clustermap
-		custom_cmap = ['#fdf8ef', '#ff7f7f', '#ffa500', '#ffff66', '#008000', '#0000ff', '#814ca7', '#ee82ee', '#808080', '#000000']
-		#off-white, red, orange, yellow, green, blue, purple, pink, gray, black
+		df_cm = pd.read_csv('gene_family_groupby_out.txt', sep='\t', index_col=0).transpose()#renamed input file
+		df_cm = df_cm.rename_axis("Gene Family", axis="columns")
+		custom_cmap = ['#fdf8ef', '#ff7f7f', '#ffa500', '#ffff66', '#008000', '#0000ff', '#814ca7', '#ee82ee', '#808080', '#a5682a', '#000000']
+		#off-white, red, orange, yellow, green, blue, purple, pink, gray, brown, black
 		sns.set_palette(custom_cmap)
-		sns.clustermap(df_clustermap, cmap=custom_cmap, vmin=0, vmax=9, xticklabels=False, figsize=(25,10), cbar_kws={"ticks":[0,1,2,3,4,5,6,7,8,9], "label":('0 to >=9 genes per gene family')}).ax_col_dendrogram.set_visible(False)
+		cm = sns.clustermap(df_cm, cmap=custom_cmap, vmin=0, vmax=10, xticklabels=False, figsize=(25,10), cbar_kws={"ticks":[0,1,2,3,4,5,6,7,8,9,10], "label":('0 to 10+ genes per gene family')})
+		cm.ax_col_dendrogram.set_visible(False)
 		plt.savefig('clustermap.png', dpi=300)
+		plt.clf()
+		df_cm2 = pd.DataFrame(cm.data2d)
+		df_cm2.to_csv('gene_family_clustermap_out.txt', sep='\t')
 	#median
 	for col in df_groupby2.columns[1:]:
 		df_temp = pd.DataFrame()
