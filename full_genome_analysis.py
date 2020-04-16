@@ -25,19 +25,16 @@ patric_domain = open('patric_domain.txt', "rb").readlines()[1].replace('Logged i
 
 #metadata lists
 df_reads = pd.read_csv(str(args.metadata_table), sep='\t', usecols=['R1','R2','genome_name'])
-df2_reads = df_reads.dropna()
-R1_list = df2_reads['R1'].tolist()
-R2_list = df2_reads['R2'].tolist()
-genome_name_list_reads = df2_reads['genome_name'].tolist()
+R1_list = df_reads['R1'].dropna().tolist()
+R2_list = df_reads['R2'].dropna().tolist()
+genome_name_list_reads = df_reads['genome_name'].dropna().tolist()
 
 df_contigs = pd.read_csv(str(args.metadata_table), sep='\t', usecols=['contigs','genome_name'])
-df2_contigs = df_contigs.dropna()
-contigs_list = df2_contigs['contigs'].tolist()
-genome_name_list_contigs = df2_contigs['genome_name'].tolist()
+contigs_list = df_contigs['contigs'].dropna().tolist()
+genome_name_list_contigs = df_contigs['genome_name'].dropna().tolist()
 
 df_genome_names = pd.read_csv(str(args.metadata_table), sep='\t', usecols=['genome_name'])
-df2_genome_names = df_genome_names.dropna()
-genome_name_list = df2_genome_names['genome_name'].tolist()
+genome_name_list = df_genome_names['genome_name'].dropna().tolist()
 
 #upload data
 if str(args.upload_files) == 'yes':
