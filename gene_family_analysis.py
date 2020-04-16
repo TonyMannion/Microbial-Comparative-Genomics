@@ -53,11 +53,11 @@ def gene_analysis(input_file, genome_name, feature_type):
 		df_merged2 = pd.merge(df_temp, df_merged, left_on='genome_name_pgfam', right_on='genome_name_pgfam', how="left")
 		if str(args.PATRIC_features) == 'yes':
 			column_order = ['genome', 'Genome ID','feature.patric_id','feature.gene_id','feature.plfam_id','pgfam_id','feature.product','gene_count','median','gene_count-median','category']
-			df_merged2[column_order].to_csv(str(col)+'_median_gene_analysis.txt', sep='\t', index=False)
+			df_merged2[column_order].to_csv(str(col)+'_annotation.txt', sep='\t', index=False)
 			print "Output gene counts merged to annotation metadata for " + str(col) +'...'
 		elif str(args.annotations) == 'yes':
 			column_order = ['genome','contig_id','feature_id','type','location','start','stop','strand','function','aliases','plfam','pgfam_id','figfam','evidence_codes','nucleotide_sequence','aa_sequence','gene_count','median','gene_count-median','category']
-			df_merged2[column_order].to_csv(str(col)+'_median_gene_analysis.txt', sep='\t', index=False)
+			df_merged2[column_order].to_csv(str(col)+'_annotation.txt', sep='\t', index=False)
 			print "Output gene counts merged to annotation metadata for " + str(col) +'...'
 	#clustermap figure
 	if str(args.clustermap) == 'yes':
