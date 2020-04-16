@@ -16,17 +16,18 @@ parser.add_argument('-m', '--metadata_table', dest='metadata_table', default = '
 
 parser.add_argument('-u', '--upload_files', dest='upload_files', default = 'yes', help='Upload read and/or contig files? Enter yes or no. Default is yes')
 
-
 parser.add_argument('-a', '--assembly_annotate', dest='assembly_annotate', default = 'yes', help='Execute assembly and annotate pipeline? Enter yes or no. Default is yes', )
+
 parser.add_argument('-d', '--download_reports', dest='download_reports', default = 'yes', help='Download genome reports, contigs, and annotations data.  Note: cannot execute blast unless assembly and annotate pipeline has been previously performed', )
-parser.add_argument('-b', '--blast', dest='blast', default = 'yes', help='Execute blast for virulence factor (VF) and antibiotic resistance genes (Res)? Enter yes or no. Default is yes. Note: cannot execute blast unless assembly and annotate pipeline has been previously performed', )
+
 
 args = parser.parse_args()
-
+#login
 print 'Enter password to log into PATRIC...'
 os.system('p3-login ' + str(args.username) + ' > patric_domain.txt')
 patric_domain = open('patric_domain.txt', "rb").readlines()[1].replace('Logged in with username ', '').rstrip()
 
+#metadata lists
 df_reads = pd.read_csv(str(args.metadata_table), sep='\t', usecols=['R1','R2','genome_name'])
 df2_reads = df_reads.dropna()
 R1_list = df2_reads['R1'].tolist()
@@ -42,6 +43,7 @@ df_genome_names = pd.read_csv(str(args.metadata_table), sep='\t', usecols=['geno
 df2_genome_names = df_genome_names.dropna()
 genome_name_list = df2_genome_names['genome_name'].tolist()
 
+#upload data
 if str(args.upload_files) == 'yes':
 	for R1 in R1_list:
 		print 'Uploading ' + str(R1)
@@ -53,7 +55,8 @@ if str(args.upload_files) == 'yes':
 		print 'Uploading ' + str(contigs)
 		os.system('p3-cp ' + str(contigs) + ' ws:/' + str(patric_domain) + '/home/AssemblyJob -f')
 
-if str(args.assembly_annotate) == 'yes':
+#assembly annotate
+if str(args.assembly_annotate) == 'yes': #do not need to specify if reads or contigs or both.  PATRIC will not execute job if not data.
 #reads
 	zip(R1_list,R2_list,genome_name_list_reads)
 	for R1, R2, genome_name in zip(R1_list,R2_list,genome_name_list_reads):
@@ -68,7 +71,8 @@ if str(args.assembly_annotate) == 'yes':
 		os.system('appserv-start-app ComprehensiveGenomeAnalysis params_reads_out.json \"parrello@patricbrc.org/home/\"'+ ' > ' + str(genome_name) + '_job_ID.txt')
 		job_id = open(str(genome_name) + '_job_ID.txt', "rb").readline().replace('Started task ', '').rstrip()
 		print "Comprehensive Genome Analysis job sent for " + str(genome_name) + ' as job id ' + job_id
-	zip(contigs_list,genome_name_list_contigs)
+#contigs
+		zip(contigs_list,genome_name_list_contigs)
 	for contigs, genome_name in zip(contigs_list,genome_name_list_contigs):
 		in_file = open('params_contigs.json', "rb")
 		out_file = open('params_contigs_out.json', "wb")
@@ -81,6 +85,7 @@ if str(args.assembly_annotate) == 'yes':
 		os.system('appserv-start-app ComprehensiveGenomeAnalysis params_contigs_out.json \"parrello@patricbrc.org/home/\"'+ ' > ' + str(genome_name) + '_job_ID.txt')
 		job_id = open(str(genome_name) + '_job_ID.txt', "rb").readline().replace('Started task ', '').rstrip()
 		print "Comprehensive Genome Analysis job sent for " + str(genome_name) + ' as job id ' + job_id
+#check job
 	for genome_name in genome_name_list:
 		job_id2 = open(str(genome_name) + '_job_ID.txt', "rb").readline().replace('Started task ', '').rstrip()
 		print job_id2
@@ -96,6 +101,7 @@ if str(args.assembly_annotate) == 'yes':
 			time.sleep(300) #check status of first jobs every 300 seconds (ie 5 minutes)
 		print 'Comprehensive Genome Analysis done for ' + str(genome_name)
 
+		#download data
 if str(args.download_reports) == 'yes':
 	for genome_name in genome_name_list:
 		os.system('p3-cp ws:\"/' + str(patric_domain) + '/home/AssemblyJob/.' + str(genome_name) + '/FullGenomeReport.html\"' + ' ' + str(genome_name) + '_FullGenomeReport.html')
@@ -103,14 +109,8 @@ if str(args.download_reports) == 'yes':
 		os.system('p3-cp ws:\"/' + str(patric_domain) + '/home/AssemblyJob/.' + str(genome_name) + '/.annotation/annotation.txt\"' + ' ' + str(genome_name) + '_annotation.txt')
 		os.system('p3-cp ws:\"/' + str(patric_domain) + '/home/AssemblyJob/.' + str(genome_name) + '/.annotation/annotation.feature_protein.fasta\"' + ' ' + str(genome_name) + '_protein.fasta')
 		os.system('p3-cp ws:\"/' + str(patric_domain) + '/home/AssemblyJob/.' + str(genome_name) + '/.annotation/annotation.feature_dna.fasta\"' + ' ' + str(genome_name) + '_DNA.fasta')
-		
-if str(args.blast) == 'yes':
-	for genome_name in genome_name_list:
-		os.system('diamond blastp --db VFDB_setB_pro.dmnd --query' + ' ' + str(genome_name) + '_protein.fasta' + ' ' + '--out' + ' ' + str(genome_name) + '_VFDB_blast_out.txt' + ' ' + '--outfmt 6 qseqid qlen sseqid slen qseq sseq evalue bitscore pident qcovhsp -k 1')
-		df1 = pd.read_csv(str(genome_name) + '_annotation.txt', sep='\t', dtype=str)
-		df2 = pd.read_csv(str(genome_name) + '_VFDB_blast_out.txt', sep='\t',  names=['qseqid_VF', 'qlen_VF', 'VF_ID', 'slen_VF', 'qseq_VF', 'sseq_VF', 'evalue_VF', 'bitscore_VF', 'pident_VF', 'qcovhsp_VF'], dtype=str) 
-		df3 = pd.merge(df1,df2, left_on='feature_id', right_on='qseqid_VF', how="left").to_csv(str(genome_name) + '_annotation_out.txt', sep='\t')
-		os.system('diamond blastp --db card_protein.dmnd --query' + ' ' + str(genome_name) + '_protein.fasta' + ' ' + '--out' + ' ' + str(genome_name) + '_Res_blast_out.txt' + ' ' + '--outfmt 6 qseqid qlen sseqid slen qseq sseq evalue bitscore pident qcovhsp -k 1')
-		df4 = pd.read_csv(str(genome_name) + '_annotation_out.txt', sep='\t', dtype=str)
-		df5 = pd.read_csv(str(genome_name) + '_Res_blast_out.txt', sep='\t',  names=['qseqid_Res', 'qlen_Res', 'Res_ID', 'slen_Res', 'qseq_Res', 'sseq_Res', 'evalue_Res', 'bitscore_Res', 'pident_Res', 'qcovhsp_Res'], dtype=str) 
-		df6 = pd.merge(df4,df5, left_on='feature_id', right_on='qseqid_Res', how="left").to_csv(str(genome_name) + '_annotation_out.txt', sep='\t')
+		#add column with genome name
+		df = pd.read_csv(str(genome_name) + '_annotation.txt', sep='\t')
+		df['genome_name']=str(genome_name)
+		column_order = ['genome_name','contig_id','feature_id','type','location','start','stop','strand','function','aliases','plfam','pgfam','figfam','evidence_codes','nucleotide_sequence','aa_sequence']
+		df[column_order].to_csv(str(genome_name) + '_annotation.txt', sep='\t', index=False)
