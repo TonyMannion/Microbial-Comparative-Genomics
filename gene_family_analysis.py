@@ -83,11 +83,10 @@ if str(args.PATRIC_features) == 'yes':
 	gene_analysis(args.features_file, 'feature.genome_name', args.feature_type)
 
 if str(args.annotations) == 'yes':
-	print "Performing gene analysis..."
+	print "Performing gene analysis..." #lines 86-94 --> should move to full_genome_analysis.py, so annotations files have genome name column before using subsequent scripts
 	#add genome name and rename file
 	df_annotation_files = pd.read_csv(str(args.metadata_file), sep='\t')
-	df2_annotation_files = df_annotation_files.dropna()
-	annotation_files_list = df2_annotation_files['genome_name'].tolist() #metadata file name header must be 'genome_name'
+	annotation_files_list = df_annotation_files['genome_name'].dropna().tolist() #metadata file name header must be 'genome_name'
 	for file in annotation_files_list:
 		df = pd.read_csv(str(file), sep='\t')
 		df['genome_name']=str(file).replace('_annotation.txt','')
