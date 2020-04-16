@@ -68,7 +68,7 @@ if str(args.assembly_annotate) == 'yes': #do not need to specify if reads or con
 		job_id = open(str(genome_name) + '_job_ID.txt', "rb").readline().replace('Started task ', '').rstrip()
 		print "Comprehensive Genome Analysis job sent for " + str(genome_name) + ' as job id ' + job_id
 #contigs
-		zip(contigs_list,genome_name_list_contigs)
+	zip(contigs_list,genome_name_list_contigs)
 	for contigs, genome_name in zip(contigs_list,genome_name_list_contigs):
 		in_file = open('params_contigs.json', "rb")
 		out_file = open('params_contigs_out.json', "wb")
