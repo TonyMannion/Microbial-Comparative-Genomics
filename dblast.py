@@ -25,4 +25,4 @@ if str(args.res_blast) == 'yes':
 		os.system('diamond blastp --db card_protein.dmnd --query' + ' ' + str(genome_name) + '_protein.fasta' + ' ' + '--out' + ' ' + str(genome_name) + '_Res_blast_out.txt' + ' ' + '--outfmt 6 qseqid qlen sseqid slen qseq sseq evalue bitscore pident qcovhsp -k 1')
 		df_an = pd.read_csv(str(genome_name) + '_annotation.txt', sep='\t', dtype=str)
 		df_res = pd.read_csv(str(genome_name) + '_Res_blast_out.txt', sep='\t',  names=['qseqid_Res', 'qlen_Res', 'Res_ID', 'slen_Res', 'qseq_Res', 'sseq_Res', 'evalue_Res', 'bitscore_Res', 'pident_Res', 'qcovhsp_Res'], dtype=str) 
-		df6 = pd.merge(df_an,df_res, left_on='feature_id', right_on='qseqid_Res', how="left").to_csv(str(genome_name) + '_annotation.txt', sep='\t')
+		df_merge = pd.merge(df_an,df_res, left_on='feature_id', right_on='qseqid_Res', how="left").to_csv(str(genome_name) + '_annotation.txt', sep='\t')
