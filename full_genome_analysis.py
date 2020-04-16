@@ -13,15 +13,11 @@ import time
 parser = argparse.ArgumentParser()
 parser.add_argument('-username', '--username', dest='username', help='Enter PATRIC login username')
 parser.add_argument('-m', '--metadata_table', dest='metadata_table', default = 'metadata_table.txt', help='Metadata tab-delimited file for read files, contig files, and genome names. Default is metadata_table.txt')
-
 parser.add_argument('-u', '--upload_files', dest='upload_files', default = 'yes', help='Upload read and/or contig files? Enter yes or no. Default is yes')
-
 parser.add_argument('-a', '--assembly_annotate', dest='assembly_annotate', default = 'yes', help='Execute assembly and annotate pipeline? Enter yes or no. Default is yes', )
-
 parser.add_argument('-d', '--download_reports', dest='download_reports', default = 'yes', help='Download genome reports, contigs, and annotations data.  Note: cannot execute blast unless assembly and annotate pipeline has been previously performed', )
-
-
 args = parser.parse_args()
+
 #login
 print 'Enter password to log into PATRIC...'
 os.system('p3-login ' + str(args.username) + ' > patric_domain.txt')
