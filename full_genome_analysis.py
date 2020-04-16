@@ -101,7 +101,7 @@ if str(args.assembly_annotate) == 'yes': #do not need to specify if reads or con
 			time.sleep(300) #check status of first jobs every 300 seconds (ie 5 minutes)
 		print 'Comprehensive Genome Analysis done for ' + str(genome_name)
 
-		#download data
+#download data
 if str(args.download_reports) == 'yes':
 	for genome_name in genome_name_list:
 		os.system('p3-cp ws:\"/' + str(patric_domain) + '/home/AssemblyJob/.' + str(genome_name) + '/FullGenomeReport.html\"' + ' ' + str(genome_name) + '_FullGenomeReport.html')
