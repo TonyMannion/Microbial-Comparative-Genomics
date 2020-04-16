@@ -83,21 +83,10 @@ if str(args.PATRIC_features) == 'yes':
 	gene_analysis(args.features_file, 'feature.genome_name', args.feature_type)
 
 if str(args.annotations) == 'yes':
-	print "Performing gene analysis..." #lines 86-94 --> should move to full_genome_analysis.py, so annotations files have genome name column before using subsequent scripts
-	#add genome name and rename file
-	df_annotation_files = pd.read_csv(str(args.metadata_file), sep='\t')
-	annotation_files_list = df_annotation_files['genome_name'].dropna().tolist() #metadata file name header must be 'genome_name'
-	for file in annotation_files_list:
-		df = pd.read_csv(str(file), sep='\t')
-		df['genome_name']=str(file).replace('_annotation.txt','')
-		df2 = df
-		df2.to_csv('temp_renamed_' + str(file), sep='\t', index=False)
+	print "Performing gene analysis..." 
 	#concatenate
-	all_filenames = glob.glob('temp_renamed*annotation.txt')
-	df_merged = pd.concat([pd.read_csv(f,sep='\t') for f in all_filenames])
-	df_merged.to_csv('merged_annotations.txt',  sep='\t', index=False)
-	#delete temp files
-	for f in all_filenames:
-		os.remove(str(f))
+	annotation_files = glob.glob('_annotation.txt')
+	df_concat = pd.concat([pd.read_csv(f,sep='\t') for f in annotation_files])
+	df_concat.to_csv('concatenated_annotations.txt',  sep='\t', index=False)
 	#Execute gene analysis function
 	gene_analysis('merged_annotations.txt', 'genome_name', args.feature_type)
