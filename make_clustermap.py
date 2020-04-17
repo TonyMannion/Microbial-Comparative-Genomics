@@ -46,14 +46,21 @@ def make_clustermap(input_file, genome_name, feature_type):
 if str(args.downlaod_patric_features) == 'yes':
 	print 'Logging into PATRIC...'
 	os.system('p3-login ' + str(args.username))
-	print 'Downloading features from PATRIC...'
-	os.system('p3-get-genome-features --input ' + str(args.metadata_file) + ' --attr genome_name --attr patric_id --attr gene_id --attr pgfam_id --attr product > ' + str(args.features_file))
+	df_genome_names = pd.read_csv(str(args.metadata_file), sep='\t', usecols=['genome_ids','genome_name'])
+	genome_ids_list = df_genome_names['genome_ids'].dropna().tolist()
+	genome_name_list = df_genome_names['genome_name'].dropna().tolist()
+	zip(genome_ids_list,genome_name_list)
+	for genome_id, genome_name in zip(genome_ids_list,genome_name_list): 
+		print 'Downloading features for ' + str(genome_id)+ ' ' + str(genome_name) + ' from PATRIC...'
+		os.system('p3-echo -t genome_id ' + str(genome_id) + ' | p3-get-genome-features --in feature_type,CDS,rna --attr genome_name --attr sequence_id --attr patric_id --attr start --attr end --attr strand --attr product --attr pgfam_id --attr na_sequence --attr aa_sequence  > ' + str(genome_name) +'_annotation.txt')
+	df_concat = pd.concat([pd.read_csv(str(genome_name)+ '_annotation.txt',sep='\t') for genome_name in genome_name_list])
+	df_concat.to_csv('concatenated_annotations.txt',  sep='\t', index=False)
 
 #cluster map from PATRIC features
 if str(args.PATRIC_features) == 'yes':
 	#Execute gene analysis function
 	print "Performing gene analysis..."
-	make_clustermap(args.features_file, 'feature.genome_name', 'feature.pgfam_id')
+	make_clustermap('concatenated_annotations.txt', 'feature.genome_name', 'feature.pgfam_id')
 
 #cluster map from annotation metadata
 if str(args.annotations) == 'yes':
