@@ -41,7 +41,7 @@ def median_analysis(input_file):
 		#annotation metadata
 		df_merged=pd.merge(df_temp, df_concat2, left_on='genome_name_pgfam', right_on='genome_name_pgfam', how="left").rename(columns={'genome_name_y': 'genome_name', 'pgfam_x':'pgfam'}).drop(['pgfam_y', 'genome_name_x','genome_name_pgfam','count'], axis=1)
 		cols = list(df_merged.columns)
-		cols = cols[5:] + cols[0:5]#rearranges first 4 cols to end
+		cols = cols[5:] + cols[0:5]#rearranges cols
 		df_merged2 = df_merged[cols].to_csv(str(col)+'_annotation.txt', sep='\t', index=False)
 		print "Output gene counts merged to annotation metadata for " + str(col) +'...'
 
