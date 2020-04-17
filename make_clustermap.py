@@ -1,4 +1,28 @@
+import numpy as np
+import seaborn as sns
+import pandas as pd
+from matplotlib import pyplot as plt
+import sys 
+import os
+import argparse
 
+parser = argparse.ArgumentParser()
+
+parser.add_argument('-a', '--annotations', dest='annotations', default = 'no', help='Peform median gene count analysis on annotations files? Enter "yes" or "no". Requires annotations files obtained from "full_genome_analysis.py" script.')
+parser.add_argument('-p', '--PATRIC_features', dest='PATRIC_features', default = 'no', help='Peform median gene count analysis on PATRIC features? Enter "yes" or "no". Requires features file for genomes of interest downloaded from PATRIC from "downlaod_patric_features" argument above.')
+parser.add_argument('-d', '--downlaod_patric_features', dest='downlaod_patric_features', default = 'no', help='Download features from PATRIC? Enter "yes" or "no". Default is "yes". If features have already been downloaded, enter "no" to bypass this step.')
+parser.add_argument('-username', '--username', dest='username', help='If downloading from PATRIC, enter PATRIC login username.')
+parser.add_argument('-f', '--features_file', dest='features_file', default = 'features.txt', help='If features will be or have been downloaded PATRIC, specify the desired the features file name.')
+parser.add_argument('-m', '--metadata_file', dest='metadata_file', help='Specify metadata file. If using annotation metadata files, provide genome names of interest with under the header "genome_names". If downloading features from PATRIC, provide genome ids of interest under the header "genome_ids".')
+
+args = parser.parse_args()
+
+#gene analysis function
+def make_clustermap(input_file, genome_name, feature_type):
+	#input concatenated dataframe with gene families
+	df_concat = pd.read_csv(str(input_file),  sep='\t')
+	#groupby
+	df_concat['count']=1
 	df_concat2 = df_concat.rename(columns={str(feature_type): 'pgfam'})
 	df_groupby = df_concat2.groupby([str(genome_name), 'pgfam'], as_index=False).sum().pivot(columns = str(genome_name), index = 'pgfam', values = 'count').fillna(0)
 	print 'Output gene family groupby dataframe...'
