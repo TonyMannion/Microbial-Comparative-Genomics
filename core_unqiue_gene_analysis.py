@@ -37,7 +37,7 @@ def core_unique_genes(input_file):
 	for genome in genome_name_list:
 		exclude_genome_list = df_genome_names['genome_name'].dropna().tolist()
 		exclude_genome_list.remove(str(genome))
-		df = pd.read_csv('gene_family_groupby_out.txt', sep='\t')
+		df = pd.read_csv(output_folder +'/'+'gene_family_groupby_out.txt', sep='\t')
 		df=df[df[str(genome)]>0]
 		for excluded_genome in exclude_genome_list:
 			df= df[df[str(excluded_genome)]<=0]
