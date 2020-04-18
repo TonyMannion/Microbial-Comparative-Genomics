@@ -53,7 +53,7 @@ def subgroup_genes(input_file):
 		print 'Done with '+ str(genome)
 
 #make output folder
-output_folder = str(args.output_folder)
+output_folder = 'subgroup_gene_analysis_' + str(args.output_folder)
 os.mkdir(output_folder)
 
 #download features from PATRIC
