@@ -1,6 +1,6 @@
 # Microbial-Comparative-Genomics
 
-![test](https://github.com/TonyMannion/Microbial-Comparative-Genomics/blob/master/outline.png)
+![Alt text](https://github.com/TonyMannion/Microbial-Comparative-Genomics/blob/master/outline.png)
 
 
 Python 2.7 scripts for analyzing and comparing microbial genomes.
