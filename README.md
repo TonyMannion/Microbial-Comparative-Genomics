@@ -14,7 +14,7 @@ Additionally, the **genome_assembly_annotate.py** accepts pair-end reads (fastq)
 Pair-end reads (fastq) or pre-assembled contigs (fasta) data for numerous genomes can be piped into **genome_assembly_annotate.py** by including the appropriate metadata.
 
 
-## genome_assembly_annotate.py
+## *genome_assembly_annotate.py*
 ![](https://github.com/TonyMannion/Microbial-Comparative-Genomics/blob/master/genome_assembly_annotate_outline.png)
 
 This script utilizes services hosted by PATRIC (https://www.patricbrc.org/) to process microbial genomes from raw sequencing data to assembled and annotated genomes AND/OR microbial genomes that are already assembled as contigs. This script enables batch genome processing and useful for users desiring to efficiently process and analyze multiple genomes simultaneously. The workflow and outputs are the following:
