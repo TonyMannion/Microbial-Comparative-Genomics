@@ -1,11 +1,10 @@
 # Microbial-Comparative-Genomics
 
-![Alt text](https://github.com/TonyMannion/Microbial-Comparative-Genomics/blob/master/outline.png)
-
-
 Python 2.7 scripts for analyzing and comparing microbial genomes.
 
 full_genome_analysis.py
+
+![](https://github.com/TonyMannion/Microbial-Comparative-Genomics/blob/master/genome_assembly_annotate_outline.png)
 
 This script utilizes services hosted by PATRIC (https://www.patricbrc.org/) to process microbial genomes from raw sequencing data to assembled and annotated genomes AND/OR microbial genomes that are already assembled as contigs. This script enables batch genome processing and useful for users desiring to efficiently process and analyze multiple genomes simultaneously. The workflow and outputs are the following:
 1.	Uploads sequencing reads (fastq files) AND/OR assembled genome contigs (fasta files) --> data stored in PATRIC account
