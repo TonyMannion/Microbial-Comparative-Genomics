@@ -1,8 +1,8 @@
 # Microbial-Comparative-Genomics
 
-Python 2.7 scripts for analyzing and comparing microbial genomes.
+## Python 2.7 scripts for analyzing and comparing microbial genomes.
 
-full_genome_analysis.py
+## genome_assembly_annotate.py
 
 ![](https://github.com/TonyMannion/Microbial-Comparative-Genomics/blob/master/genome_assembly_annotate_outline.png)
 
