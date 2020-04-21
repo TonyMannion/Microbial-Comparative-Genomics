@@ -13,6 +13,9 @@ The **genome_assembly_annotate.py** script overcomes these challenges employing 
 Additionally, the **genome_assembly_annotate.py** accepts pair-end reads (fastq) or pre-assembled contigs (fasta), which provides flexibility.
 Pair-end reads (fastq) or pre-assembled contigs (fasta) data for numerous genomes can be piped into **genome_assembly_annotate.py** by including the appropriate metadata.
 
+Comparative genomics involves the identification of genetic factors, namely genes, that are shared or differ between bacteria genra, species, and/or strains.
+The scripts included in this compendium facilitate the identification of genes and gene families that differentiate bacterial genomes.
+
 
 ## *genome_assembly_annotate.py*
 ![](https://github.com/TonyMannion/Microbial-Comparative-Genomics/blob/master/genome_assembly_annotate_outline.png)
