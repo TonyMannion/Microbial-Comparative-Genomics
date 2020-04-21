@@ -16,6 +16,7 @@ Pair-end reads (fastq) or pre-assembled contigs (fasta) data for numerous genome
 Comparative genomics involves the identification of genetic factors, namely genes, that are shared or differ between bacteria genra, species, and/or strains.
 The scripts included in this compendium facilitate the identification of genes and gene families that differentiate bacterial genomes.
 
+![](https://github.com/TonyMannion/Microbial-Comparative-Genomics/blob/master/overview_outline.png)
 
 ## *genome_assembly_annotate.py*
 ![](https://github.com/TonyMannion/Microbial-Comparative-Genomics/blob/master/genome_assembly_annotate_outline.png)
