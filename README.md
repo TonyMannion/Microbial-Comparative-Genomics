@@ -1,9 +1,11 @@
 # Microbial-Comparative-Genomics
 
-## Python 2.7 scripts for analyzing and comparing microbial genomes.
+## Overview
+These are series of Python 2.7 scripts aimed to facilitate and improve the comparative analysis of bacterial genomes.
+These scripts enable genome assembly and gene annotation from raw sequencing reads followed by comparative analyses to understand the similarities and difference between a group of bacterial genomes of interest.
+These scripts take advantage of the publically accessible database of bacterial genome curated as well as serviced hosted and curated by [PATRIC](https://www.patricbrc.org/).
 
-### genome_assembly_annotate.py
-
+## genome_assembly_annotate.py
 ![](https://github.com/TonyMannion/Microbial-Comparative-Genomics/blob/master/genome_assembly_annotate_outline.png)
 
 This script utilizes services hosted by PATRIC (https://www.patricbrc.org/) to process microbial genomes from raw sequencing data to assembled and annotated genomes AND/OR microbial genomes that are already assembled as contigs. This script enables batch genome processing and useful for users desiring to efficiently process and analyze multiple genomes simultaneously. The workflow and outputs are the following:
