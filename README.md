@@ -6,6 +6,14 @@ These scripts enable genome assembly and gene annotation from raw sequencing rea
 These scripts take advantage of the curated database of publicly accessible bacterial genomes and services hosted by [Pathosystems Resource Integration Center (PATRIC)](https://www.patricbrc.org/).  
 Users of these scripts will require a [PATRIC](https://www.patricbrc.org/) account to take advantage of their features.
 
+Often, researchers require assembly and annotation of more than one genome for their projects.
+There are many steps involved from processing raw reads of adaptor sequences or low quality base pairs, assembling reads into contigs, and finally gene annotation.
+Thus, processing each genome one-by-one can be cumbersome, time consuming, and error prone.
+The genome_assembly_annotate.py script overcomes these challenges employing the [Comprehensive Genome Analysis Service](https://docs.patricbrc.org/user_guides/services/comprehensive_genome_analysis_service.html) hosted by [PATRIC](https://www.patricbrc.org/) in order to automate the assembly and annotation workflow, thereby increasing throughput when numerous genomes must be processed.
+Additionally, the genome_assembly_annotate.py accepts pair-end reads (fastq) or pre-assembled contigs (fasta), which provides flexibility.
+Pair-end reads (fastq) or pre-assembled contigs (fasta) data for numerous genomes can be piped into genome_assembly_annotate.py by including the appropriate metadata.
+
+
 ## genome_assembly_annotate.py
 ![](https://github.com/TonyMannion/Microbial-Comparative-Genomics/blob/master/genome_assembly_annotate_outline.png)
 
