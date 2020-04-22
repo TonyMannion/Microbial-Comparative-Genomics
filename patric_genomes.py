@@ -1,15 +1,13 @@
 import os
-from os import path
 import argparse
-import sys
 import pandas as pd
 import numpy as np
 
 parser=argparse.ArgumentParser()
 
-parser.add_argument('-u', '--username', dest='username', help='If downloading from PATRIC, enter PATRIC login username.')
-parser.add_argument('-m', '--metadata_file', dest='metadata_file', help='Specify metadata file. If using annotation metadata files, provide genome names of interest with under the header "genome_names". If downloading features from PATRIC, provide genome ids of interest under the header "genome_ids".')
-parser.add_argument('-o', '--output_folder', dest='output_folder', help='Specify folder with annotations. If downloading annotations from PATRIC, this will create folder for files.')
+parser.add_argument('-u', '--username', dest='username', help='Provide username for PATRIC account.  Prompt to enter password will appear.')
+parser.add_argument('-m', '--metadata_file', dest='metadata_file', help='Specify metadata file.  Provide genome ids of interest under the header "genome_ids" and corresponding genome name under the header "genome_names".')
+parser.add_argument('-o', '--output_folder', dest='output_folder', help='Specify output folder for downloaded data.')
 
 args=parser.parse_args()
 
@@ -21,8 +19,7 @@ genome_ids_list = df_genome_names['genome_ids'].dropna().tolist()
 genome_name_list = df_genome_names['genome_name'].dropna().tolist()
 zip(genome_ids_list,genome_name_list)
 for genome_id, genome_name in zip(genome_ids_list,genome_name_list): 
-	print 'Downloading features for ' + str(genome_id)+ ' ' + str(genome_name) + ' from PATRIC...'
-	#make input folder if not already present
+	print 'Downloading data for ' + str(genome_id)+ ' ' + str(genome_name) + ' from PATRIC...'
 	if not os.path.exists(str(args.output_folder)):
 		os.mkdir(str(args.output_folder))
 	os.system('p3-echo -t genome_id ' + str(genome_id) + ' | p3-get-genome-features --in feature_type,CDS,rna --attr genome_name --attr sequence_id --attr patric_id --attr start --attr end --attr strand --attr product --attr pgfam_id --attr na_sequence --attr aa_sequence  > ' + str(args.output_folder) +'/'+str(genome_name) +'_annotation.txt')
