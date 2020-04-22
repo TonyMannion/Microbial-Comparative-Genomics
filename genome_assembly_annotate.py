@@ -11,12 +11,13 @@ import argparse
 import time
 
 parser = argparse.ArgumentParser()
-parser.add_argument('-username', '--username', dest='username', help='Enter PATRIC login username')
+parser.add_argument('-u', '--username', dest='username', help='Enter PATRIC login username')
 parser.add_argument('-m', '--metadata_table', dest='metadata_table', default = 'metadata_table.txt', help='Metadata tab-delimited file for read files, contig files, and genome names. Default is metadata_table.txt')
-parser.add_argument('-u', '--upload_files', dest='upload_files', default = 'yes', help='Upload read and/or contig files? Enter yes or no. Default is yes')
+parser.add_argument('-i', '--input_files', dest='input_files', default = 'yes', help='Upload read and/or contig files? Enter yes or no. Default is yes')
 parser.add_argument('-a', '--assembly_annotate', dest='assembly_annotate', default = 'yes', help='Execute assembly and annotate pipeline? Enter yes or no. Default is yes', )
 parser.add_argument('-d', '--download_reports', dest='download_reports', default = 'yes', help='Download genome reports, contigs, and annotations data.  Note: cannot execute blast unless assembly and annotate pipeline has been previously performed', )
 args = parser.parse_args()
+parser.add_argument('-o', '--output_folder', dest='output_folder', help='Specify output folder for downloaded data.')
 
 #login
 print 'Enter password to log into PATRIC...'
@@ -24,20 +25,19 @@ os.system('p3-login ' + str(args.username) + ' > patric_domain.txt')
 patric_domain = open('patric_domain.txt', "rb").readlines()[1].replace('Logged in with username ', '').rstrip()
 
 #metadata lists
-df_reads = pd.read_csv(str(args.metadata_table), sep='\t', usecols=['R1','R2','genome_name'])
+df_reads = pd.read_csv(str(args.metadata_table), sep='\t', usecols=['R1','R2','genome_name_reads'])
 R1_list = df_reads['R1'].dropna().tolist()
 R2_list = df_reads['R2'].dropna().tolist()
-genome_name_list_reads = df_reads['genome_name'].dropna().tolist()
+genome_name_list_reads = df_reads['genome_name_reads'].dropna().tolist()
 
-df_contigs = pd.read_csv(str(args.metadata_table), sep='\t', usecols=['contigs','genome_name'])
+df_contigs = pd.read_csv(str(args.metadata_table), sep='\t', usecols=['contigs','genome_name_contigs'])
 contigs_list = df_contigs['contigs'].dropna().tolist()
-genome_name_list_contigs = df_contigs['genome_name'].dropna().tolist()
+genome_name_list_contigs = df_contigs['genome_name_contigs'].dropna().tolist()
 
-df_genome_names = pd.read_csv(str(args.metadata_table), sep='\t', usecols=['genome_name'])
-genome_name_list = df_genome_names['genome_name'].dropna().tolist()
+genome_name_list = genome_name_list_reads + genome_name_list_contigs
 
 #upload data
-if str(args.upload_files) == 'yes':
+if str(args.input_files) == 'yes':
 	for R1 in R1_list:
 		print 'Uploading ' + str(R1)
 		os.system('p3-cp ' + str(R1) + ' ws:/' + str(patric_domain) + '/home/AssemblyJob -f')
@@ -97,13 +97,15 @@ if str(args.assembly_annotate) == 'yes': #do not need to specify if reads or con
 #download data
 if str(args.download_reports) == 'yes':
 	for genome_name in genome_name_list:
-		os.system('p3-cp ws:\"/' + str(patric_domain) + '/home/AssemblyJob/.' + str(genome_name) + '/FullGenomeReport.html\"' + ' ' + str(genome_name) + '_FullGenomeReport.html')
-		os.system('p3-cp ws:\"/' + str(patric_domain) + '/home/AssemblyJob/.' + str(genome_name) + '/.annotation/annotation.contigs.fasta\"' + ' ' + str(genome_name) + '_contigs.fasta')
-		os.system('p3-cp ws:\"/' + str(patric_domain) + '/home/AssemblyJob/.' + str(genome_name) + '/.annotation/annotation.txt\"' + ' ' + str(genome_name) + '_annotation.txt')
-		os.system('p3-cp ws:\"/' + str(patric_domain) + '/home/AssemblyJob/.' + str(genome_name) + '/.annotation/annotation.feature_protein.fasta\"' + ' ' + str(genome_name) + '_protein.fasta')
-		os.system('p3-cp ws:\"/' + str(patric_domain) + '/home/AssemblyJob/.' + str(genome_name) + '/.annotation/annotation.feature_dna.fasta\"' + ' ' + str(genome_name) + '_DNA.fasta')
+		if not os.path.exists(str(args.output_folder)):
+			os.mkdir(str(args.output_folder))
+		os.system('p3-cp ws:\"/' + str(patric_domain) + '/home/AssemblyJob/.' + str(genome_name) + '/FullGenomeReport.html\"' + ' ' + str(args.output_folder) +'/'+str(genome_name) + '_FullGenomeReport.html')
+		os.system('p3-cp ws:\"/' + str(patric_domain) + '/home/AssemblyJob/.' + str(genome_name) + '/.annotation/annotation.contigs.fasta\"' + ' ' + str(args.output_folder) +'/'+str(genome_name) + '_contigs.fasta')
+		os.system('p3-cp ws:\"/' + str(patric_domain) + '/home/AssemblyJob/.' + str(genome_name) + '/.annotation/annotation.txt\"' + ' ' + str(args.output_folder) +'/'+str(genome_name) + '_annotation.txt')
+		os.system('p3-cp ws:\"/' + str(patric_domain) + '/home/AssemblyJob/.' + str(genome_name) + '/.annotation/annotation.feature_protein.fasta\"' + ' ' + str(args.output_folder) +'/'+str(genome_name) + '_protein.fasta')
+		os.system('p3-cp ws:\"/' + str(patric_domain) + '/home/AssemblyJob/.' + str(genome_name) + '/.annotation/annotation.feature_dna.fasta\"' + ' ' + str(args.output_folder) +'/'+str(genome_name) + '_DNA.fasta')
 		#add column with genome name
-		df = pd.read_csv(str(genome_name) + '_annotation.txt', sep='\t')
+		df = pd.read_csv(str(args.output_folder) +'/'+str(genome_name) + '_annotation.txt', sep='\t')
 		df['genome_name']=str(genome_name)
 		column_order = ['genome_name','contig_id','feature_id','type','location','start','stop','strand','function','aliases','plfam','pgfam','figfam','evidence_codes','nucleotide_sequence','aa_sequence']
-		df[column_order].to_csv(str(genome_name) + '_annotation.txt', sep='\t', index=False)
+		df[column_order].to_csv(str(args.output_folder) +'/'+str(genome_name) + '_annotation.txt', sep='\t', index=False)
