@@ -1,0 +1,27 @@
+{
+  "single_end_libs": [],
+  "genome_size": 5000000,
+  "debug_level": 0,
+  "pilon_iter": 2,
+  "queue_nowait": "0",
+  "min_contig_cov": 5,
+  "domain": "Bacteria",
+  "input_type": "reads",
+  "public": "0",
+  "paired_end_libs": [
+    {
+      "read2": "R1",
+      "read1": "R2"
+    }
+  ],
+  "code": "11",
+  "min_contig_len": 300,
+  "trim": "true",
+  "skip_indexing": "0",
+  "taxonomy_id": "2",
+  "scientific_name": "Genome_name",
+  "output_file": "Genome_name",
+  "output_path": "Genome_name_path",
+  "racon_iter": 2,
+  "recipe": "auto"
+}
