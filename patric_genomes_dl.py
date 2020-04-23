@@ -11,7 +11,7 @@ args=parser.parse_args()
 
 print 'Logging into PATRIC...'
 os.system('p3-login '+str(args.username))
-df_genome_names = pd.read_csv(str(args.metadata_file),sep='\t',usecols=['genome_ids','genome_name'])
+df_genome_names = pd.read_csv(str(args.metadata_file),sep='\t',usecols=['genome_ids','genome_name']).replace(' ','_', regex=True)
 genome_ids_list = df_genome_names['genome_ids'].dropna().tolist()
 genome_name_list = df_genome_names['genome_name'].dropna().tolist()
 zip(genome_ids_list,genome_name_list)
@@ -26,4 +26,4 @@ for genome_id,genome_name in zip(genome_ids_list,genome_name_list):
 	os.system('p3-genome-fasta --contig '+str(genome_id)+' > '+str(args.output_folder)+'/'+str(genome_name)+'_contigs.fasta')
 	os.system('p3-genome-fasta --protein '+str(genome_id)+' > '+str(args.output_folder)+'/'+str(genome_name)+'_protein.fasta')
 	os.system('p3-genome-fasta --feature '+str(genome_id)+' > '+str(args.output_folder)+'/'+str(genome_name)+'_DNA.fasta')
-print '\dDONE!!'
+print '\nDONE!!'
