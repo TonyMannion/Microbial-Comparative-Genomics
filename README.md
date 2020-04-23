@@ -26,8 +26,11 @@ This script utilizes services hosted by PATRIC (https://www.patricbrc.org/) to p
 2.	Performs quality control of raw reads --> outputs FASTQC analysis
 3.	Performs de novo assembly and annotation --> outputs summary statistics for assembled and annotated genomes as well as fasta files for contigs and annotated gene sequences
 4.	Performs DIAMOND analysis (https://github.com/bbuchfink/diamond/releases/) for virulence factor genes (http://www.mgc.ac.cn/VFs/download.htm) and antibiotic resistance genes (https://card.mcmaster.ca/download) --> outputs annotation table with hits
+## *patric_genomes_dl.py*
 
-## *Comparative Genome Analyses*
+This script enables users to download bacterial genome data from PATRIC database.
+
+## *genome_analysis.py*
 
 ![](https://github.com/TonyMannion/Microbial-Comparative-Genomics/blob/master/comparative_genome_analysis_outline.png)
 
