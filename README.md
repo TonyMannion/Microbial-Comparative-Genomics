@@ -14,7 +14,7 @@ Additionally, the **genome_assembly_annotate.py** accepts pair-end reads (fastq)
 Pair-end reads (fastq) or pre-assembled contigs (fasta) data for numerous genomes can be piped into **genome_assembly_annotate.py** by including the appropriate metadata.
 The output of **genome_assembly_annotate.py** is a full-genome report summarizing the genome assemlby and annotation characteristics, assemlbed genome sequences (contigs fasta files), gene annotation sequences (DNA and protein fasta files), and annotation metadata.
 
-Furthermore, the **patric_genome_dl.py** script provided in this library allows researchers to access and downlaod bacterial genomes maintained in the PATRIC database.  Specifically, **patric_genome_dl.py** allows reserachers to acquires dassemlbed genome sequences (contigs fasta files), gene annotation sequences (DNA and protein fasta files), and annotation metadata from numerous genomes quickly.
+Furthermore, the **patric_genome_dl.py** script provided in this library allows researchers to access and download bacterial genomes maintained in the PATRIC database.  Specifically, **patric_genome_dl.py** allows reserachers to acquire assemlbed genome sequences (contigs fasta files), gene annotation sequences (DNA and protein fasta files), and annotation metadata from numerous genomes quickly.
 
 Comparative genomics involves the identification of genetic factors, namely genes, that are shared or differ between bacteria genra, species, and/or strains.
 The **genome_analysis.py** script facilitates the identification of genes and gene families that differentiate bacterial genomes.  This script execute six analysis workflows, which are summarized below.
