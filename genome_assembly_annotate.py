@@ -3,12 +3,11 @@
 #2) create PATRIC account (https://www.patricbrc.org/)
 #3) create new folder in workspace of PATRIC account called "AssemblyJob"
 #4) DIAMOND analysis (https://github.com/bbuchfink/diamond/releases/) for virulence factor genes (http://www.mgc.ac.cn/VFs/download.htm) and antibiotic resistance genes (https://card.mcmaster.ca/download).  will need to make reference database of virulence factor and antibiotic resistance genes databases using DIAMOND
-
-import pandas as pd
-import numpy as np
 import os
-import argparse
 import time
+import argparse
+import numpy as np
+import pandas as pd
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-u', '--username', dest='username', help='Enter PATRIC login username')
@@ -16,25 +15,20 @@ parser.add_argument('-m', '--metadata_table', dest='metadata_table', default = '
 parser.add_argument('-i', '--input_files', dest='input_files', default = 'yes', help='Upload read and/or contig files? Enter yes or no. Default is yes')
 parser.add_argument('-a', '--assembly_annotate', dest='assembly_annotate', default = 'yes', help='Execute assembly and annotate pipeline? Enter yes or no. Default is yes', )
 parser.add_argument('-d', '--download_reports', dest='download_reports', default = 'yes', help='Download genome reports, contigs, and annotations data.  Note: cannot execute blast unless assembly and annotate pipeline has been previously performed', )
-args = parser.parse_args()
 parser.add_argument('-o', '--output_folder', dest='output_folder', help='Specify output folder for downloaded data.')
-
+args=parser.parse_args()
 #login
 print 'Enter password to log into PATRIC...'
 os.system('p3-login ' + str(args.username) + ' > patric_domain.txt')
 patric_domain = open('patric_domain.txt', "rb").readlines()[1].replace('Logged in with username ', '').rstrip()
-
 #metadata lists
 df_reads = pd.read_csv(str(args.metadata_table), sep='\t', usecols=['R1','R2','genome_name_reads'])
 R1_list = df_reads['R1'].dropna().tolist()
 R2_list = df_reads['R2'].dropna().tolist()
 genome_name_list_reads = df_reads['genome_name_reads'].dropna().tolist()
-
 df_contigs = pd.read_csv(str(args.metadata_table), sep='\t', usecols=['contigs','genome_name_contigs'])
 contigs_list = df_contigs['contigs'].dropna().tolist()
 genome_name_list_contigs = df_contigs['genome_name_contigs'].dropna().tolist()
-
-genome_name_list = genome_name_list_reads + genome_name_list_contigs
 
 #upload data
 if str(args.input_files) == 'yes':
@@ -47,10 +41,12 @@ if str(args.input_files) == 'yes':
 	for contigs in contigs_list:
 		print 'Uploading ' + str(contigs)
 		os.system('p3-cp ' + str(contigs) + ' ws:/' + str(patric_domain) + '/home/AssemblyJob -f')
-
 #assembly annotate
 if str(args.assembly_annotate) == 'yes': #do not need to specify if reads or contigs or both.  PATRIC will not execute job if not data.
 #reads
+	df_reads = pd.read_csv(str(args.metadata_table), sep='\t', usecols=['R1','R2','genome_name_reads']).replace(' ','_', regex=True)
+	R1_list = df_reads['R1'].dropna().tolist()
+	R2_list = df_reads['R2'].dropna().tolist()
 	zip(R1_list,R2_list,genome_name_list_reads)
 	for R1, R2, genome_name in zip(R1_list,R2_list,genome_name_list_reads):
 		in_file = open('params_reads.json', "rb")
@@ -65,6 +61,9 @@ if str(args.assembly_annotate) == 'yes': #do not need to specify if reads or con
 		job_id = open(str(genome_name) + '_job_ID.txt', "rb").readline().replace('Started task ', '').rstrip()
 		print "Comprehensive Genome Analysis job sent for " + str(genome_name) + ' as job id ' + job_id
 #contigs
+	df_contigs = pd.read_csv(str(args.metadata_table), sep='\t', usecols=['contigs','genome_name_contigs']).replace(' ','_', regex=True)
+	contigs_list = df_contigs['contigs'].dropna().tolist()
+	genome_name_list_contigs = df_contigs['genome_name_contigs'].dropna().tolist()
 	zip(contigs_list,genome_name_list_contigs)
 	for contigs, genome_name in zip(contigs_list,genome_name_list_contigs):
 		in_file = open('params_contigs.json', "rb")
@@ -79,6 +78,7 @@ if str(args.assembly_annotate) == 'yes': #do not need to specify if reads or con
 		job_id = open(str(genome_name) + '_job_ID.txt', "rb").readline().replace('Started task ', '').rstrip()
 		print "Comprehensive Genome Analysis job sent for " + str(genome_name) + ' as job id ' + job_id
 #check job
+	genome_name_list = genome_name_list_reads + genome_name_list_contigs
 	for genome_name in genome_name_list:
 		job_id2 = open(str(genome_name) + '_job_ID.txt', "rb").readline().replace('Started task ', '').rstrip()
 		print job_id2
@@ -93,7 +93,6 @@ if str(args.assembly_annotate) == 'yes': #do not need to specify if reads or con
 				break
 			time.sleep(300) #check status of first jobs every 300 seconds (ie 5 minutes)
 		print 'Comprehensive Genome Analysis done for ' + str(genome_name)
-
 #download data
 if str(args.download_reports) == 'yes':
 	for genome_name in genome_name_list:
