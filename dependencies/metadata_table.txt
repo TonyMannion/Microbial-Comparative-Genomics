@@ -1,1 +1,1 @@
-genome_ids	genome_name	contigs	genome_name_contigs	R1	R2	genome_name_reads	subgroup	include_x	exclude_x	include_y	exclude_y	include_z	exclude_z
+genome_name	genome_ids_patric	genome_name_patric	contigs	genome_name_contigs	R1	R2	genome_name_reads	subgroup	include_x	exclude_x	include_y	exclude_y	include_z	exclude_z
