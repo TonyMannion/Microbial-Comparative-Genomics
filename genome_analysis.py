@@ -11,22 +11,22 @@ parser=argparse.ArgumentParser()
 parser.add_argument('-i','--input_folder',dest='input_folder',help='Specify folder with annotation data.')
 parser.add_argument('-o','--output_folder',dest='output_folder',help='Specify name for output folder.')
 parser.add_argument('-m','--metadata_file',dest='metadata_file',help='Specify metadata file.')
-parser.add_argument('-make_tree','--make_tree',dest='exe_make_tree',default='yes',help='Execute function?')
-parser.add_argument('-make_clustermap','--make_clustermap',dest='exe_make_clustermap',default='yes',help='Execute function?')
-parser.add_argument('-core_unique_genes','--core_unique_genes',dest='exe_core_unique_genes',default='yes',help='Execute function?')
-parser.add_argument('-median_analysis','--median_analysis',dest='exe_median_analysis',default='yes',help='Execute function')
-parser.add_argument('-subgroup_genes','--subgroup_genes',dest='exe_subgroup_genes',default='yes',help='Execute function')
-parser.add_argument('-VF_blast','--VF_blast',dest='exe_VF_blast',default='yes',help='Execute function?')
-parser.add_argument('-res_blast','--res_blast',dest='exe_res_blast',default='yes',help='Execute function?')
-parser.add_argument('-custom_blast','--custom_blast',dest='exe_custom_blast',default='no',help='Execute function?')
-parser.add_argument('-custom_fasta','--custom_fasta',dest='custom_fasta',help='Provide protein fasta file')
+parser.add_argument('-make_tree','--make_tree',dest='exe_make_tree',default='yes',help='Generate binary matrix of protein families in PHYLIP format for pan-genome phylogenetic tree? Enter "yes" or "no". Default is "yes".')
+parser.add_argument('-make_clustermap','--make_clustermap',dest='exe_make_clustermap',default='yes',help='Create hierarchically-clustered heatmap (ie clustermap) of protein families in pan-genome? Enter "yes" or "no". Default is "yes".')
+parser.add_argument('-core_unique_genes','--core_unique_genes',dest='exe_core_unique_genes',default='yes',help='Determine core and unique protein family genes for genome group? Enter "yes" or "no". Default is "yes".')
+parser.add_argument('-median_analysis','--median_analysis',dest='exe_median_analysis',default='yes',help='Calculate median protein family gene copy number in genome group and if protein family genes for individual genomes are equal to, greater than, or less than median? Enter "yes" or "no". Default is "yes".')
+parser.add_argument('-subgroup_genes','--subgroup_genes',dest='exe_subgroup_genes',default='yes',help='Determine unique protein family genes for genome subgroup within the larger genome group? Enter "yes" or "no". Default is "yes".')
+parser.add_argument('-VF_blast','--VF_blast',dest='exe_VF_blast',default='yes',help='Perform DIAMOND blast analysis for virulence factor genes? Enter "yes" or "no". Default is "yes".')
+parser.add_argument('-res_blast','--res_blast',dest='exe_res_blast',default='yes',help='Perform DIAMOND blast analysis for antibiotic resistence genes? Enter "yes" or "no". Default is "yes".')
+parser.add_argument('-custom_blast','--custom_blast',dest='exe_custom_blast',default='no',help='Perform DIAMOND blast analysis for custom gene database? Enter "yes" or "no". Default is "no".')
+parser.add_argument('-custom_fasta','--custom_fasta',dest='custom_fasta',help='Provide custom gene database as multi-sequence fasta file using amino acids.')
 args=parser.parse_args()
 
 def make_tree():
 	#make output folder
 	output_folder='pangenome_tree_'+str(args.output_folder)
 	os.mkdir(output_folder) 
-	print 'Creating binary matrix of protein families in PHYLIP format for pan-genome phylogentic tree...'
+	print 'Creating binary matrix of protein families in PHYLIP format for pan-genome phylogenetic tree...'
 	#concat
 	df_genome_names=pd.read_csv(str(args.metadata_file),sep='\t',usecols=['genome_name']).replace(' ','_', regex=True)
 	genome_name_list=df_genome_names['genome_name'].dropna().tolist()
@@ -60,7 +60,7 @@ def make_clustermap():
 	df_groupby=df_concat.groupby(['genome_name','pgfam'],as_index=False).sum().pivot(columns='genome_name',index='pgfam',values='count').fillna(0)
 	df_cm=df_groupby.transpose()
 	#clustermap
-	print "Generating clustermap..."
+	print "Creating hierarchically-clustered heatmap (ie clustermap) of protein families in pan-genome..."
 	sys.setrecursionlimit(10**6) 
 	df_cm=df_cm.rename_axis('',axis='rows')
 	#11 hex codes for colors: off-white,red,orange,yellow,green,blue,purple,pink,gray,brown,black
@@ -116,7 +116,7 @@ def core_unique_genes():
 	for genome in genome_name_list:
 		df_an=pd.read_csv(str(args.input_folder)+'/'+str(genome)+'_annotation.txt',sep='\t')
 		df_merged=pd.merge(df_an,df_concat,left_on='pgfam',right_on='pgfam',how="left").to_csv(output_folder+'/'+str(genome)+'_annotation.txt',sep='\t',index=False)
-		print 'Core and unique genes done for '+str(genome)
+		print 'Core and unique genes determined for '+str(genome)
 	#remove intermediate files
 	os.remove(output_folder+'/'+'gene_family_groupby_out.txt')
 
