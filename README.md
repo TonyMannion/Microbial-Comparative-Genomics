@@ -9,23 +9,19 @@ Users of these scripts will require a [PATRIC](https://www.patricbrc.org/) accou
 Often, researchers require assembly and annotation of more than one genome for their projects.
 There are many steps involved from processing raw reads of adaptor sequences or low quality base pairs, assembling reads into contigs, and finally gene annotation.
 Thus, processing each genome one-by-one can be cumbersome, time consuming, and error prone.
-The **genome_assembly_annotate.py** script overcomes these challenges employing the [Comprehensive Genome Analysis Service](https://docs.patricbrc.org/user_guides/services/comprehensive_genome_analysis_service.html) hosted by [PATRIC](https://www.patricbrc.org/) in order to automate the assembly and annotation workflow, thereby increasing throughput when numerous genomes must be processed.
-Additionally, the **genome_assembly_annotate.py** accepts pair-end reads (fastq) or pre-assembled contigs (fasta), which provides flexibility.
-Pair-end reads (fastq) or pre-assembled contigs (fasta) data for numerous genomes can be piped into **genome_assembly_annotate.py** by including the appropriate metadata.
-The output of **genome_assembly_annotate.py** is a full-genome report summarizing the genome assemlby and annotation characteristics, assemlbed genome sequences (contigs fasta files), gene annotation sequences (DNA and protein fasta files), and annotation metadata.
+The **get_genome_data.py** script overcomes these challenges employing the [Comprehensive Genome Analysis Service](https://docs.patricbrc.org/user_guides/services/comprehensive_genome_analysis_service.html) hosted by [PATRIC](https://www.patricbrc.org/) in order to automate the assembly and annotation workflow, thereby increasing throughput when numerous genomes must be processed.
+Additionally, the **get_genome_data.py** accepts pair-end reads (fastq) or pre-assembled contigs (fasta), which provides flexibility.
+Pair-end reads (fastq) or pre-assembled contigs (fasta) data for numerous genomes can be piped into **get_genome_data.py** by including the appropriate metadata.
+The output of **get_genome_data.py** is a full-genome report summarizing the genome assemlby and annotation characteristics, assemlbed genome sequences (contigs fasta files), gene annotation sequences (DNA and protein fasta files), and annotation metadata.
 
-Furthermore, the **patric_genome_dl.py** script provided in this library allows researchers to access and download bacterial genomes maintained in the PATRIC database.  Specifically, **patric_genome_dl.py** allows reserachers to acquire assemlbed genome sequences (contigs fasta files), gene annotation sequences (DNA and protein fasta files), and annotation metadata from numerous genomes quickly.
+Furthermore, the **get_genome_data.py** script provided in this library allows researchers to access and download bacterial genomes maintained in the PATRIC database.  Specifically, **get_genome_data.py** allows reserachers to acquire assemlbed genome sequences (contigs fasta files), gene annotation sequences (DNA and protein fasta files), and annotation metadata from numerous genomes quickly.
 
 Comparative genomics involves the identification of genetic factors, namely genes, that are shared or differ between bacteria genra, species, and/or strains.
 The **genome_analysis.py** script facilitates the identification of genes and gene families that differentiate bacterial genomes.  This script execute six analysis workflows, which are summarized below.
 
-## *genome_assembly_annotate.py*
+## *get_genome_data.py*
 
 The **genome_assembly_annotate.py** script allows the assembley and anntoation from raw sequenicng reads and/or pre-assembled contigs of multiple genomes simultanesouly.
-
-## *patric_genomes_dl.py*
-
-For genomes that have already been deposited in PATRIC, the **patric_genomes_dl.py** enables rapid acqusition of genomic data from multiple genomes.
 
 ## *genome_analysis.py*
 
