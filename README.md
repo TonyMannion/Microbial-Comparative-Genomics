@@ -69,7 +69,7 @@ The **genome_analysis.py** script performs six different analyses that faciliate
 
 # Example 
 
-Browse [PATRIC](https://www.patricbrc.org/) to find genomes of interest for comparative analysis.  In this example, the *E. coli* strains K12, NC101, IHE3034, and UTI89 are queried and their corresponding genome ids and genome names are recorded in the metadata table.
+Browse [PATRIC](https://www.patricbrc.org/) to find genomes of interest for comparative analysis.  In this example, the *E. coli* strains K12, NC101, IHE3034, and UTI89 are queried and their corresponding genome names and genome ids are recorded in the metadata table.
 ![](https://github.com/TonyMannion/Microbial-Comparative-Genomics/blob/master/images/get_genome_data_2.png)
 
 ## metadata_table.txt file
