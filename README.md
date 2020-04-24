@@ -46,7 +46,7 @@ The **genome_assembly_annotate.py** script allows the assembley and anntoation f
 
 The **genome_analysis.py** script performs six different analyses that faciliate the identicaiton comparision of genomes.
 
-![](https://github.com/TonyMannion/Microbial-Comparative-Genomics/blob/master/images/genome_analysis_1.PNG)
+![](https://github.com/TonyMannion/Microbial-Comparative-Genomics/blob/master/images/genome_analysis_1.png)
 
 
 # flags
@@ -67,7 +67,12 @@ The **genome_analysis.py** script performs six different analyses that faciliate
 |	 -custom_fasta	|	 --custom_fasta	|	Provide custom gene database as multi-sequence fasta file using amino acids.	|
 
 
-# Example metadata_table.txt file
+# Example 
+
+Browse [PATRIC](https://www.patricbrc.org/) to find genomes of interest for comparative analysis.  In this example, the *E. coli* strains K12, NC101, IHE3034, and UTI89 are queried and their corresponding genome ids and genome names are recorded in the metadata table.
+![](https://github.com/TonyMannion/Microbial-Comparative-Genomics/blob/master/images/get_genome_data_2.png)
+
+## metadata_table.txt file
 |	genome_name	|	genome_ids_patric	|	genome_name_patric	|	contigs	|	genome_name_contigs	|	R1	|	R2	|	genome_name_reads	|	subgroup	|	include_all_rodent	|	exclude_all_rodent	|	include_novel_rodent	|	exclude_novel_rodent	|	include_all_pks	|	exclude_all_pks	|
 |	-----	|	-----	|	-----	|	-----	|	-----	|	-----	|	-----	|	-----	|	-----	|	-----	|	-----	|	-----	|	-----	|	-----	|	-----	|
 |	Escherichia coli IHE3034	|	714962.3	|	Escherichia coli IHE3034	|		|		|		|		|		|	all_rodents	|		|	Escherichia coli IHE3034	|		|	Escherichia coli IHE3034	|	Escherichia coli IHE3034	|		|
