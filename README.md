@@ -42,6 +42,24 @@ The **genome_assembly_annotate.py** script allows the assembley and anntoation f
 
 The **genome_analysis.py** script performs six different analyses that faciliate the identicaiton comparision of genomes.
 
+# flags
+|	Flag	|	Flag (verbose)	|	Description	|
+|	-----	|	-----	|	-----	|
+|	 -h	|	 --help            	|	Show all flags and descriptions	|
+|	 -i	|	 --input_folder	|	Specify folder with annotation data.	|
+|	 -o	|	 --output_folder	|	Specify name for output folder.	|
+|	 -m	|	 --metadata_file	|	Specify metadata file.	|
+|	 -make_tree	|	 --make_tree	|	Generate binary matrix of protein families in PHYLIP format for pan-genome phylogenetic tree? Enter "yes" or "no". Default is "yes".	|
+|	 -make_clustermap	|	 --make_clustermap	|	Create hierarchically-clustered heatmap (ie clustermap) of protein families in pan-genome? Enter "yes" or "no". Default is "yes".	|
+|	 -core_unique_genes	|	 --core_unique_genes	|	Determine core and unique protein family genes for genome group? Enter "yes" or "no". Default is "yes".	|
+|	 -median_analysis	|	 --median_analysis	|	Calculate median protein family gene copy number in genome group and if protein family genes for individual genomes are equal to, greater than, or less than median? Enter "yes" or "no". Default is "yes".	|
+|	 -subgroup_genes	|	 --subgroup_genes	|	Determine unique protein family genes for genome subgroup within the larger genome group? Enter "yes" or "no". Default is "yes".	|
+|	 -VF_blast	|	 --VF_blast	|	Perform DIAMOND blast analysis for virulence factor genes? Enter "yes" or "no". Default is "yes".	|
+|	 -res_blast	|	 --res_blast	|	Perform DIAMOND blast analysis for antibiotic resistence genes? Enter "yes" or "no". Default is "yes".	|
+|	 -custom_blast	|	 --custom_blast	|	Perform DIAMOND blast analysis for custom gene database? Enter "yes" or "no". Default is "no".	|
+|	 -custom_fasta	|	 --custom_fasta	|	Provide custom gene database as multi-sequence fasta file using amino acids.	|
+
+
 # Example metadata_table.txt file
 |	genome_name	|	genome_ids_patric	|	genome_name_patric	|	contigs	|	genome_name_contigs	|	R1	|	R2	|	genome_name_reads	|	subgroup	|	include_all_rodent	|	exclude_all_rodent	|	include_novel_rodent	|	exclude_novel_rodent	|	include_all_pks	|	exclude_all_pks	|
 |	-----	|	-----	|	-----	|	-----	|	-----	|	-----	|	-----	|	-----	|	-----	|	-----	|	-----	|	-----	|	-----	|	-----	|	-----	|
