@@ -19,6 +19,8 @@ Furthermore, the **get_genome_data.py** script provided in this library allows r
 Comparative genomics involves the identification of genetic factors, namely genes, that are shared or differ between bacteria genra, species, and/or strains.
 The **genome_analysis.py** script facilitates the identification of genes and gene families that differentiate bacterial genomes.  This script execute six analysis workflows, which are summarized below.
 
+![](https://github.com/TonyMannion/Microbial-Comparative-Genomics/blob/master/images/overview.pdf)
+
 ## *get_genome_data.py*
 
 The **genome_assembly_annotate.py** script allows the assembley and anntoation from raw sequenicng reads and/or pre-assembled contigs of multiple genomes simultanesouly.
