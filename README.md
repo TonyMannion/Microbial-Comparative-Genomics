@@ -23,6 +23,21 @@ The **genome_analysis.py** script facilitates the identification of genes and ge
 
 The **genome_assembly_annotate.py** script allows the assembley and anntoation from raw sequenicng reads and/or pre-assembled contigs of multiple genomes simultanesouly.
 
+# flags
+|	Flag	|	Flag (verbose)	|	Description	|
+|	-----	|	-----	|	-----	|
+|	 -h	|	 --help            	|	Show all flags and descriptions	|
+|	 -u	|	 --username	|	Provide username for PATRIC account. Prompt to enter password will appear.	|
+|	 -m	|	 --metadata_file	|	Specify metadata file.	|
+|	 -f	|	 --file_upload	|	Upload read and/or contig files? Enter "yes" or "no". Default is "yes". If file with same name has already been uploaded to PATRIC, it will be overwritten by the newly uploaded file.	|
+|	 -a	|	 --assembly_annotate	|	Execute assembly and annotate pipeline? Enter "yes" or "no". Default is "yes".	|
+|	 -c	|	 --check_job	|	Check status of assembly/annotation job? Enter "yes" or "no". Default is "yes".  When job is complete, genome reports, contigs, and annotations data will be downloaded to output folder.	|
+|	 -d	|	 --download_data	|	Download genome reports, contigs, and annotations data for assembled/annotated genomes from previously completed jobs to output folder? Enter "yes" or "no". Default is "no".	|
+|	 -p	|	 --patric_download	|	Download genome reports, contigs, and annotations data from PATRIC genomes.	|
+|	 -o	|	 --output_folder	|	Specify output folder for downloaded data.	|
+
+
+
 ## *genome_analysis.py*
 
 The **genome_analysis.py** script performs six different analyses that faciliate the identicaiton comparision of genomes.
