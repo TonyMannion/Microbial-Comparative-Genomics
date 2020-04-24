@@ -11,7 +11,7 @@ parser.add_argument('-m','--metadata_file',dest='metadata_file',help='Specify me
 parser.add_argument('-f', '--file_upload', dest='upload_files', default = 'yes', help='Upload read and/or contig files? Enter "yes" or "no". Default is "yes". If file with same name has already been uploaded to PATRIC, it will be overwritten by the newly uploaded file.')
 parser.add_argument('-a', '--assembly_annotate', dest='assembly_annotate', default = 'yes', help='Execute assembly and annotate pipeline? Enter "yes" or "no". Default is "yes".')
 parser.add_argument('-c', '--check_job', dest='check_job', default = 'yes', help='Check status of assembly/annotation job? Enter "yes" or "no". Default is "yes".  When job is complete, genome reports, contigs, and annotations data will be downloaded to output folder.')
-parser.add_argument('-d', '--download_data', dest='download_reports', default = 'yes', help='Download genome reports, contigs, and annotations data for assembled/annotated genomes from previously completed jobs to output folder? Enter "yes" or "no". Default is "no".')
+parser.add_argument('-d', '--download_data', dest='download_reports', default = 'no', help='Download genome reports, contigs, and annotations data for assembled/annotated genomes from previously completed jobs to output folder? Enter "yes" or "no". Default is "no".')
 parser.add_argument('-p', '--patric_download', dest='patric_dl', default = 'yes', help='Download genome reports, contigs, and annotations data from PATRIC genomes.')
 parser.add_argument('-o', '--output_folder', dest='output_folder', help='Specify output folder for downloaded data.')
 args=parser.parse_args()
