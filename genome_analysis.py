@@ -93,7 +93,7 @@ def core_unique_genes():
 	df['core_unique_gene']='core'
 	df2=df.iloc[:,[0,-1]].to_csv(output_folder+'/'+'temp_core_filter_out.txt',sep='\t',index=False)
 	#unique
-	df_genome_names=pd.read_csv(str(args.metadata_file),sep='\t',usecols=['genome_name'])
+	df_genome_names=pd.read_csv(str(args.metadata_file),sep='\t',usecols=['genome_name']).replace(' ','_', regex=True)
 	genome_name_list=df_genome_names['genome_name'].dropna().tolist()
 	for genome in genome_name_list:
 		exclude_genome_list=df_genome_names['genome_name'].dropna().tolist()
@@ -167,7 +167,7 @@ def subgroup_genes():
 	df_concat['count']=1
 	df_groupby=df_concat.groupby(['genome_name','pgfam'],as_index=False).sum().pivot(columns='genome_name',index='pgfam',values='count').fillna(0).to_csv(output_folder+'/'+'gene_family_groupby_out.txt',sep='\t') 
 	#make lists from metadata
-	df_metadata=pd.read_csv(str(args.metadata_file),sep='\t')
+	df_metadata=pd.read_csv(str(args.metadata_file),sep='\t').replace(' ','_', regex=True)
 	subgroup_list=df_metadata['subgroup'].dropna().tolist()
 	genome_name_list=df_metadata['genome_name'].dropna().tolist()
 	#subgroups
@@ -232,4 +232,3 @@ if str(args.exe_custom_blast)=='yes':
 	blaster('custom','custom_database.dmnd')
 	os.remove('custom_database.dmnd')
 print '\nDONE!!'
-
