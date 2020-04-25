@@ -178,24 +178,25 @@ Below is an excerpt of the annotation metadata table for *E. coli* strain 201702
 
 |	genome_name	|	contig_id	|	feature_id	|	type	|	location	|	start	|	stop	|	strand	|	function	|	pgfam	|	subgroup_gene	|
 |	 ------	|	 ------	|	 ------	|	 ------	|	 ------	|	 ------	|	 ------	|	 ------	|	 ------	|	 ------	|	 ------	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig|2.7989.peg.14	|	CDS	|	assembly_contig_1_14551-711	|	14551	|	13841	|	-	|	chaperone FimC	|	PGF_02911703	|	all_pks	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig|2.7989.peg.559	|	CDS	|	assembly_contig_1_536811-723	|	536811	|	536089	|	-	|	Thioesterase	|	PGF_00056580	|	all_pks	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig|2.7989.peg.560	|	CDS	|	assembly_contig_1_538309-1506	|	538309	|	536804	|	-	|	Polyketide synthase modules and related proteins	|	PGF_00402183	|	all_pks	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig|2.7989.peg.561	|	CDS	|	assembly_contig_1_540790-2460	|	540790	|	538331	|	-	|	Polyketide synthase modules and related proteins	|	PGF_10503453	|	all_pks	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig|2.7989.peg.562	|	CDS	|	assembly_contig_1_545188-4368	|	545188	|	540821	|	-	|	Polyketide synthase modules and related proteins	|	PGF_10503453	|	all_pks	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig|2.7989.peg.2	|	CDS	|	assembly_contig_1_445-144	|	445	|	302	|	-	|	hypothetical protein	|	PGF_02969562	|	all_rodents	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig|2.7989.peg.123	|	CDS	|	assembly_contig_1_122706-240	|	122706	|	122467	|	-	|	Uncharacterized protein YdhL	|	PGF_02720073	|	all_rodents	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig|2.7989.peg.459	|	CDS	|	assembly_contig_1_433910-1464	|	433910	|	432447	|	-	|	PilV-like protein	|	PGF_00034309	|	all_rodents	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig|2.7989.peg.460	|	CDS	|	assembly_contig_1_434520-558	|	434520	|	433963	|	-	|	IncI1 plasmid conjugative transfer prepilin PilS	|	PGF_00013956	|	all_rodents	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig|2.7989.peg.461	|	CDS	|	assembly_contig_1_435223-306	|	435223	|	434918	|	-	|	hypothetical protein	|	PGF_05161694	|	all_rodents	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig|2.7989.peg.108	|	CDS	|	assembly_contig_1_109072+201	|	109072	|	109272	|	+	|	hypothetical protein	|	PGF_00250457	|	novel_rodents	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig|2.7989.peg.412	|	CDS	|	assembly_contig_1_394531-552	|	394531	|	393980	|	-	|	UPF0098 protein ybcL precursor	|	PGF_04249868	|	novel_rodents	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig|2.7989.peg.468	|	CDS	|	assembly_contig_1_439859-276	|	439859	|	439584	|	-	|	hypothetical protein	|	PGF_04171970	|	novel_rodents	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig|2.7989.peg.494	|	CDS	|	assembly_contig_1_460587-291	|	460587	|	460297	|	-	|	hypothetical protein	|	PGF_00219209	|	novel_rodents	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig|2.7989.peg.898	|	CDS	|	assembly_contig_1_929878+165	|	929878	|	930042	|	+	|	hypothetical protein	|	PGF_01087026	|	novel_rodents	|
 |	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig|2.7989.peg.1	|	CDS	|	assembly_contig_1_291-291	|	291	|	1	|	-	|	Glutamate decarboxylase (EC 4.1.1.15)	|	PGF_00008094	|		|
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig|2.7989.peg.2	|	CDS	|	assembly_contig_1_445-144	|	445	|	302	|	-	|	hypothetical protein	|	PGF_02969562	|	all_rodents	|
 |	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig|2.7989.peg.3	|	CDS	|	assembly_contig_1_472+144	|	472	|	615	|	+	|	hypothetical protein	|	PGF_10512988	|		|
 |	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig|2.7989.peg.4	|	CDS	|	assembly_contig_1_1663-1011	|	1663	|	653	|	-	|	Probable zinc protease pqqL (EC 3.4.99.-)	|	PGF_09337443	|		|
 |	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig|2.7989.peg.5	|	CDS	|	assembly_contig_1_3078-1158	|	3078	|	1921	|	-	|	GALNS arylsulfatase regulator (Fe-S oxidoreductase)	|	PGF_00006721	|		|
 |	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig|2.7989.peg.6	|	CDS	|	assembly_contig_1_4812-1683	|	4812	|	3130	|	-	|	N-acetylgalactosamine 6-sulfate sulfatase (GALNS)	|	PGF_00023745	|		|
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig|2.7989.peg.14	|	CDS	|	assembly_contig_1_14551-711	|	14551	|	13841	|	-	|	chaperone FimC	|	PGF_02911703	|	all_pks	|
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig|2.7989.peg.108	|	CDS	|	assembly_contig_1_109072+201	|	109072	|	109272	|	+	|	hypothetical protein	|	PGF_00250457	|	novel_rodents	|
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig|2.7989.peg.123	|	CDS	|	assembly_contig_1_122706-240	|	122706	|	122467	|	-	|	Uncharacterized protein YdhL	|	PGF_02720073	|	all_rodents	|
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig|2.7989.peg.412	|	CDS	|	assembly_contig_1_394531-552	|	394531	|	393980	|	-	|	UPF0098 protein ybcL precursor	|	PGF_04249868	|	novel_rodents	|
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig|2.7989.peg.459	|	CDS	|	assembly_contig_1_433910-1464	|	433910	|	432447	|	-	|	PilV-like protein	|	PGF_00034309	|	all_rodents	|
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig|2.7989.peg.460	|	CDS	|	assembly_contig_1_434520-558	|	434520	|	433963	|	-	|	IncI1 plasmid conjugative transfer prepilin PilS	|	PGF_00013956	|	all_rodents	|
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig|2.7989.peg.461	|	CDS	|	assembly_contig_1_435223-306	|	435223	|	434918	|	-	|	hypothetical protein	|	PGF_05161694	|	all_rodents	|
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig|2.7989.peg.468	|	CDS	|	assembly_contig_1_439859-276	|	439859	|	439584	|	-	|	hypothetical protein	|	PGF_04171970	|	novel_rodents	|
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig|2.7989.peg.494	|	CDS	|	assembly_contig_1_460587-291	|	460587	|	460297	|	-	|	hypothetical protein	|	PGF_00219209	|	novel_rodents	|
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig|2.7989.peg.559	|	CDS	|	assembly_contig_1_536811-723	|	536811	|	536089	|	-	|	Thioesterase	|	PGF_00056580	|	all_pks	|
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig|2.7989.peg.560	|	CDS	|	assembly_contig_1_538309-1506	|	538309	|	536804	|	-	|	Polyketide synthase modules and related proteins	|	PGF_00402183	|	all_pks	|
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig|2.7989.peg.561	|	CDS	|	assembly_contig_1_540790-2460	|	540790	|	538331	|	-	|	Polyketide synthase modules and related proteins	|	PGF_10503453	|	all_pks	|
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig|2.7989.peg.562	|	CDS	|	assembly_contig_1_545188-4368	|	545188	|	540821	|	-	|	Polyketide synthase modules and related proteins	|	PGF_10503453	|	all_pks	|
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig|2.7989.peg.898	|	CDS	|	assembly_contig_1_929878+165	|	929878	|	930042	|	+	|	hypothetical protein	|	PGF_01087026	|	novel_rodents	|
 |	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|
+
