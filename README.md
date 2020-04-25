@@ -131,7 +131,7 @@ The output of IQ-TREE, pan-genome-tree_out.txt.tree file, is loaded into [FigTre
 ![](https://github.com/TonyMannion/Microbial-Comparative-Genomics/blob/master/images/clustermap.png)
 
 **gene_family_clustermap_out.txt**
-Below is the an excerpt of the dataframe associated with the hierarchically-clustered heatmap (ie clustermap) shown above. (Note: Only the first 10 rows are shown in the exceprt.)
+Below is an excerpt of the dataframe associated with the hierarchically-clustered heatmap (ie clustermap) shown above. (Note: Only the first 10 rows are shown in the exceprt.)
 
 |	pgfam	|	Escherichia_coli_str._K-12_substr._MG1655	|	Escherichia_coli_strain_1408270010	|	Escherichia_coli_strain_1409150006	|	Escherichia_coli_strain_1512290008	|	Escherichia_coli_strain_1409160003	|	Escherichia_coli_strain_20170221001	|	Escherichia_coli_NC101	|	Escherichia_coli_strain_1512290026	|	Escherichia_coli_IHE3034	|	Escherichia_coli_UTI89	|
 |	-----	|	-----	|	-----	|	-----	|	-----	|	-----	|	-----	|	-----	|	-----	|	-----	|	-----	|
@@ -148,6 +148,9 @@ Below is the an excerpt of the dataframe associated with the hierarchically-clus
 |	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|
 
 **core_unqiue_genes.txt**
+
+Below is an excerpt of the annotation metadata table for *E. coli* strain 20170221001 showing which genes are core or unique to this genome.  For genes that are neither core nor unique (ie shared between some but not all genomes in the group), the row is left blank.  The relationship of these genes within the genome group can be found by comparing subgroups, which is shown below.
+(Note: In the excerpt below, the columans aliases, plfam, figfam, evidence_codes, nucleotide_sequence, and aa_sequence columns were excluded to optomize viewing.)
 
 |	genome_name	|	contig_id	|	feature_id	|	type	|	location	|	start	|	stop	|	strand	|	function	|	pgfam	|	core_unique_gene	|
 |	 ------	|	 ------	|	 ------	|	 ------	|	 ------	|	 ------	|	 ------	|	 ------	|	 ------	|	 ------	|	 ------	|
