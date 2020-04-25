@@ -177,26 +177,26 @@ Below is an excerpt of the annotation metadata table for *E. coli* strain 201702
 Below is an excerpt of the annotation metadata table for *E. coli* strain 20170221001 showing which genes are unqiue to paricular subgroups.  The subgroups of interest were defined based on the metadata table (shown above).  To recap, we were interested in which genes are unique to 1) all genomes that encode *pks* gene island, 2) all genomes that were isolated from rodent hosts, and 3) the genomes from the six novel *E. coli* isolates from lab mice and a pet rat. For genes not found in these subgroups (ie could be a core, unique gene to this genome, or unique to subgroup not analyzed), the row is left blank.  From this output, we can see which genes are shared between these subgroups and not found in the other genome in the larger group.
 (Note: In the excerpt below, the columns location aliases, plfam, figfam, evidence_codes, nucleotide_sequence, and aa_sequence columns were excluded to optomize viewing.)
 
-|	feature_id	|	type	|	start	|	stop	|	strand	|	function	|	pgfam	|	subgroup_gene	|
-|	 ------	|	 ------	|	 ------	|	 ------	|	 ------	|	 ------	|	 ------	|	 ------	|
-|	fig-2.7989.peg.1	|	CDS	|	291	|	1	|	-	|	Glutamate decarboxylase (EC 4.1.1.15)	|	PGF_00008094	|		|
-|	fig-2.7989.peg.2	|	CDS	|	445	|	302	|	-	|	hypothetical protein	|	PGF_02969562	|	all_rodents	|
-|	fig-2.7989.peg.3	|	CDS	|	472	|	615	|	+	|	hypothetical protein	|	PGF_10512988	|		|
-|	fig-2.7989.peg.4	|	CDS	|	1663	|	653	|	-	|	Probable zinc protease pqqL (EC 3.4.99.-)	|	PGF_09337443	|		|
-|	fig-2.7989.peg.5	|	CDS	|	3078	|	1921	|	-	|	GALNS arylsulfatase regulator (Fe-S oxidoreductase)	|	PGF_00006721	|		|
-|	fig-2.7989.peg.6	|	CDS	|	4812	|	3130	|	-	|	N-acetylgalactosamine 6-sulfate sulfatase (GALNS)	|	PGF_00023745	|		|
-|	fig-2.7989.peg.14	|	CDS	|	14551	|	13841	|	-	|	chaperone FimC	|	PGF_02911703	|	all_pks	|
-|	fig-2.7989.peg.108	|	CDS	|	109072	|	109272	|	+	|	hypothetical protein	|	PGF_00250457	|	novel_rodents	|
-|	fig-2.7989.peg.123	|	CDS	|	122706	|	122467	|	-	|	Uncharacterized protein YdhL	|	PGF_02720073	|	all_rodents	|
-|	fig-2.7989.peg.412	|	CDS	|	394531	|	393980	|	-	|	UPF0098 protein ybcL precursor	|	PGF_04249868	|	novel_rodents	|
-|	fig-2.7989.peg.459	|	CDS	|	433910	|	432447	|	-	|	PilV-like protein	|	PGF_00034309	|	all_rodents	|
-|	fig-2.7989.peg.460	|	CDS	|	434520	|	433963	|	-	|	IncI1 plasmid conjugative transfer prepilin PilS	|	PGF_00013956	|	all_rodents	|
-|	fig-2.7989.peg.461	|	CDS	|	435223	|	434918	|	-	|	hypothetical protein	|	PGF_05161694	|	all_rodents	|
-|	fig-2.7989.peg.468	|	CDS	|	439859	|	439584	|	-	|	hypothetical protein	|	PGF_04171970	|	novel_rodents	|
-|	fig-2.7989.peg.494	|	CDS	|	460587	|	460297	|	-	|	hypothetical protein	|	PGF_00219209	|	novel_rodents	|
-|	fig-2.7989.peg.559	|	CDS	|	536811	|	536089	|	-	|	Thioesterase	|	PGF_00056580	|	all_pks	|
-|	fig-2.7989.peg.560	|	CDS	|	538309	|	536804	|	-	|	Polyketide synthase modules and related proteins	|	PGF_00402183	|	all_pks	|
-|	fig-2.7989.peg.561	|	CDS	|	540790	|	538331	|	-	|	Polyketide synthase modules and related proteins	|	PGF_10503453	|	all_pks	|
-|	fig-2.7989.peg.562	|	CDS	|	545188	|	540821	|	-	|	Polyketide synthase modules and related proteins	|	PGF_10503453	|	all_pks	|
-|	fig-2.7989.peg.898	|	CDS	|	929878	|	930042	|	+	|	hypothetical protein	|	PGF_01087026	|	novel_rodents	|
-|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|
+|	genome_name	|	contig_id	|	feature_id	|	type	|	start	|	stop	|	strand	|	function	|	pgfam	|	subgroup_gene	|
+|	 ------	|	 ------	|	 ------	|	 ------	|	 ------	|	 ------	|	 ------	|	 ------	|	 ------	|	 ------	|
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.1	|	CDS	|	291	|	1	|	-	|	Glutamate decarboxylase (EC 4.1.1.15)	|	PGF_00008094	|		|
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.2	|	CDS	|	445	|	302	|	-	|	hypothetical protein	|	PGF_02969562	|	all_rodents	|
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.3	|	CDS	|	472	|	615	|	+	|	hypothetical protein	|	PGF_10512988	|		|
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.4	|	CDS	|	1663	|	653	|	-	|	Probable zinc protease pqqL (EC 3.4.99.-)	|	PGF_09337443	|		|
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.5	|	CDS	|	3078	|	1921	|	-	|	GALNS arylsulfatase regulator (Fe-S oxidoreductase)	|	PGF_00006721	|		|
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.6	|	CDS	|	4812	|	3130	|	-	|	N-acetylgalactosamine 6-sulfate sulfatase (GALNS)	|	PGF_00023745	|		|
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.14	|	CDS	|	14551	|	13841	|	-	|	chaperone FimC	|	PGF_02911703	|	all_pks	|
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.108	|	CDS	|	109072	|	109272	|	+	|	hypothetical protein	|	PGF_00250457	|	novel_rodents	|
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.123	|	CDS	|	122706	|	122467	|	-	|	Uncharacterized protein YdhL	|	PGF_02720073	|	all_rodents	|
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.412	|	CDS	|	394531	|	393980	|	-	|	UPF0098 protein ybcL precursor	|	PGF_04249868	|	novel_rodents	|
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.459	|	CDS	|	433910	|	432447	|	-	|	PilV-like protein	|	PGF_00034309	|	all_rodents	|
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.460	|	CDS	|	434520	|	433963	|	-	|	IncI1 plasmid conjugative transfer prepilin PilS	|	PGF_00013956	|	all_rodents	|
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.461	|	CDS	|	435223	|	434918	|	-	|	hypothetical protein	|	PGF_05161694	|	all_rodents	|
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.468	|	CDS	|	439859	|	439584	|	-	|	hypothetical protein	|	PGF_04171970	|	novel_rodents	|
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.494	|	CDS	|	460587	|	460297	|	-	|	hypothetical protein	|	PGF_00219209	|	novel_rodents	|
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.559	|	CDS	|	536811	|	536089	|	-	|	Thioesterase	|	PGF_00056580	|	all_pks	|
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.560	|	CDS	|	538309	|	536804	|	-	|	Polyketide synthase modules and related proteins	|	PGF_00402183	|	all_pks	|
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.561	|	CDS	|	540790	|	538331	|	-	|	Polyketide synthase modules and related proteins	|	PGF_10503453	|	all_pks	|
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.562	|	CDS	|	545188	|	540821	|	-	|	Polyketide synthase modules and related proteins	|	PGF_10503453	|	all_pks	|
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.898	|	CDS	|	929878	|	930042	|	+	|	hypothetical protein	|	PGF_01087026	|	novel_rodents	|
+|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|
