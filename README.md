@@ -126,6 +126,24 @@ The output of IQ-TREE, pan-genome-tree_out.txt.tree file, is loaded into [FigTre
 
 ![](https://github.com/TonyMannion/Microbial-Comparative-Genomics/blob/master/images/pan-genome-tree.png)
 
-**Clustermap**
+**Hierarchically-clustered heatmap (ie clustermap) of protein families in pan-genome**
 
 ![](https://github.com/TonyMannion/Microbial-Comparative-Genomics/blob/master/images/clustermap.png)
+
+**gene_family_clustermap_out.txt**
+Below is the an excerpt of the dataframe associated with the hierarchically-clustered heatmap (ie clustermap) shown above. (Note: Only the first 10 rows are shown in the exceprt.)
+
+|	pgfam	|	Escherichia_coli_str._K-12_substr._MG1655	|	Escherichia_coli_strain_1408270010	|	Escherichia_coli_strain_1409150006	|	Escherichia_coli_strain_1512290008	|	Escherichia_coli_strain_1409160003	|	Escherichia_coli_strain_20170221001	|	Escherichia_coli_NC101	|	Escherichia_coli_strain_1512290026	|	Escherichia_coli_IHE3034	|	Escherichia_coli_UTI89	|
+|	-----	|	-----	|	-----	|	-----	|	-----	|	-----	|	-----	|	-----	|	-----	|	-----	|	-----	|
+|	PGF_08225224	|	50	|	156	|	167	|	161	|	116	|	123	|	139	|	118	|	95	|	120	|
+|	PGF_01000105	|	1	|	40	|	42	|	47	|	31	|	14	|	21	|	12	|	9	|	29	|
+|	PGF_03024018	|	18	|	0	|	0	|	0	|	0	|	0	|	7	|	0	|	6	|	6	|
+|	PGF_05075091	|	1	|	13	|	1	|	1	|	1	|	1	|	1	|	1	|	1	|	1	|
+|	PGF_00047661	|	0	|	6	|	5	|	6	|	4	|	0	|	1	|	1	|	0	|	2	|
+|	PGF_06366833	|	4	|	1	|	1	|	1	|	1	|	2	|	2	|	1	|	6	|	4	|
+|	PGF_07937889	|	2	|	1	|	1	|	1	|	0	|	2	|	1	|	1	|	5	|	3	|
+|	PGF_10529284	|	3	|	1	|	1	|	1	|	2	|	1	|	1	|	1	|	4	|	3	|
+|	PGF_10443983	|	0	|	1	|	1	|	1	|	0	|	1	|	3	|	1	|	2	|	2	|
+|	PGF_00369678	|	1	|	1	|	1	|	1	|	1	|	0	|	2	|	1	|	4	|	2	|
+|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|
+
