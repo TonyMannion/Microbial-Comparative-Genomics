@@ -147,3 +147,24 @@ Below is the an excerpt of the dataframe associated with the hierarchically-clus
 |	PGF_00369678	|	1	|	1	|	1	|	1	|	1	|	0	|	2	|	1	|	4	|	2	|
 |	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|
 
+**core_unqiue_genes.txt**
+
+|	genome_name	|	contig_id	|	feature_id	|	type	|	location	|	start	|	stop	|	strand	|	function	|	pgfam	|	core_unique_gene	|
+|	 ------	|	 ------	|	 ------	|	 ------	|	 ------	|	 ------	|	 ------	|	 ------	|	 ------	|	 ------	|	 ------	|
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.1	|	CDS	|	assembly_contig_1_291-291	|	291	|	1	|	-	|	Glutamate decarboxylase (EC 4.1.1.15)	|	PGF_00008094	|	core	|
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.2	|	CDS	|	assembly_contig_1_445-144	|	445	|	302	|	-	|	hypothetical protein	|	PGF_02969562	|		|
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.3	|	CDS	|	assembly_contig_1_472+144	|	472	|	615	|	+	|	hypothetical protein	|	PGF_10512988	|	unique_Escherichia_coli_strain_20170221001	|
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.4	|	CDS	|	assembly_contig_1_1663-1011	|	1663	|	653	|	-	|	Probable zinc protease pqqL (EC 3.4.99.-)	|	PGF_09337443	|	core	|
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.5	|	CDS	|	assembly_contig_1_3078-1158	|	3078	|	1921	|	-	|	GALNS arylsulfatase regulator (Fe-S oxidoreductase)	|	PGF_00006721	|		|
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.6	|	CDS	|	assembly_contig_1_4812-1683	|	4812	|	3130	|	-	|	N-acetylgalactosamine 6-sulfate sulfatase (GALNS)	|	PGF_00023745	|		|
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.7	|	CDS	|	assembly_contig_1_5975-762	|	5975	|	5214	|	-	|	Transcriptional regulator YdeO, AraC family	|	PGF_00058697	|		|
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.8	|	CDS	|	assembly_contig_1_6284-234	|	6284	|	6051	|	-	|	Two-component-system connector protein SafA	|	PGF_00063151	|		|
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.13	|	CDS	|	assembly_contig_1_13799-2652	|	13799	|	11148	|	-	|	Outer membrane usher protein FimD	|	PGF_00028437	|	core	|
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.15	|	CDS	|	assembly_contig_1_15476-564	|	15476	|	14913	|	-	|	Type-1 fimbrial protein, A chain	|	PGF_02911992	|	core	|
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.16	|	CDS	|	assembly_contig_1_16126-123	|	16126	|	16004	|	-	|	hypothetical protein	|	PGF_08225224	|	core	|
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.339	|	CDS	|	assembly_contig_1_329558-114	|	329558	|	329445	|	-	|	hypothetical protein	|	PGF_01651140	|	unique_Escherichia_coli_strain_20170221001	|
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.354	|	CDS	|	assembly_contig_1_343234-180	|	343234	|	343055	|	-	|	hypothetical protein	|	PGF_01650528	|	unique_Escherichia_coli_strain_20170221001	|
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.450	|	CDS	|	assembly_contig_1_425232-153	|	425232	|	425080	|	-	|	hypothetical protein	|	PGF_01632236	|	unique_Escherichia_coli_strain_20170221001	|
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.464	|	CDS	|	assembly_contig_1_438546-1101	|	438546	|	437446	|	-	|	hypothetical protein	|	PGF_00281105	|	unique_Escherichia_coli_strain_20170221001	|
+|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|
+
