@@ -205,27 +205,28 @@ Below is an excerpt of the annotation metadata table for *E. coli* strain 201702
 
 Below is an excerpt of the annotation metadata table for *E. coli* strain 20170221001 showing how many genes are present and how they compare to the median copy number in the genome group (ie equal to, greater than, or less than the median).  Sometimes a gene may not be present in a genome while other genomes have this gene.  In these cases, the gene is *less than the median*.  Accordinlgy, the annotation metadata output will still show these genes are absent; however, since these gene are not present in the genome, there will be no addition annotation metadata in the output.  (Note: In the excerpt below, the columns location aliases, plfam, figfam, evidence_codes, nucleotide_sequence, and aa_sequence columns were excluded to optomize viewing.)
 
-|	Escherichia_coli_strain_20170221001	|	contig_id	|	feature_id	|	type	|	start	|	stop	|	strand		function	|	pgfam	|	gene_count	|	median	|	gene_count-median	|	vs_median	|
-|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.1	|	CDS	|	291	|	1	|	-		Glutamate decarboxylase (EC 4.1.1.15)	|	PGF_00008094	|	3	|	3	|	0	|	equal to median	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.2	|	CDS	|	445	|	302	|	-		hypothetical protein	|	PGF_02969562	|	1	|	1	|	0	|	equal to median	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.3	|	CDS	|	472	|	615	|	+		hypothetical protein	|	PGF_10512988	|	1	|	0	|	1	|	greater than median	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.4	|	CDS	|	1663	|	653	|	-		Probable zinc protease pqqL (EC 3.4.99.-)	|	PGF_09337443	|	1	|	1	|	0	|	equal to median	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.5	|	CDS	|	3078	|	1921	|	-		GALNS arylsulfatase regulator (Fe-S oxidoreductase)	|	PGF_00006721	|	1	|	1	|	0	|	equal to median	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.6	|	CDS	|	4812	|	3130	|	-		N-acetylgalactosamine 6-sulfate sulfatase (GALNS)	|	PGF_00023745	|	1	|	1	|	0	|	equal to median	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.16	|	CDS	|	16126	|	16004	|	-		hypothetical protein	|	PGF_08225224	|	123	|	121.5	|	1.5	|	greater than median	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.19	|	CDS	|	19186	|	18482	|	-		Toxin HigB / Protein kinase domain of HipA	|	PGF_00011753	|	3	|	2	|	1	|	greater than median	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.20	|	CDS	|	19608	|	19315	|	-		Toxin HigB / Protein kinase domain of HipA	|	PGF_00011753	|	3	|	2	|	1	|	greater than median	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.89	|	CDS	|	89721	|	88456	|	-		Glucuronide transport facilitator UidC	|	PGF_00008042	|	1	|	1.5	|	-0.5	|	less than median	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.178	|	CDS	|	180659	|	181705	|	+		2-keto-3-deoxy-D-arabino-heptulosonate-7-phosphate synthase I alpha (EC 2.5.1.54)	|	PGF_00070354	|	5	|	3	|	2	|	greater than median	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.256	|	CDS	|	255363	|	254617	|	-		MltA-interacting protein MipA	|	PGF_00040822	|	1	|	1.5	|	-0.5	|	less than median	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.358	|	CDS	|	348666	|	347518	|	-		Flagellar biosynthesis protein FlhB	|	PGF_02186693	|	1	|	1.5	|	-0.5	|	less than median	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.370	|	CDS	|	358246	|	357359	|	-		Flagellar motor rotation protein MotA	|	PGF_06889881	|	1	|	1.5	|	-0.5	|	less than median	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.400	|	CDS	|	382121	|	381402	|	-		RNA polymerase sigma factor for flagellar operon	|	PGF_00046377	|	1	|	1.5	|	-0.5	|	less than median	|
-|	Escherichia_coli_strain_20170221001	|		|		|		|		|		|				|	PGF_00000241	|	0	|	0	|	0	|	equal to median	|
-|	Escherichia_coli_strain_20170221001	|		|		|		|		|		|				|	PGF_00000473	|	0	|	0	|	0	|	equal to median	|
-|	Escherichia_coli_strain_20170221001	|		|		|		|		|		|				|	PGF_00002312	|	0	|	0.5	|	-0.5	|	less than median	|
-|	Escherichia_coli_strain_20170221001	|		|		|		|		|		|				|	PGF_00002325	|	0	|	1	|	-1	|	less than median	|
-|	Escherichia_coli_strain_20170221001	|		|		|		|		|		|				|	PGF_00002569	|	0	|	0	|	0	|	equal to median	|
-|	…	|	…	|	…	|	…	|	…	|	…	|	…		|	|	|	|	|	|	|	|		|		|
+|	Escherichia_coli_strain_20170221001	|	contig_id	|	feature_id	|	type	|	start	|	stop	|	strand	|	function	|	pgfam	|	gene_count	|	median	|	gene_count-median	|	vs_median
+|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.1	|	CDS	|	291	|	1	|	-	|	Glutamate decarboxylase (EC 4.1.1.15)	|	PGF_00008094	|	3	|	3	|	0	|	equal to median
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.2	|	CDS	|	445	|	302	|	-	|	hypothetical protein	|	PGF_02969562	|	1	|	1	|	0	|	equal to median
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.3	|	CDS	|	472	|	615	|	+	|	hypothetical protein	|	PGF_10512988	|	1	|	0	|	1	|	greater than median
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.4	|	CDS	|	1663	|	653	|	-	|	Probable zinc protease pqqL (EC 3.4.99.-)	|	PGF_09337443	|	1	|	1	|	0	|	equal to median
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.5	|	CDS	|	3078	|	1921	|	-	|	GALNS arylsulfatase regulator (Fe-S oxidoreductase)	|	PGF_00006721	|	1	|	1	|	0	|	equal to median
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.6	|	CDS	|	4812	|	3130	|	-	|	N-acetylgalactosamine 6-sulfate sulfatase (GALNS)	|	PGF_00023745	|	1	|	1	|	0	|	equal to median
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.16	|	CDS	|	16126	|	16004	|	-	|	hypothetical protein	|	PGF_08225224	|	123	|	121.5	|	1.5	|	greater than median
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.19	|	CDS	|	19186	|	18482	|	-	|	Toxin HigB / Protein kinase domain of HipA	|	PGF_00011753	|	3	|	2	|	1	|	greater than median
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.20	|	CDS	|	19608	|	19315	|	-	|	Toxin HigB / Protein kinase domain of HipA	|	PGF_00011753	|	3	|	2	|	1	|	greater than median
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.89	|	CDS	|	89721	|	88456	|	-	|	Glucuronide transport facilitator UidC	|	PGF_00008042	|	1	|	1.5	|	-0.5	|	less than median
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.178	|	CDS	|	180659	|	181705	|	+	|	2-keto-3-deoxy-D-arabino-heptulosonate-7-phosphate synthase I alpha (EC 2.5.1.54)	|	PGF_00070354	|	5	|	3	|	2	|	greater than median
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.256	|	CDS	|	255363	|	254617	|	-	|	MltA-interacting protein MipA	|	PGF_00040822	|	1	|	1.5	|	-0.5	|	less than median
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.358	|	CDS	|	348666	|	347518	|	-	|	Flagellar biosynthesis protein FlhB	|	PGF_02186693	|	1	|	1.5	|	-0.5	|	less than median
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.370	|	CDS	|	358246	|	357359	|	-	|	Flagellar motor rotation protein MotA	|	PGF_06889881	|	1	|	1.5	|	-0.5	|	less than median
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.400	|	CDS	|	382121	|	381402	|	-	|	RNA polymerase sigma factor for flagellar operon	|	PGF_00046377	|	1	|	1.5	|	-0.5	|	less than median
+|	Escherichia_coli_strain_20170221001	|		|		|		|		|		|		|		|	PGF_00000241	|	0	|	0	|	0	|	equal to median
+|	Escherichia_coli_strain_20170221001	|		|		|		|		|		|		|		|	PGF_00000473	|	0	|	0	|	0	|	equal to median
+|	Escherichia_coli_strain_20170221001	|		|		|		|		|		|		|		|	PGF_00002312	|	0	|	0.5	|	-0.5	|	less than median
+|	Escherichia_coli_strain_20170221001	|		|		|		|		|		|		|		|	PGF_00002325	|	0	|	1	|	-1	|	less than median
+|	Escherichia_coli_strain_20170221001	|		|		|		|		|		|		|		|	PGF_00002569	|	0	|	0	|	0	|	equal to median
+|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…
+
 
