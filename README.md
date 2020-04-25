@@ -3,8 +3,7 @@
 ## Overview
 These are series of Python 2.7 scripts aimed to facilitate and improve the comparative analysis of bacterial genomes.
 These scripts enable genome assembly and gene annotation from raw sequencing reads followed by comparative analyses to understand the similarities and difference between a group of bacterial genomes of interest.
-These scripts take advantage of the curated database of publicly accessible bacterial genomes and services hosted by [Pathosystems Resource Integration Center (PATRIC)](https://www.patricbrc.org/).  
-Users of these scripts will require a [PATRIC](https://www.patricbrc.org/) account to take advantage of their features.
+These scripts take advantage of the curated database of publicly accessible bacterial genomes and services hosted by [Pathosystems Resource Integration Center (PATRIC)](https://www.patricbrc.org/). Users of these scripts will require a [PATRIC](https://www.patricbrc.org/) account and must use the [PATRIC Command Line Interface](https://docs.patricbrc.org/cli_tutorial/).
 
 Often, researchers require assembly and annotation of more than one genome for their projects.
 There are many steps involved from processing raw reads of adaptor sequences or low quality base pairs, assembling reads into contigs, and finally gene annotation.
