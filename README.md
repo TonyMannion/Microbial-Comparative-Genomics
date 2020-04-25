@@ -120,11 +120,11 @@ A phylogenetic tree can be created using analyzed by [RAxML](https://cme.h-its.o
 
 `directory\to\bin\iqtree -s directory\to\pan-genome-tree_out.txt -bb 1000` 
 
-The output of IQ-TREE, pan-genome-tree_out.txt.tree file, is loaded into [FigTree](http://tree.bio.ed.ac.uk/software/figtree/) or similar tool to visualize the phylogenetic tree. In the image below, [FigTree](http://tree.bio.ed.ac.uk/software/figtree/) was used.  
+The output of IQ-TREE, pan-genome-tree_out.txt.tree file, is loaded into [FigTree](http://tree.bio.ed.ac.uk/software/figtree/) or similar tool to visualize the phylogenetic tree. In the image below, [FigTree](http://tree.bio.ed.ac.uk/software/figtree/) was used.  It appears from the pan-genome phylogenetic tree that the genomes of *E. coli* strains isolated from rodent hosts are more similar to each other than to the strians from human hosts.
 
-**Pan-phylogenetic Tree**
+**Pan-genome phylogenetic Tree**
 
-![](https://github.com/TonyMannion/Microbial-Comparative-Genomics/blob/master/images/pan-genome-tree_out.png)
+![](https://github.com/TonyMannion/Microbial-Comparative-Genomics/blob/master/images/pan-genome-tree.png)
 
 **Clustermap**
 
