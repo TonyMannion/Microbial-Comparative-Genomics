@@ -87,15 +87,16 @@ The **genome_analysis.py** script performs six different analyses that faciliate
 Here, *get_genome_data.py* will be used to assembly and annotate six user genomes.  Pre-assembled contigs from five *E. coli* strains isolated from lab mice ([Mannion A. et al. *Genome Announc.* 2016.](https://mra.asm.org/content/4/5/e01082-16)) and Illumina MiSeq 2x250 bp reads from one *E. coli* strain isolated from pet rat ([Fabian NJ. et al. *Vet Microbiol.* 2020.]( https://www.sciencedirect.com/science/article/pii/S0378113519303669?via%3Dihub)).  The sequencing reads (fastq files) and pre-assembled contigs (fasta files) along with their corresponding genome names are recorded in the metadata table shown below.
 
 To complement our genome group, data from four reference *E. coli* genomes will be acquired from PATRIC using *get_genome_data.py*.  These genomes will include: 
--*E. coli* K12: non-pathogenic lab strain
--*E. coli* NC101: *pks*+ strain isolated from mouse and associated with colon cancer
--*E. coli* IHE3034: *pks*+ strain from human meningitis
--*E. coli* UTI89:  *pks*+ strain from human urinary tract infection
+- *E. coli* K12: non-pathogenic lab strain
+- *E. coli* NC101: *pks*+ strain isolated from mouse and associated with colon cancer
+- *E. coli* IHE3034: *pks*+ strain from human meningitis
+- *E. coli* UTI89:  *pks*+ strain from human urinary tract infection
+
 [PATRIC]( https://www.patricbrc.org/) is browsed to find these four genomes, and their corresponding genome names and genome ids are recorded in the metadata table shown below.
 
 ![](https://github.com/TonyMannion/Microbial-Comparative-Genomics/blob/master/images/get_genome_data_2.png)
 
-Since we are curious about the similarities and differences between human versus rodent *E. coli* strains as well as genomes that do and do not encode the *pks* gene island, we use *genome_analysis.py* to identify genes that are unique to these subgroups compared to the larger genome group.  The subgroups we are interested in are 1) all rodent genomes, 2) the novel rodent genomes, and 3) all *pks*+ genomes. These subgroups are included in the metadata table shown below.  
+Since we are curious about the similarities and differences between human versus rodent *E. coli* strains as well as genomes that do and do not encode the *pks* gene island, we use *genome_analysis.py* to identify genes that are unique to these subgroups compared to the larger genome group.  The subgroups of interested are 1) all rodent genomes, 2) the novel rodent genomes, and 3) all *pks*+ genomes. These subgroups are recorded in the metadata table shown below.  
 
 **metadata_table.txt file**
 |	genome_name	|	genome_ids_patric	|	genome_name_patric	|	contigs	|	genome_name_contigs	|	R1	|	R2	|	genome_name_reads	|	subgroup	|	include_all_rodents	|	exclude_all_rodents	|	include_novel_rodents	|	exclude_novel_rodents	|	include_all_pks	|	exclude_all_pks	|
@@ -110,4 +111,3 @@ Since we are curious about the similarities and differences between human versus
 |	Escherichia coli strain 1512290008	|		|		|	Escherichia_coli_strain_1512290008_contigs.fasta	|	Escherichia coli strain 1512290008	|		|		|		|		|	Escherichia coli strain 1512290008	|		|	Escherichia coli strain 1512290008	|		|	Escherichia coli strain 1512290008	|		|
 |	Escherichia coli strain 1512290026	|		|		|	Escherichia_coli_strain_1512290026_contigs.fasta	|	Escherichia coli strain 1512290026	|		|		|		|		|	Escherichia coli strain 1512290026	|		|	Escherichia coli strain 1512290026	|		|	Escherichia coli strain 1512290026	|		|
 |	Escherichia coli strain 20170221001	|		|		|		|		|	20170221001_R1.fastq	|	20170221001_R2.fastq	|	Escherichia coli strain 20170221001	|		|	Escherichia coli strain 20170221001	|		|	Escherichia coli strain 20170221001	|		|	Escherichia coli strain 20170221001	|		|
-
