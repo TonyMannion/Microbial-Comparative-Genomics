@@ -19,15 +19,19 @@ Furthermore, the **get_genome_data.py** script provided in this library allows r
 Comparative genomics involves the identification of genetic factors, namely genes, that are shared or differ between bacteria genra, species, and/or strains.
 The **genome_analysis.py** script facilitates the identification of genes and gene families that differentiate bacterial genomes.  This script execute six analysis workflows, which are summarized below.
 
+**Overview of Workflow**
+
 ![](https://github.com/TonyMannion/Microbial-Comparative-Genomics/blob/master/images/overview.PNG)
 
 ## *get_genome_data.py*
+
+**Workflow of *get_genome_data.py***
 
 ![](https://github.com/TonyMannion/Microbial-Comparative-Genomics/blob/master/images/get_genome_data_1.PNG)
 
 The **genome_assembly_annotate.py** script allows the assembley and anntoation from raw sequenicng reads and/or pre-assembled contigs of multiple genomes simultanesouly.
 
-# flags
+**flags**
 |	Flag	|	Flag (verbose)	|	Description	|
 |	-----	|	-----	|	-----	|
 |	 -h	|	 --help            	|	Show all flags and descriptions	|
@@ -40,16 +44,26 @@ The **genome_assembly_annotate.py** script allows the assembley and anntoation f
 |	 -p	|	 --patric_download	|	Download genome reports, contigs, and annotations data from PATRIC genomes.	|
 |	 -o	|	 --output_folder	|	Specify output folder for downloaded data.	|
 
+## Output
+**FullGenomeReport.html** - Summarizes genome assembly and gene annotation results.  See below for excerpt data from FullGenomeReport.html output of *Escherichia coli* str. K-12 substr. MG1655 (genome id: 511145.12) pre-assembled contigs annotated using this script.
 
+**Summary of genome assembly and annotation results from FullGenomeReport.html for *E. coli* K12.**
+
+![](https://github.com/TonyMannion/Microbial-Comparative-Genomics/blob/master/images/FullGenomeReport_K12_assembly_annotation.png)
+
+**Circular chromosome showing gene annotations and subsystems from FullGenomeReport.html for *E. coli* K12.**
+
+![](https://github.com/TonyMannion/Microbial-Comparative-Genomics/blob/master/images/FullGenomeReport_K12_chromosome_and_subsystems.png)
 
 ## *genome_analysis.py*
 
-The **genome_analysis.py** script performs six different analyses that faciliate the identicaiton comparision of genomes.
-
+**Workflow of *genome_analysis.py***
 ![](https://github.com/TonyMannion/Microbial-Comparative-Genomics/blob/master/images/genome_analysis_1.png)
 
+The **genome_analysis.py** script performs six different analyses that faciliate the identicaiton comparision of genomes.
 
-# flags
+
+**flags**
 |	Flag	|	Flag (verbose)	|	Description	|
 |	-----	|	-----	|	-----	|
 |	 -h	|	 --help            	|	Show all flags and descriptions	|
