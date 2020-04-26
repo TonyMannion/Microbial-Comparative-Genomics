@@ -84,7 +84,16 @@ The **genome_analysis.py** script performs six different analyses that faciliate
 
 *E. coli* commensal intestinal bacterial found in many species including humans and other mammalian species.  Some *E. coli* strains encode virulence factor genes that allow make them pathogenic.  One virulence factor gene expressed by some *E. coli* strains is colibactin, a genotoxin produced by *pks* gene island, and these strains are associated with UTI, meningitis, and colon cancer in humans and animal models.  In this example, the *get_genome_data.py* and *genome_analysis.py* scripts are used to compare genomes of human and rodent *E. coli* strains that do and do not encode the *pks* gene island.
 
-Here, *get_genome_data.py* will be used to assembly and annotate six user genomes.  Pre-assembled contigs from five *E. coli* strains isolated from lab mice ([Mannion A. et al. *Genome Announc.* 2016.](https://mra.asm.org/content/4/5/e01082-16)) and Illumina MiSeq 2x250 bp reads from one *E. coli* strain isolated from pet rat ([Fabian NJ. et al. *Vet Microbiol.* 2020.]( https://www.sciencedirect.com/science/article/pii/S0378113519303669?via%3Dihub)).  The sequencing reads (fastq files) and pre-assembled contigs (fasta files) along with their corresponding genome names are recorded in the metadata table shown below.
+More specifically, we would like to know:
+
+-	Are *E. coli* strains from human and rodents phylogenetically distinct?
+-	What genes are found in all *pks*+ *E. coli* genomes?
+-	What genes are found only in genomes of *E. coli* strains isolated from all rodents?
+-	What genes are found only in novel genomes of *E. coli* strains isolated from the rodent?
+-	What genes are unique to novel genome of *E. coli* strains isolated from a rat compared to mice?
+
+
+Here, *get_genome_data.py* will be used to assembly and annotate six user genomes.  Pre-assembled contigs from five *E. coli* strains isolated from lab mice ([Mannion A. et al. *Genome Announc.* 2016.](https://mra.asm.org/content/4/5/e01082-16)) and Illumina MiSeq 2x250 bp reads from one *E. coli* strain isolated from pet rat ([Fabian NJ. et al. *Vet Microbiol.* 2020.]( https://www.sciencedirect.com/science/article/pii/S0378113519303669?via%3Dihub)).  The sequencing reads (fastq files) and pre-assembled contigs (fasta files) along with their corresponding genome names are recorded in the metadata table shown below.  All of these isolates, except one, were experimentally shown to encode the *pks* gene island.
 
 To complement our genome group, data from four reference *E. coli* genomes will be acquired from PATRIC using *get_genome_data.py*.  These genomes will include: 
 - *E. coli* K12: non-pathogenic lab strain
