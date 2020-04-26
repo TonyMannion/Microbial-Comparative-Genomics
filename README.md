@@ -147,120 +147,9 @@ Below is an excerpt of the dataframe associated with the hierarchically-clustere
 |	PGF_00369678	|	1	|	1	|	1	|	1	|	1	|	0	|	2	|	1	|	4	|	2	|
 |	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|
 
-**core_unqiue_genes.txt**
+**Annotation metadata with gene analysis**
 
-Below is an excerpt of the annotation metadata table for *E. coli* strain 20170221001 showing which genes are core or unique to this genome.  For genes that are neither core nor unique (ie shared between some but not all genomes in the group), the row is left blank.  The relationship of these genes within the genome group can be found by comparing subgroups, which is shown next.
-(Note: In the excerpt below, some columns were excluded to optomize viewing.)
-
-|	genome_name	|	contig_id	|	feature_id	|	type	|	start	|	stop	|	strand	|	function	|	pgfam	|	core_unique_gene	|
-|	 ------	|	 ------	|	 ------	|	 ------	|	 ------	|	 ------	|	 ------	|	 ------	|	 ------	|	 ------	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.1	|	CDS	|	291	|	1	|	-	|	Glutamate decarboxylase (EC 4.1.1.15)	|	PGF_00008094	|	core	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.2	|	CDS	|	445	|	302	|	-	|	hypothetical protein	|	PGF_02969562	|		|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.3	|	CDS	|	472	|	615	|	+	|	hypothetical protein	|	PGF_10512988	|	unique_Escherichia_coli_strain_20170221001	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.4	|	CDS	|	1663	|	653	|	-	|	Probable zinc protease pqqL (EC 3.4.99.-)	|	PGF_09337443	|	core	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.5	|	CDS	|	3078	|	1921	|	-	|	GALNS arylsulfatase regulator (Fe-S oxidoreductase)	|	PGF_00006721	|		|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.6	|	CDS	|	4812	|	3130	|	-	|	N-acetylgalactosamine 6-sulfate sulfatase (GALNS)	|	PGF_00023745	|		|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.7	|	CDS	|	5975	|	5214	|	-	|	Transcriptional regulator YdeO, AraC family	|	PGF_00058697	|		|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.8	|	CDS	|	6284	|	6051	|	-	|	Two-component-system connector protein SafA	|	PGF_00063151	|		|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.13	|	CDS	|	13799	|	11148	|	-	|	Outer membrane usher protein FimD	|	PGF_00028437	|	core	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.15	|	CDS	|	15476	|	14913	|	-	|	Type-1 fimbrial protein, A chain	|	PGF_02911992	|	core	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.16	|	CDS	|	16126	|	16004	|	-	|	hypothetical protein	|	PGF_08225224	|	core	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.339	|	CDS	|	329558	|	329445	|	-	|	hypothetical protein	|	PGF_01651140	|	unique_Escherichia_coli_strain_20170221001	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.354	|	CDS	|	343234	|	343055	|	-	|	hypothetical protein	|	PGF_01650528	|	unique_Escherichia_coli_strain_20170221001	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.450	|	CDS	|	425232	|	425080	|	-	|	hypothetical protein	|	PGF_01632236	|	unique_Escherichia_coli_strain_20170221001	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.464	|	CDS	|	438546	|	437446	|	-	|	hypothetical protein	|	PGF_00281105	|	unique_Escherichia_coli_strain_20170221001	|
-|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|
-
-
-**Subgroup analysis**
-
-Below is an excerpt of the annotation metadata table for *E. coli* strain 20170221001 showing which genes are unqiue to paricular subgroups.  The subgroups of interest were defined based on the metadata table (shown above).  To recap, we were interested in which genes are unique to 1) all genomes that encode *pks* gene island, 2) all genomes that were isolated from rodent hosts, and 3) the genomes from the six novel *E. coli* isolates from lab mice and a pet rat. For genes not found in these subgroups (ie could be a core, unique gene to this genome, or unique to subgroup not analyzed), the row is left blank.  From this output, we can see which genes are shared between these subgroups and not found in the other genome in the larger group.
-(Note: In the excerpt below, some columns were excluded to optomize viewing.)
-
-|	genome_name	|	contig_id	|	feature_id	|	type	|	start	|	stop	|	strand	|	function	|	pgfam	|	subgroup_gene	|
-|	 ------	|	 ------	|	 ------	|	 ------	|	 ------	|	 ------	|	 ------	|	 ------	|	 ------	|	 ------	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.1	|	CDS	|	291	|	1	|	-	|	Glutamate decarboxylase (EC 4.1.1.15)	|	PGF_00008094	|		|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.2	|	CDS	|	445	|	302	|	-	|	hypothetical protein	|	PGF_02969562	|	all_rodents	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.3	|	CDS	|	472	|	615	|	+	|	hypothetical protein	|	PGF_10512988	|		|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.4	|	CDS	|	1663	|	653	|	-	|	Probable zinc protease pqqL (EC 3.4.99.-)	|	PGF_09337443	|		|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.5	|	CDS	|	3078	|	1921	|	-	|	GALNS arylsulfatase regulator (Fe-S oxidoreductase)	|	PGF_00006721	|		|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.6	|	CDS	|	4812	|	3130	|	-	|	N-acetylgalactosamine 6-sulfate sulfatase (GALNS)	|	PGF_00023745	|		|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.14	|	CDS	|	14551	|	13841	|	-	|	chaperone FimC	|	PGF_02911703	|	all_pks	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.108	|	CDS	|	109072	|	109272	|	+	|	hypothetical protein	|	PGF_00250457	|	novel_rodents	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.123	|	CDS	|	122706	|	122467	|	-	|	Uncharacterized protein YdhL	|	PGF_02720073	|	all_rodents	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.412	|	CDS	|	394531	|	393980	|	-	|	UPF0098 protein ybcL precursor	|	PGF_04249868	|	novel_rodents	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.459	|	CDS	|	433910	|	432447	|	-	|	PilV-like protein	|	PGF_00034309	|	all_rodents	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.460	|	CDS	|	434520	|	433963	|	-	|	IncI1 plasmid conjugative transfer prepilin PilS	|	PGF_00013956	|	all_rodents	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.461	|	CDS	|	435223	|	434918	|	-	|	hypothetical protein	|	PGF_05161694	|	all_rodents	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.468	|	CDS	|	439859	|	439584	|	-	|	hypothetical protein	|	PGF_04171970	|	novel_rodents	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.494	|	CDS	|	460587	|	460297	|	-	|	hypothetical protein	|	PGF_00219209	|	novel_rodents	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.559	|	CDS	|	536811	|	536089	|	-	|	Thioesterase	|	PGF_00056580	|	all_pks	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.560	|	CDS	|	538309	|	536804	|	-	|	Polyketide synthase modules and related proteins	|	PGF_00402183	|	all_pks	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.561	|	CDS	|	540790	|	538331	|	-	|	Polyketide synthase modules and related proteins	|	PGF_10503453	|	all_pks	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.562	|	CDS	|	545188	|	540821	|	-	|	Polyketide synthase modules and related proteins	|	PGF_10503453	|	all_pks	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.898	|	CDS	|	929878	|	930042	|	+	|	hypothetical protein	|	PGF_01087026	|	novel_rodents	|
-|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|
-
-**Median Analysis**
-
-Below is an excerpt of the annotation metadata table for *E. coli* strain 20170221001 showing how many genes are present and how they compare to the median copy number in the genome group (ie equal to, greater than, or less than the median).  Sometimes a gene may not be present in a genome while other genomes have this gene.  In these cases, the gene is *less than the median*.  Accordinlgy, the annotation metadata output will still show these genes are absent; however, since these gene are not present in the genome, there will be no addition annotation metadata in the output.  (Note: In the excerpt below, some columns were excluded to optomize viewing.)
-
-|	genome_name	|	contig_id	|	feature_id	|	type	|	start	|	stop	|	strand	|	function	|	pgfam	|	gene_count	|	median	|	gene_count-median	|	vs_median
-|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.1	|	CDS	|	291	|	1	|	-	|	Glutamate decarboxylase (EC 4.1.1.15)	|	PGF_00008094	|	3	|	3	|	0	|	equal to median
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.2	|	CDS	|	445	|	302	|	-	|	hypothetical protein	|	PGF_02969562	|	1	|	1	|	0	|	equal to median
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.3	|	CDS	|	472	|	615	|	+	|	hypothetical protein	|	PGF_10512988	|	1	|	0	|	1	|	greater than median
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.4	|	CDS	|	1663	|	653	|	-	|	Probable zinc protease pqqL (EC 3.4.99.-)	|	PGF_09337443	|	1	|	1	|	0	|	equal to median
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.5	|	CDS	|	3078	|	1921	|	-	|	GALNS arylsulfatase regulator (Fe-S oxidoreductase)	|	PGF_00006721	|	1	|	1	|	0	|	equal to median
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.6	|	CDS	|	4812	|	3130	|	-	|	N-acetylgalactosamine 6-sulfate sulfatase (GALNS)	|	PGF_00023745	|	1	|	1	|	0	|	equal to median
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.16	|	CDS	|	16126	|	16004	|	-	|	hypothetical protein	|	PGF_08225224	|	123	|	121.5	|	1.5	|	greater than median
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.19	|	CDS	|	19186	|	18482	|	-	|	Toxin HigB / Protein kinase domain of HipA	|	PGF_00011753	|	3	|	2	|	1	|	greater than median
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.20	|	CDS	|	19608	|	19315	|	-	|	Toxin HigB / Protein kinase domain of HipA	|	PGF_00011753	|	3	|	2	|	1	|	greater than median
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.89	|	CDS	|	89721	|	88456	|	-	|	Glucuronide transport facilitator UidC	|	PGF_00008042	|	1	|	1.5	|	-0.5	|	less than median
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.178	|	CDS	|	180659	|	181705	|	+	|	2-keto-3-deoxy-D-arabino-heptulosonate-7-phosphate synthase I alpha (EC 2.5.1.54)	|	PGF_00070354	|	5	|	3	|	2	|	greater than median
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.256	|	CDS	|	255363	|	254617	|	-	|	MltA-interacting protein MipA	|	PGF_00040822	|	1	|	1.5	|	-0.5	|	less than median
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.358	|	CDS	|	348666	|	347518	|	-	|	Flagellar biosynthesis protein FlhB	|	PGF_02186693	|	1	|	1.5	|	-0.5	|	less than median
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.370	|	CDS	|	358246	|	357359	|	-	|	Flagellar motor rotation protein MotA	|	PGF_06889881	|	1	|	1.5	|	-0.5	|	less than median
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.400	|	CDS	|	382121	|	381402	|	-	|	RNA polymerase sigma factor for flagellar operon	|	PGF_00046377	|	1	|	1.5	|	-0.5	|	less than median
-|	Escherichia_coli_strain_20170221001	|		|		|		|		|		|		|		|	PGF_00000241	|	0	|	0	|	0	|	equal to median
-|	Escherichia_coli_strain_20170221001	|		|		|		|		|		|		|		|	PGF_00000473	|	0	|	0	|	0	|	equal to median
-|	Escherichia_coli_strain_20170221001	|		|		|		|		|		|		|		|	PGF_00002312	|	0	|	0.5	|	-0.5	|	less than median
-|	Escherichia_coli_strain_20170221001	|		|		|		|		|		|		|		|	PGF_00002325	|	0	|	1	|	-1	|	less than median
-|	Escherichia_coli_strain_20170221001	|		|		|		|		|		|		|		|	PGF_00002569	|	0	|	0	|	0	|	equal to median
-|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…
-
-**DIAMOND Blast**
-
-Below is an excerpt of the annotation metadata table for *E. coli* strain 20170221001 showing the DIAMOND blast results against the virulence factor database.  In the excerpt, we see this strain encodes the *pks* genes. (Note: In the excerpt below, some columns were excluded to optomize viewing.)
-
-|	genome_name	|	contig_id	|	feature_id	|	type	|	start	|	stop	|	strand	|	function	|	pgfam	|	qseqid_VF	|	qlen_VF	|	VF_ID	|	slen_VF	|	evalue_VF	|	bitscore_VF	|	pident_VF	|	qcovhsp_VF	|
-|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.559	|	CDS	|	536811	|	536089	|	-	|	Thioesterase	|	PGF_00056580	|	fig|2.7989.peg.559	|	240	|	VFG043678(gi:112292703) (clbQ) putative thioesterase [colibactin (TX033)] [Escherichia coli O18:K1:H7 str. IHE3034]	|	240	|	4.00E-143	|	504.6	|	100	|	100	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.560	|	CDS	|	538309	|	536804	|	-	|	Polyketide synthase modules and related proteins	|	PGF_00402183	|	fig|2.7989.peg.560	|	501	|	VFG049162(gb-YP 006635488.1) (clbP) precolibactin peptidase ClbP [Colibactin (VF0573)] [Klebsiella pneumoniae subsp. pneumoniae 1084]	|	501	|	1.60E-290	|	995.3	|	99.8	|	100	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.561	|	CDS	|	540790	|	538331	|	-	|	Polyketide synthase modules and related proteins	|	PGF_10503453	|	fig|2.7989.peg.561	|	819	|	VFG049161(gb-YP 006635487.1) (clbO) colibactin polyketide synthase ClbO [Colibactin (VF0573)] [Klebsiella pneumoniae subsp. pneumoniae 1084]	|	819	|	0.00E+00	|	1642.5	|	100	|	100	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.562	|	CDS	|	545188	|	540821	|	-	|	Polyketide synthase modules and related proteins	|	PGF_10503453	|	fig|2.7989.peg.562	|	1455	|	VFG049160(gb-YP 006635486.1) (clbN) colibactin non-ribosomal peptide synthetase ClbN [Colibactin (VF0573)] [Klebsiella pneumoniae subsp. pneumoniae 1084]	|	1455	|	0.00E+00	|	2972.2	|	99.9	|	100	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.563	|	CDS	|	546624	|	545185	|	-	|	Na+-driven multidrug efflux pump	|	PGF_00025248	|	fig|2.7989.peg.563	|	479	|	VFG043682(gi:112292707) (clbM) putative drug/sodium antiporter [colibactin (TX033)] [Escherichia coli O18:K1:H7 str. IHE3034]	|	479	|	2.40E-256	|	881.7	|	100	|	100	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.564	|	CDS	|	548149	|	546686	|	-	|	Putative amidase	|	PGF_00040134	|	fig|2.7989.peg.564	|	487	|	VFG049158(gb-YP 006635484.1) (clbL) colibactin biosynthesis amidase ClbL [Colibactin (VF0573)] [Klebsiella pneumoniae subsp. pneumoniae 1084]	|	487	|	9.30E-288	|	986.1	|	100	|	100	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.566	|	CDS	|	558540	|	555508	|	-	|	Polyketide synthase modules and related proteins	|	PGF_10503453	|	fig|2.7989.peg.566	|	1010	|	VFG049155(gb-YP 006635481.1) (clbI) colibactin polyketide synthase ClbI [Colibactin (VF0573)] [Klebsiella pneumoniae subsp. pneumoniae 1084]	|	1010	|	0.00E+00	|	1973	|	100	|	100	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.567	|	CDS	|	563386	|	558590	|	-	|	Polyketide synthase modules and related proteins	|	PGF_10503453	|	fig|2.7989.peg.567	|	1598	|	VFG049154(gb-YP 006635480.1) (clbH) colibactin non-ribosomal peptide synthetase ClbH [Colibactin (VF0573)] [Klebsiella pneumoniae subsp. pneumoniae 1084]	|	1598	|	0.00E+00	|	3172.9	|	100	|	100	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.568	|	CDS	|	564702	|	563434	|	-	|	Malonyl CoA-acyl carrier protein transacylase (EC 2.3.1.39) in polyketide synthesis	|	PGF_02943429	|	fig|2.7989.peg.568	|	422	|	VFG043688(gi:112292713) (clbG) putative malonyl-CoA transacylase [colibactin (TX033)] [Escherichia coli O18:K1:H7 str. IHE3034]	|	422	|	2.10E-240	|	828.6	|	100	|	100	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.569	|	CDS	|	565829	|	564699	|	-	|	Acyl-CoA dehydrogenase	|	PGF_10428547	|	fig|2.7989.peg.569	|	376	|	VFG043689(gi:112292714) (clbF) putative acyl-CoA dehydrogenase [colibactin (TX033)] [Escherichia coli O18:K1:H7 str. IHE3034]	|	376	|	3.30E-216	|	748	|	100	|	100	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.570	|	CDS	|	566081	|	565833	|	-	|	hypothetical protein	|	PGF_00279040	|	fig|2.7989.peg.570	|	82	|	VFG049151(gb-YP 006635477.1) (clbE) colibactin biosynthesis aminomalonyl-acyl carrier protein ClbE [Colibactin (VF0573)] [Klebsiella pneumoniae subsp. pneumoniae 1084]	|	82	|	2.10E-38	|	155.2	|	100	|	100	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.571	|	CDS	|	566977	|	566111	|	-	|	3-hydroxyacyl-CoA dehydrogenase (EC 1.1.1.35)	|	PGF_07756589	|	fig|2.7989.peg.571	|	288	|	VFG049150(gb-YP 006635476.1) (clbD) colibactin biosynthesis dehydrogenase ClbD [Colibactin (VF0573)] [Klebsiella pneumoniae subsp. pneumoniae 1084]	|	289	|	4.20E-163	|	571.2	|	100	|	100	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.572	|	CDS	|	569590	|	566990	|	-	|	Polyketide synthase modules and related proteins	|	PGF_10503453	|	fig|2.7989.peg.572	|	866	|	VFG043692(gi:112292717) (clbC) putative polyketide synthase [colibactin (TX033)] [Escherichia coli O18:K1:H7 str. IHE3034]	|	866	|	0.00E+00	|	1780.8	|	100	|	100	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.573	|	CDS	|	579251	|	569631	|	-	|	Polyketide synthase modules and related proteins	|	PGF_10503453	|	fig|2.7989.peg.573	|	3206	|	VFG043693(gi:112292718) (clbB) putative hybrid polyketide-non-ribosomal peptide synthetase [colibactin (TX033)] [Escherichia coli O18:K1:H7 str. IHE3034]	|	3206	|	0.00E+00	|	6393.5	|	100	|	100	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.574	|	CDS	|	579661	|	579873	|	+	|	hypothetical protein	|	PGF_01631935	|	fig|2.7989.peg.574	|	70	|	VFG043694(gi:112292719) (clbR) putative regulatory protein [colibactin (TX033)] [Escherichia coli O18:K1:H7 str. IHE3034]	|	70	|	2.90E-33	|	137.9	|	100	|	100	|
-|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.575	|	CDS	|	579874	|	580608	|	+	|	hypothetical protein	|	PGF_00292201	|	fig|2.7989.peg.575	|	244	|	VFG049147(gb-YP 006635473.1) (clbA) colibactin biosynthesis phosphopantetheinyl transferase ClbA [Colibactin (VF0573)] [Klebsiella pneumoniae subsp. pneumoniae 1084]	|	244	|	4.10E-143	|	504.6	|	100	|	100	|
-|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|
-
-**merged annotation metadata from above analyses**
-
-In the final step, the annotation data from the previous analyses is merged into a single file.  This increase the power to answer questions posed in your comparative analysis.
-- For example, while core genes are found in all genomes within the group, some genomes may have fewer or greater copy numbers.  The merged annotation metadata set allows these genes to be found easily, thereby facilitating further analysis of their significance.
-- A different question may ask if a particular subgroup of genome harbors virulence factor genes not found in the other genomes.  Again, the merged annotation metadata set enables rapid query into which genes belong to a subgroup and if they homologous to known virulence factor genes.
-- Another question posed could be identifying in genome which genes are greater than the median copy number and what function these gene have.  In this case, the merged annotation metadata for a genome can be simply filtered to find such genes and the corresponding metadata to infer their function.
-
-Below is an excerpt of the merged annotation metadata table for *E. coli* strain 20170221001.(Note: In the excerpt below, some columns were excluded to optomize viewing.)
+After each individual comparative analysis step is performed, the results are added to the annotation metadata table for each genome.  To faciliate analyzing this data, the results from previous analyses are merged into a single file, per genome.  This makes it easy to examine the datasets and answer the questions we posed above.  Below is an excerpt of the merged annotation metadata table for *E. coli* strain 20170221001.(Note: In the excerpt below, some columns were excluded to optomize viewing.)
 
 |	genome_name	|	contig_id	|	feature_id	|	type	|	start	|	stop	|	strand	|	function	|	pgfam	|	core_unique_gene	|	gene_count	|	median	|	gene_count-median	|	vs_median	|	subgroup_gene	|	qlen_VF	|	VF_ID	|	slen_VF	|	evalue_VF	|	bitscore_VF	|	pident_VF	|	qcovhsp_VF	|
 |	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|
@@ -297,6 +186,7 @@ What genes are found only in all rodent genomes?
 
 - 39 pgfams
 - Including 19 genes annotated with Propanediol uptake and metabolism 
+- In our example, we see a propanediol utilization pathway is present only in the seven *E. coli* strains isolated from rodents (all_rodents subgroup), suggesting these strains could use different carbon and energy sources compared to human strains.
 
 What gene are found only in the novel rodent genomes?
 
@@ -310,8 +200,3 @@ What genes are unique to the rat isolate?
 - 234 pgfams
 - Mainly hypothetical protein annotations
 - 36 are annotations relating to phage, 28 of these on the same contig, possible phage insert in its genome
-
-
-In our example, we see a propanediol utilization pathway is present only in the seven *E. coli* strains isolated from rodents (all_rodents subgroup), suggesting these strains could use different carbon and energy sources compared to human strains.
-
-
