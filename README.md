@@ -255,7 +255,12 @@ Below is an excerpt of the annotation metadata table for *E. coli* strain 201702
 
 **merged annotation metadata from above analyses**
 
-Below is an excerpt of the annotation metadata table for *E. coli* strain 20170221001 showing the DIAMOND blast results against the virulence factor database.  In the excerpt, we see this strain encodes the *pks* genes. (Note: In the excerpt below, some columns were excluded to optomize viewing.)
+In the final step, the annotation data from the previous analyses is merged into a single file.  This increase the power to answer questions posed in your comparative analysis.
+- For example, while core genes are found in all genomes within the group, some genomes may have fewer or greater copy numbers.  The merged annotation metadata set allows these genes to be found easily, thereby facilitating further analysis of their significance.
+- A different question may ask if a particular subgroup of genome harbors virulence factor genes not found in the other genomes.  Again, the merged annotation metadata set enables rapid query into which genes belong to a subgroup and if they homologous to known virulence factor genes.
+- Another question posed could be identifying in genome which genes are greater than the median copy number and what function these gene have.  In this case, the merged annotation metadata for a genome can be simply filtered to find such genes and the corresponding metadata to infer their function.
+
+Below is an excerpt of the merged annotation metadata table for *E. coli* strain 20170221001.(Note: In the excerpt below, some columns were excluded to optomize viewing.)
 
 |	genome_name	|	contig_id	|	feature_id	|	type	|	start	|	stop	|	strand	|	function	|	pgfam	|	core_unique_gene	|	gene_count	|	median	|	gene_count-median	|	vs_median	|	subgroup_gene	|	qlen_VF	|	VF_ID	|	slen_VF	|	evalue_VF	|	bitscore_VF	|	pident_VF	|	qcovhsp_VF	|
 |	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|
@@ -275,5 +280,38 @@ Below is an excerpt of the annotation metadata table for *E. coli* strain 201702
 |	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.14	|	CDS	|	14551	|	13841	|	-	|	chaperone FimC	|	PGF_02911703	|		|	1	|	1	|	0	|	equal to median	|	all_pks	|	236	|	VFG042714(gi:15801632) (Z2201) putative fimbrial chaperone protein [F9 fimbriae (AI090)] [Escherichia coli O157:H7 str. EDL933]	|	239	|	3.90E-130	|	461.5	|	97.9	|	100	|
 |	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.15	|	CDS	|	15476	|	14913	|	-	|	Type-1 fimbrial protein, A chain	|	PGF_02911992	|	core	|	3	|	3	|	0	|	equal to median	|		|	187	|	VFG042713(gi:15801631) (Z2200) putative major fimbrial subunit [F9 fimbriae (AI090)] [Escherichia coli O157:H7 str. EDL933]	|	187	|	1.90E-95	|	345.9	|	99.5	|	100	|
 |	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|
+
+## Analysis
+
+How similar are human vs rodent genomes?
+
+- phylogentic tree and clustermap
+
+What genes are found in all pks+ genomes?
+
+- 61 pgfams
+- Includes full pks gene island 
+- 14 other VF genes (>=90% identity and coverage), including S_fimbriae, Salmochelin siderophore and (ibeA) invasion protein IbeA gene
+
+What genes are found only in all rodent genomes?
+
+- 39 pgfams
+- Including 19 genes annotated with Propanediol uptake and metabolism 
+
+What gene are found only in the novel rodent genomes?
+
+- 15 pgfams
+- Mainly hypothetical protein annotations
+- No homology with vf or antibiotic resistence genes
+
+What genes are unique to the rat isolate?
+
+- Based on clustermap, there is large block of genes that are unique to this isolate
+- 234 pgfams
+- Mainly hypothetical protein annotations
+- 36 are annotations relating to phage, 28 of these on the same contig, possible phage insert in its genome
+
+
+In our example, we see a propanediol utilization pathway is present only in the seven *E. coli* strains isolated from rodents (all_rodents subgroup), suggesting these strains could use different carbon and energy sources compared to human strains.
 
 
