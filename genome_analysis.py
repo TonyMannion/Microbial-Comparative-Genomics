@@ -7,6 +7,7 @@ import pandas as pd
 import seaborn as sns
 from matplotlib import pyplot as plt
 
+
 parser=argparse.ArgumentParser()
 parser.add_argument('-i','--input_folder',dest='input_folder',help='Specify folder with annotation data.')
 parser.add_argument('-o','--output_folder',dest='output_folder',help='Specify name for output folder.')
@@ -20,12 +21,14 @@ parser.add_argument('-VF_blast','--VF_blast',dest='exe_VF_blast',default='yes',h
 parser.add_argument('-res_blast','--res_blast',dest='exe_res_blast',default='yes',help='Perform DIAMOND blast analysis for antibiotic resistence genes? Enter "yes" or "no". Default is "yes".')
 parser.add_argument('-custom_blast','--custom_blast',dest='exe_custom_blast',default='no',help='Perform DIAMOND blast analysis for custom gene database? Enter "yes" or "no". Default is "no".')
 parser.add_argument('-custom_fasta','--custom_fasta',dest='custom_fasta',help='Provide custom gene database as multi-sequence fasta file using amino acids.')
+parser.add_argument('-merge_all_annotations','--merge_all_annotations',dest='exe_merge_all_annotations',default='yes',help='Merge all annotation metadata files in output folder? Enter "yes" or "no". Default is "yes".')
 args=parser.parse_args()
 
+#make output folder 
+output_folder=str(args.output_folder)
+os.mkdir(output_folder)
+
 def make_tree():
-	#make output folder
-	output_folder='pangenome_tree_'+str(args.output_folder)
-	os.mkdir(output_folder) 
 	print 'Creating binary matrix of protein families in PHYLIP format for pan-genome phylogenetic tree...'
 	#concat
 	df_genome_names=pd.read_csv(str(args.metadata_file),sep='\t',usecols=['genome_name']).replace(' ','_', regex=True)
@@ -48,9 +51,6 @@ def make_tree():
 		f.writelines(lines)
 
 def make_clustermap():
-	#make output folder
-	output_folder='clustermap_'+str(args.output_folder)
-	os.mkdir(output_folder)
 	#concat
 	df_genome_names=pd.read_csv(str(args.metadata_file),sep='\t',usecols=['genome_name']).replace(' ','_', regex=True)
 	genome_name_list=df_genome_names['genome_name'].dropna().tolist()
@@ -76,9 +76,6 @@ def make_clustermap():
 	df_cm2.to_csv(output_folder+'/'+'gene_family_clustermap_out.txt',sep='\t')
 
 def core_unique_genes():
-	#make output folder
-	output_folder='core_unqiue_gene_analysis_'+str(args.output_folder)
-	os.mkdir(output_folder)
 	#concat
 	df_genome_names=pd.read_csv(str(args.metadata_file),sep='\t',usecols=['genome_name']).replace(' ','_', regex=True)
 	genome_name_list=df_genome_names['genome_name'].dropna().tolist()
@@ -115,15 +112,12 @@ def core_unique_genes():
 	genome_name_list=df_genome_names['genome_name'].dropna().tolist()
 	for genome in genome_name_list:
 		df_an=pd.read_csv(str(args.input_folder)+'/'+str(genome)+'_annotation.txt',sep='\t')
-		df_merged=pd.merge(df_an,df_concat,left_on='pgfam',right_on='pgfam',how="left").to_csv(output_folder+'/'+str(genome)+'_annotation.txt',sep='\t',index=False)
+		df_merged=pd.merge(df_an,df_concat,left_on='pgfam',right_on='pgfam',how="left").to_csv(output_folder+'/'+str(genome)+'_annotation_core_unique_genes.txt',sep='\t',index=False)
 		print 'Core and unique genes determined for '+str(genome)
 	#remove intermediate files
 	os.remove(output_folder+'/'+'gene_family_groupby_out.txt')
 
 def median_analysis():
-	#make output folder
-	output_folder='median_gene_analysis_'+str(args.output_folder)
-	os.mkdir(output_folder)
 	#concat
 	df_genome_names=pd.read_csv(str(args.metadata_file),sep='\t',usecols=['genome_name']).replace(' ','_', regex=True)
 	genome_name_list=df_genome_names['genome_name'].dropna().tolist()
@@ -148,17 +142,13 @@ def median_analysis():
 		df_concat['genome_name_pgfam']=df_concat['genome_name']+'_'+df_concat['pgfam']
 		#annotation metadata
 		df_merged=pd.merge(df_temp,df_concat,left_on='genome_name_pgfam',right_on='genome_name_pgfam',how="left").rename(columns={'genome_name_y': 'genome_name','pgfam_x':'pgfam'}).drop(['pgfam_y','genome_name_x','genome_name_pgfam','count'],axis=1)
-		cols=list(df_merged.columns)
-		cols=cols[5:]+cols[0:5]#rearranges cols
-		df_merged2=df_merged[cols].to_csv(output_folder+'/'+str(col)+'_annotation.txt',sep='\t',index=False)
+		col_order=['genome_id','genome_name','contig_id','feature_id','type','location','start','stop','strand','function','aliases','plfam','pgfam','figfam','evidence_codes','nucleotide_sequence','aa_sequence','gene_count','median','gene_count-median','vs_median']
+		df_merged2=df_merged[col_order].to_csv(output_folder+'/'+str(col)+'_annotation_median_analysis.txt',sep='\t',index=False)
 		print "Median gene analysis done for "+str(col)+'...'
 	#remove intermediate files
 	os.remove(output_folder+'/'+'gene_family_groupby_out.txt')
 
 def subgroup_genes():
-	#make output folder
-	output_folder='subgroup_gene_analysis_'+str(args.output_folder)
-	os.mkdir(output_folder)
 	#concat
 	df_genome_names=pd.read_csv(str(args.metadata_file),sep='\t',usecols=['genome_name']).replace(' ','_', regex=True)
 	genome_name_list=df_genome_names['genome_name'].dropna().tolist()
@@ -192,15 +182,12 @@ def subgroup_genes():
 	genome_name_list=df_genome_names['genome_name'].dropna().tolist()
 	for genome in genome_name_list:
 		df_an=pd.read_csv(str(args.input_folder)+'/'+str(genome)+'_annotation.txt',sep='\t')
-		df_merged=pd.merge(df_an,df_concat,left_on='pgfam',right_on='pgfam',how="left").to_csv(output_folder+'/'+str(genome)+'_annotation.txt',sep='\t',index=False)
+		df_merged=pd.merge(df_an,df_concat,left_on='pgfam',right_on='pgfam',how="left").to_csv(output_folder+'/'+str(genome)+'_annotation_subgroup_genes.txt',sep='\t',index=False)
 		print 'Subgroup gene analysis done for '+str(genome)
 	#remove intermediate files
 	os.remove(output_folder+'/'+'gene_family_groupby_out.txt')
 
 def blaster(type,database_file): #type=VF,RES,or custom
-	#make output folder
-	output_folder='blast_'+str(type)+'_'+str(args.output_folder)
-	os.mkdir(output_folder)
 	#read metadata
 	df_genome_names=pd.read_csv(str(args.metadata_file),sep='\t',usecols=['genome_name']).replace(' ','_', regex=True)
 	genome_name_list=df_genome_names['genome_name'].dropna().tolist()
@@ -210,8 +197,21 @@ def blaster(type,database_file): #type=VF,RES,or custom
 		os.system('diamond blastp --db '+str(database_file)+' --query'+' '+str(args.input_folder)+'/'+str(genome_name)+'_protein.fasta'+' '+'--out'+' '+output_folder+'/'+str(genome_name)+'_'+str(type)+'_blast_out.txt'+' '+'--outfmt 6 qseqid qlen sseqid slen qseq sseq evalue bitscore pident qcovhsp -k 1')
 		df1=pd.read_csv(str(args.input_folder)+'/'+str(genome_name)+'_annotation.txt',sep='\t',dtype=str)
 		df2=pd.read_csv(output_folder+'/'+str(genome_name)+'_'+str(type)+'_blast_out.txt',sep='\t',names=['qseqid'+'_'+str(type),'qlen'+'_'+str(type),str(type)+'_'+'ID','slen'+'_'+str(type),'qseq'+'_'+str(type),'sseq'+'_'+str(type),'evalue'+'_'+str(type),'bitscore'+'_'+str(type),'pident'+'_'+str(type),'qcovhsp'+'_'+str(type)],dtype=str)
-		df_merge=pd.merge(df1,df2,left_on='feature_id',right_on='qseqid'+'_'+str(type),how="left").to_csv(output_folder+'/'+str(genome_name)+'_annotation.txt',sep='\t',index=False)
+		df_merge=pd.merge(df1,df2,left_on='feature_id',right_on='qseqid'+'_'+str(type),how="left").to_csv(output_folder+'/'+str(genome_name)+'_annotation_'+str(type)+'.txt',sep='\t',index=False)
 		os.remove(output_folder+'/'+str(genome_name)+'_'+str(type)+'_blast_out.txt')
+
+def merge_all_annotations():
+	
+	#read metadata
+	df_genome_names=pd.read_csv(str(args.metadata_file),sep='\t',usecols=['genome_name']).replace(' ','_', regex=True)
+	genome_name_list=df_genome_names['genome_name'].dropna().tolist()
+	for genome_name in genome_name_list:
+		print 'Merging all annotation metadata for '+str(genome_name)+'...'
+		annotation_files = glob.glob(output_folder+'/'+str(genome_name)+'*'+'_annotation_'+'*'+'.txt')
+		annotation_dfs = [pd.read_csv(file,sep='\t') for file in annotation_files]
+		df_merged = reduce(lambda  left,right: pd.merge(left,right,on=['feature_id'], how='outer', suffixes=('', '_drop')), annotation_dfs)
+		df_merged.drop(list(df_merged.filter(regex='_drop$')), axis=1, inplace=True)
+		df_merged.to_csv(output_folder+'/'+str(genome_name)+'_annotation_all_merged.txt',sep='\t',index=False)
 
 if str(args.exe_make_tree)=='yes':
 	make_tree()
@@ -231,4 +231,7 @@ if str(args.exe_custom_blast)=='yes':
 	os.system('diamond makedb --in '+str(args.custom_fasta)+' -d custom_database')
 	blaster('custom','custom_database.dmnd')
 	os.remove('custom_database.dmnd')
-print '\nDONE!!'
+if str(args.exe_merge_all_annotations)=='yes':
+	merge_all_annotations()
+
+	print '\nDONE!!'
