@@ -150,7 +150,7 @@ Below is an excerpt of the dataframe associated with the hierarchically-clustere
 **core_unqiue_genes.txt**
 
 Below is an excerpt of the annotation metadata table for *E. coli* strain 20170221001 showing which genes are core or unique to this genome.  For genes that are neither core nor unique (ie shared between some but not all genomes in the group), the row is left blank.  The relationship of these genes within the genome group can be found by comparing subgroups, which is shown next.
-(Note: In the excerpt below, the columns location aliases, plfam, figfam, evidence_codes, nucleotide_sequence, and aa_sequence columns were excluded to optomize viewing.)
+(Note: In the excerpt below, some columns were excluded to optomize viewing.)
 
 |	genome_name	|	contig_id	|	feature_id	|	type	|	start	|	stop	|	strand	|	function	|	pgfam	|	core_unique_gene	|
 |	 ------	|	 ------	|	 ------	|	 ------	|	 ------	|	 ------	|	 ------	|	 ------	|	 ------	|	 ------	|
@@ -175,7 +175,7 @@ Below is an excerpt of the annotation metadata table for *E. coli* strain 201702
 **Subgroup analysis**
 
 Below is an excerpt of the annotation metadata table for *E. coli* strain 20170221001 showing which genes are unqiue to paricular subgroups.  The subgroups of interest were defined based on the metadata table (shown above).  To recap, we were interested in which genes are unique to 1) all genomes that encode *pks* gene island, 2) all genomes that were isolated from rodent hosts, and 3) the genomes from the six novel *E. coli* isolates from lab mice and a pet rat. For genes not found in these subgroups (ie could be a core, unique gene to this genome, or unique to subgroup not analyzed), the row is left blank.  From this output, we can see which genes are shared between these subgroups and not found in the other genome in the larger group.
-(Note: In the excerpt below, the columns location aliases, plfam, figfam, evidence_codes, nucleotide_sequence, and aa_sequence columns were excluded to optomize viewing.)
+(Note: In the excerpt below, some columns were excluded to optomize viewing.)
 
 |	genome_name	|	contig_id	|	feature_id	|	type	|	start	|	stop	|	strand	|	function	|	pgfam	|	subgroup_gene	|
 |	 ------	|	 ------	|	 ------	|	 ------	|	 ------	|	 ------	|	 ------	|	 ------	|	 ------	|	 ------	|
@@ -203,9 +203,9 @@ Below is an excerpt of the annotation metadata table for *E. coli* strain 201702
 
 **Median Analysis**
 
-Below is an excerpt of the annotation metadata table for *E. coli* strain 20170221001 showing how many genes are present and how they compare to the median copy number in the genome group (ie equal to, greater than, or less than the median).  Sometimes a gene may not be present in a genome while other genomes have this gene.  In these cases, the gene is *less than the median*.  Accordinlgy, the annotation metadata output will still show these genes are absent; however, since these gene are not present in the genome, there will be no addition annotation metadata in the output.  (Note: In the excerpt below, the columns location aliases, plfam, figfam, evidence_codes, nucleotide_sequence, and aa_sequence columns were excluded to optomize viewing.)
+Below is an excerpt of the annotation metadata table for *E. coli* strain 20170221001 showing how many genes are present and how they compare to the median copy number in the genome group (ie equal to, greater than, or less than the median).  Sometimes a gene may not be present in a genome while other genomes have this gene.  In these cases, the gene is *less than the median*.  Accordinlgy, the annotation metadata output will still show these genes are absent; however, since these gene are not present in the genome, there will be no addition annotation metadata in the output.  (Note: In the excerpt below, some columns were excluded to optomize viewing.)
 
-|	Escherichia_coli_strain_20170221001	|	contig_id	|	feature_id	|	type	|	start	|	stop	|	strand	|	function	|	pgfam	|	gene_count	|	median	|	gene_count-median	|	vs_median
+|	genome_name	|	contig_id	|	feature_id	|	type	|	start	|	stop	|	strand	|	function	|	pgfam	|	gene_count	|	median	|	gene_count-median	|	vs_median
 |	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----
 |	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.1	|	CDS	|	291	|	1	|	-	|	Glutamate decarboxylase (EC 4.1.1.15)	|	PGF_00008094	|	3	|	3	|	0	|	equal to median
 |	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.2	|	CDS	|	445	|	302	|	-	|	hypothetical protein	|	PGF_02969562	|	1	|	1	|	0	|	equal to median
@@ -231,7 +231,7 @@ Below is an excerpt of the annotation metadata table for *E. coli* strain 201702
 
 **DIAMOND Blast**
 
-Below is an excerpt of the annotation metadata table for *E. coli* strain 20170221001 showing the DIAMOND blast results against the virulence factor database.  In the excerpt, we see this strain encodes the *pks* genes. (Note: In the excerpt below, the columns location aliases, plfam, figfam, evidence_codes, nucleotide_sequence, aa_sequence, qseq_VF, and sseq_VF columns were excluded to optomize viewing.)
+Below is an excerpt of the annotation metadata table for *E. coli* strain 20170221001 showing the DIAMOND blast results against the virulence factor database.  In the excerpt, we see this strain encodes the *pks* genes. (Note: In the excerpt below, some columns were excluded to optomize viewing.)
 
 |	genome_name	|	contig_id	|	feature_id	|	type	|	start	|	stop	|	strand	|	function	|	pgfam	|	qseqid_VF	|	qlen_VF	|	VF_ID	|	slen_VF	|	evalue_VF	|	bitscore_VF	|	pident_VF	|	qcovhsp_VF	|
 |	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|
@@ -252,5 +252,28 @@ Below is an excerpt of the annotation metadata table for *E. coli* strain 201702
 |	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.574	|	CDS	|	579661	|	579873	|	+	|	hypothetical protein	|	PGF_01631935	|	fig|2.7989.peg.574	|	70	|	VFG043694(gi:112292719) (clbR) putative regulatory protein [colibactin (TX033)] [Escherichia coli O18:K1:H7 str. IHE3034]	|	70	|	2.90E-33	|	137.9	|	100	|	100	|
 |	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.575	|	CDS	|	579874	|	580608	|	+	|	hypothetical protein	|	PGF_00292201	|	fig|2.7989.peg.575	|	244	|	VFG049147(gb-YP 006635473.1) (clbA) colibactin biosynthesis phosphopantetheinyl transferase ClbA [Colibactin (VF0573)] [Klebsiella pneumoniae subsp. pneumoniae 1084]	|	244	|	4.10E-143	|	504.6	|	100	|	100	|
 |	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|
+
+**merged annotation metadata from above analyses**
+
+Below is an excerpt of the annotation metadata table for *E. coli* strain 20170221001 showing the DIAMOND blast results against the virulence factor database.  In the excerpt, we see this strain encodes the *pks* genes. (Note: In the excerpt below, some columns were excluded to optomize viewing.)
+
+|	genome_name	|	contig_id	|	feature_id	|	type	|	start	|	stop	|	strand	|	function	|	pgfam	|	core_unique_gene	|	gene_count	|	median	|	gene_count-median	|	vs_median	|	subgroup_gene	|	qlen_VF	|	VF_ID	|	slen_VF	|	evalue_VF	|	bitscore_VF	|	pident_VF	|	qcovhsp_VF	|
+|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.1	|	CDS	|	291	|	1	|	-	|	Glutamate decarboxylase (EC 4.1.1.15)	|	PGF_00008094	|	core	|	3	|	3	|	0	|	equal to median	|		|		|		|		|		|		|		|		|
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.2	|	CDS	|	445	|	302	|	-	|	hypothetical protein	|	PGF_02969562	|		|	1	|	1	|	0	|	equal to median	|	all_rodents	|		|		|		|		|		|		|		|
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.3	|	CDS	|	472	|	615	|	+	|	hypothetical protein	|	PGF_10512988	|	unique_Escherichia_coli_strain_20170221001	|	1	|	0	|	1	|	greater than median	|		|		|		|		|		|		|		|		|
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.4	|	CDS	|	1663	|	653	|	-	|	Probable zinc protease pqqL (EC 3.4.99.-)	|	PGF_09337443	|	core	|	1	|	1	|	0	|	equal to median	|		|		|		|		|		|		|		|		|
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.5	|	CDS	|	3078	|	1921	|	-	|	GALNS arylsulfatase regulator (Fe-S oxidoreductase)	|	PGF_00006721	|		|	1	|	1	|	0	|	equal to median	|		|		|		|		|		|		|		|		|
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.6	|	CDS	|	4812	|	3130	|	-	|	N-acetylgalactosamine 6-sulfate sulfatase (GALNS)	|	PGF_00023745	|		|	1	|	1	|	0	|	equal to median	|		|	560	|	VFG001444(gb-AAG10151) (aslA) putative arylsulfatase [AslA (VF0238)] [Escherichia coli O18:K1:H7 str. RS218]	|	475	|	6.70E-32	|	136.3	|	26.1	|	71.6	|
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.7	|	CDS	|	5975	|	5214	|	-	|	Transcriptional regulator YdeO, AraC family	|	PGF_00058697	|		|	1	|	1	|	0	|	equal to median	|		|		|		|		|		|		|		|		|
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.8	|	CDS	|	6284	|	6051	|	-	|	Two-component-system connector protein SafA	|	PGF_00063151	|		|	1	|	1	|	0	|	equal to median	|		|		|		|		|		|		|		|		|
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.9	|	CDS	|	8775	|	6496	|	-	|	Putative formate dehydrogenase oxidoreductase protein	|	PGF_06030909	|		|	1	|	1	|	0	|	equal to median	|		|		|		|		|		|		|		|		|
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.10	|	CDS	|	10028	|	9114	|	-	|	mannose-specific adhesin FimH	|	PGF_00401044	|		|	1	|	1	|	0	|	equal to median	|		|	304	|	VFG042718(gi:15801636) (Z2206) putative adhesin; FimH protein [F9 fimbriae (AI090)] [Escherichia coli O157:H7 str. EDL933]	|	304	|	5.80E-171	|	597.4	|	98	|	100	|
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.11	|	CDS	|	10591	|	10088	|	-	|	Type 1 fimbrae adaptor subunit FimG	|	PGF_00063158	|		|	1	|	1	|	0	|	equal to median	|		|	167	|	VFG033335(gi:410482685) (fimG) fimbrial-like adhesin protein [Type I fimbriae (CVF426)] [Escherichia coli O104:H4 str. 2009EL-2050]	|	167	|	6.80E-89	|	323.9	|	98.2	|	100	|
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.12	|	CDS	|	11134	|	10604	|	-	|	Uncharacterized fimbrial-like protein YdeS	|	PGF_00064710	|		|	1	|	1	|	0	|	equal to median	|		|	176	|	VFG033311(gi:387607090) (fimF) fimbrial protein [Type I fimbriae (CVF426)] [Escherichia coli O44:H18 042]	|	176	|	1.80E-95	|	345.9	|	98.9	|	100	|
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.13	|	CDS	|	13799	|	11148	|	-	|	Outer membrane usher protein FimD	|	PGF_00028437	|	core	|	3	|	3	|	0	|	equal to median	|		|	883	|	VFG033284(gi:387607091) (fimD) fimbrial outer membrane usher protein [Type I fimbriae (CVF426)] [Escherichia coli O44:H18 042]	|	883	|	0	|	1721.1	|	96.8	|	100	|
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.14	|	CDS	|	14551	|	13841	|	-	|	chaperone FimC	|	PGF_02911703	|		|	1	|	1	|	0	|	equal to median	|	all_pks	|	236	|	VFG042714(gi:15801632) (Z2201) putative fimbrial chaperone protein [F9 fimbriae (AI090)] [Escherichia coli O157:H7 str. EDL933]	|	239	|	3.90E-130	|	461.5	|	97.9	|	100	|
+|	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.15	|	CDS	|	15476	|	14913	|	-	|	Type-1 fimbrial protein, A chain	|	PGF_02911992	|	core	|	3	|	3	|	0	|	equal to median	|		|	187	|	VFG042713(gi:15801631) (Z2200) putative major fimbrial subunit [F9 fimbriae (AI090)] [Escherichia coli O157:H7 str. EDL933]	|	187	|	1.90E-95	|	345.9	|	99.5	|	100	|
+|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|
 
 
