@@ -61,8 +61,8 @@ The **genome_assembly_annotate.py** script allows the assembley and anntoation f
 
 The **genome_analysis.py** script performs six different analyses that faciliate the identicaiton comparision of genomes.
 
-
 **flags**
+
 |	Flag	|	Flag (verbose)	|	Description	|
 |	-----	|	-----	|	-----	|
 |	 -h	|	 --help            	|	Show all flags and descriptions	|
@@ -78,7 +78,7 @@ The **genome_analysis.py** script performs six different analyses that faciliate
 |	 -res_blast	|	 --res_blast	|	Perform DIAMOND blast analysis for antibiotic resistence genes? Enter "yes" or "no". Default is "yes".	|
 |	 -custom_blast	|	 --custom_blast	|	Perform DIAMOND blast analysis for custom gene database? Enter "yes" or "no". Default is "no".	|
 |	 -custom_fasta	|	 --custom_fasta	|	Provide custom gene database as multi-sequence fasta file using amino acids.	|
-
+|	 -merge_all_annotations	|	 --merge_all_annotations	|	Merge all annotation metadata files in output folder? Enter "yes" or "no". Default is "yes".	|
 
 # Example 
 
