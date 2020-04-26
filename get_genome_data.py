@@ -11,7 +11,7 @@ parser.add_argument('-m','--metadata_file',dest='metadata_file',help='Specify me
 parser.add_argument('-f', '--file_upload', dest='upload_files', default = 'yes', help='Upload read and/or contig files? Enter "yes" or "no". Default is "yes". If file with same name has already been uploaded to PATRIC, it will be overwritten by the newly uploaded file.')
 parser.add_argument('-a', '--assembly_annotate', dest='assembly_annotate', default = 'yes', help='Execute assembly and annotate pipeline? Enter "yes" or "no". Default is "yes".')
 parser.add_argument('-c', '--check_job', dest='check_job', default = 'yes', help='Check status of assembly/annotation job? Enter "yes" or "no". Default is "yes".  When job is complete, genome reports, contigs, and annotations data will be downloaded to output folder.')
-parser.add_argument('-d', '--download_data', dest='download_reports', default = 'no', help='Download genome reports, contigs, and annotations data for assembled/annotated genomes from previously completed jobs to output folder? Enter "yes" or "no". Default is "no".')
+parser.add_argument('-d', '--download_data', dest='download_reports', default = 'yes', help='Download genome reports, contigs, and annotations data for assembled/annotated genomes from previously completed jobs to output folder? Enter "yes" or "no". Default is "no".')
 parser.add_argument('-p', '--patric_download', dest='patric_dl', default = 'yes', help='Download genome reports, contigs, and annotations data from PATRIC genomes.')
 parser.add_argument('-o', '--output_folder', dest='output_folder', help='Specify output folder for downloaded data.')
 args=parser.parse_args()
@@ -32,7 +32,7 @@ if str(args.patric_dl) == 'yes':
 			os.mkdir(str(args.output_folder))
 		os.system('p3-echo -t genome_id '+str(genome_id)+' | p3-get-genome-features --in feature_type,CDS,rna --attr genome_name --attr sequence_id --attr patric_id --attr start --attr end --attr strand --attr product --attr pgfam_id --attr na_sequence --attr aa_sequence > '+str(args.output_folder)+'/'+str(genome_name)+'_annotation.txt')
 		df_genome = pd.read_csv(str(args.output_folder)+'/'+str(genome_name)+'_annotation.txt',sep='\t')
-		df_genome2=df_genome.rename(columns={'feature.genome_name': 'genome_name','feature.pgfam_id': 'pgfam','feature.patric_id':'feature_id'})
+		df_genome2=df_genome.rename(columns={'feature.genome_name': 'genome_name','feature.pgfam_id': 'pgfam','feature.patric_id':'feature_id','feature.sequence_id': 'contig_id','feature.start': 'start','feature.end': 'end','feature.strand': 'strand','feature.product': 'function','feature.na_sequence': 'nucleotide_sequence','feature.aa_sequence': 'aa_sequence'})
 		df_genome2['genome_name'].replace(' ','_', regex=True, inplace=True)
 		df_genome2.to_csv(str(args.output_folder)+'/'+str(genome_name)+'_annotation.txt',sep='\t',index=False)
 		os.system('p3-genome-fasta --contig '+str(genome_id)+' > '+str(args.output_folder)+'/'+str(genome_name)+'_contigs.fasta')
@@ -148,4 +148,3 @@ if str(args.download_reports) == 'yes':
 temp_filter_files=glob.glob('*_temp_genome_assemlby_annotation.txt')
 for temp_file in temp_filter_files:
 	os.remove(str(temp_file))
-
