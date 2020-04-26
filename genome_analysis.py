@@ -7,7 +7,6 @@ import pandas as pd
 import seaborn as sns
 from matplotlib import pyplot as plt
 
-
 parser=argparse.ArgumentParser()
 parser.add_argument('-i','--input_folder',dest='input_folder',help='Specify folder with annotation data.')
 parser.add_argument('-o','--output_folder',dest='output_folder',help='Specify name for output folder.')
