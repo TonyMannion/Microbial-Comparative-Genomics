@@ -61,29 +61,29 @@ The **genome_assembly_annotate.py** script allows the assembly and annotation fr
 
 The **genome_analysis.py** script performs six different analyses that facilitate the comparison of genomes.  [Global protein families (i.e., PGfams)]( https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4744870/) determined by PATRIC are used as the basis for determining relationships in the pan-genome. 
 
-1.	Pan-genome phylogenetic tree
+**1.	Pan-genome phylogenetic tree**
 
-Creates PHYLIP formatted matrix of binary presence and absence of PGfams in the pan-genome of the genome group.  The output file is * pan-genome-tree_out.txt * and can be used to make a phylogenetic tree in other programs such as [RAxML](https://cme.h-its.org/exelixis/web/software/raxml/index.html),  [IQ-TREE](http://www.iqtree.org/), or similar program.  Here, we will download [IQ-TREE](http://www.iqtree.org/).
+  Creates PHYLIP formatted matrix of binary presence and absence of PGfams in the pan-genome of the genome group.  The output file is * pan-genome-tree_out.txt * and can be used to make a phylogenetic tree in other programs such as [RAxML](https://cme.h-its.org/exelixis/web/software/raxml/index.html),  [IQ-TREE](http://www.iqtree.org/), or similar program.  Here, we will download [IQ-TREE](http://www.iqtree.org/).
 
-2.	Pan-genome hierarchically-clustered heatmap 
+**2.	Pan-genome hierarchically-clustered heatmap**
 
-A hierarchically-clustered heatmap (i.e., clustermap) of PGfams in the pan-genome is created using the [Seaborn clustermap function](https://seaborn.pydata.org/generated/seaborn.clustermap.html).  Cluster analysis is performed using the “Euclidean” distance metric and the “average” linkage method on both axis (i.e., genomes and PGfams).  The output is an image of the clustermap (i.e., clustermap.png), which shows the abundance of the genes per genome and their clustering relationships.  (Please note that the depiction of the dendrogram for the PGfam relationships is excluded in clustermap.png image because its dendrogram is too busy.)  The DataFrame corresponding to the clustermap is generated (i.e., gene_family_clustermap_out.txt), which can be analyzed if desired. 
+  A hierarchically-clustered heatmap (i.e., clustermap) of PGfams in the pan-genome is created using the [Seaborn clustermap function](https://seaborn.pydata.org/generated/seaborn.clustermap.html).  Cluster analysis is performed using the “Euclidean” distance metric and the “average” linkage method on both axis (i.e., genomes and PGfams).  The output is an image of the clustermap (i.e., clustermap.png), which shows the abundance of the genes per genome and their clustering relationships.  (Please note that the depiction of the dendrogram for the PGfam relationships is excluded in clustermap.png image because its dendrogram is too busy.)  The DataFrame corresponding to the clustermap is generated (i.e., gene_family_clustermap_out.txt), which can be analyzed if desired. 
 
-3.	Core and unique genes in pan-genome
+**3.	Core and unique genes in pan-genome**
 
-The core (i.e., present in all genomes) and unique (i.e., present in only a single genomes) PGfams in the pan-genome are determined and merged into the annotation metadata per genome.
+  The core (i.e., present in all genomes) and unique (i.e., present in only a single genomes) PGfams in the pan-genome are determined and merged into the annotation metadata per genome.
 
-4.	Unique genes in genome subgroups
+**4.	Unique genes in genome subgroups**
 
-PGfams unique to subgroups of genomes within the larger group are identified and merged into the annotation metadata for each genome.  The subgroups are indicated in the metadata table.  Sometimes subgroups of interest may be known *a priori* or may be realized following analysis of the pan-genome phylogenetic tree* and/or *pan-genome hierarchically-clustered heatmap* results.
+  PGfams unique to subgroups of genomes within the larger group are identified and merged into the annotation metadata for each genome.  The subgroups are indicated in the metadata table.  Sometimes subgroups of interest may be known *a priori* or may be realized following analysis of the pan-genome phylogenetic tree* and/or *pan-genome hierarchically-clustered heatmap* results.
 
-5.	Gene copies versus median gene copy number in genome group
+**5.	Gene copies versus median gene copy number in genome group**
 
-The median copy number for each PGfams in the genome group is calculated and then compared per genome.  The resulting analysis yields how many PGfams are present in a genome and if the number PGfams is equal to, greater than, or equal to the median.  Results are merged into the annotation metadata for each genome
+  The median copy number for each PGfams in the genome group is calculated and then compared per genome.  The resulting analysis yields how many PGfams are present in a genome and if the number PGfams is equal to, greater than, or equal to the median.  Results are merged into the annotation metadata for each genome
 
-6.	Diamond BLAST for virulence factors, antibiotic resistance, and other genes
+**6.	Diamond BLAST for virulence factors, antibiotic resistance, and other genes**
 
-[DIAMOND blast](http://www.diamondsearch.org/index.php) is used to determine if genes are homologous to known virulence factor or antibiotic resistance genes.  Virulence factor genes are derived from the [Virulence Factor DataBase (VFDB)](http://www.mgc.ac.cn/VFs/download.htm), and antibiotic resistance genes are derived from [Comprehensive Antibiotic Resistance Database (CARD)]( https://card.mcmaster.ca/download).  Users can also search against a custom database by providing a multiple sequence protein fasta file.  The best match hits per gene are merged into the annotation metadata for each genome.
+  [DIAMOND blast](http://www.diamondsearch.org/index.php) is used to determine if genes are homologous to known virulence factor or antibiotic resistance genes.  Virulence factor genes are derived from the [Virulence Factor DataBase (VFDB)](http://www.mgc.ac.cn/VFs/download.htm), and antibiotic resistance genes are derived from [Comprehensive Antibiotic Resistance Database (CARD)]( https://card.mcmaster.ca/download).  Users can also search against a custom database by providing a multiple sequence protein fasta file.  The best match hits per gene are merged into the annotation metadata for each genome.
 
 For each genome, the above analyses are also merged into a single annotation metadata file, thereby allowing all results to be viewed simultaneously.  
 	
