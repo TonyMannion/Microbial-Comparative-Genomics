@@ -1,31 +1,23 @@
-# Microbial-Comparative-Genomics
+# The Microbial-Comparative-Genomics Workflow
 
-# Overview
-The **Microbial-Comparative-Genomics workflow** is composed of Python scripts that integrate with the [Pathosystems Resource Integration Center (PATRIC)](https://www.patricbrc.org/) to perform bacterial genome assembly and gene annotation from raw sequencing reads or pre-assembled contigs followed by comparative analyses to understand the similarities and differences within a group of bacterial genomes.
+The **Microbial-Comparative-Genomics Workflow** is composed of two Python scripts: **get_genome_data.py** and **genome_analysis.py**.  
 
-The **Microbial-Comparative-Genomics workflow** allows users to process multiple genomes simultaneously as well as access genomes curated in the extensive [PATRIC](https://www.patricbrc.org/) database.  Thus, this workflow promotes high-throughput processing and comparative analyses.
-
-The following **dependencies** are required by the **Microbial-Comparative-Genomics workflow**: 
-
--	[Python 2.7](https://www.python.org/)
--	[PATRIC account]( https://www.patricbrc.org/)
--	[PATRIC Command Line Interface](https://docs.patricbrc.org/cli_tutorial/)
--	[Numpy](https://numpy.org/) 
--	[Pandas](https://pandas.pydata.org/) 
--	[Matplotlib]( https://matplotlib.org/index.html)
--	[Seaborn](https://seaborn.pydata.org/) 
--	[DIAMOND BLAST](http://www.diamondsearch.org/index.php)
-
-
-**Overview of the _Microbial-Comparative-Genomics workflow_**
-
-The **Microbial-Comparative-Genomics workflow** is composed of two Python scripts: **get_genome_data.py** and **genome_analysis.py**.  
-
--	The **get_genome_data.py** script allows users to perform genome assembly and gene annotation from raw sequencing reads or pre-assembled contigs.  Also, **get_genome_data.py** allows users to download bacterial genomes publically available in [PATRIC](https://www.patricbrc.org/) database.  The **get_genome_data.py** script enables multiple genomes to be process and/or download from [PATRIC](https://www.patricbrc.org/) simultaneously.     
+-	The **get_genome_data.py** script integrates with the [Pathosystems Resource Integration Center (PATRIC)](https://www.patricbrc.org/) to allows users to perform genome assembly and gene annotation from raw sequencing reads or pre-assembled contigs.  Also, **get_genome_data.py** allows users to download bacterial genomes publically available in [PATRIC](https://www.patricbrc.org/) database.  The **get_genome_data.py** script enables multiple genomes to be process and/or download from [PATRIC](https://www.patricbrc.org/) simultaneously, thereby promoting high-throughput acquisition of genomic data for downstream comparative analyses.     
 
 -	The **genome_analysis.py** script allows users to perform several comparative analyses on a group of genomes acquired using **get_genome_data.py**.  The analyses performed by **genome_analysis.py** are aimed to address how similar or different individual or subgroups of genomes are compared to the larger group.  Importantly, **genome_analysis.py** determines phylogenetic relationship based on the pan-genome and identifies which genes are conserved or unique genes within a genome group.  The **genome_analysis.py** script also integrates [DIAMOND BLAST](http://www.diamondsearch.org/index.php) to enable the detection of genes of interest, such as virulence factor or antibiotic resistance genes, to promote investigation into the functional significance of genes.
 
 ![](https://github.com/TonyMannion/Microbial-Comparative-Genomics/blob/master/images/overview.PNG)
+
+The following **dependencies** are required by the **Microbial-Comparative-Genomics Workflow**: 
+
+-	[Python 2.7](https://www.python.org/)
+-	[PATRIC account]( https://www.patricbrc.org/) 
+-	[PATRIC Command Line Interface](https://docs.patricbrc.org/cli_tutorial/) 
+-	[Numpy](https://numpy.org/)  
+-	[Pandas](https://pandas.pydata.org/)  
+-	[Matplotlib]( https://matplotlib.org/index.html) 
+-	[Seaborn](https://seaborn.pydata.org/) 
+-	[DIAMOND BLAST](http://www.diamondsearch.org/index.php)
 
 # *get_genome_data.py*
 
@@ -33,21 +25,17 @@ The **Microbial-Comparative-Genomics workflow** is composed of two Python script
 
 ![](https://github.com/TonyMannion/Microbial-Comparative-Genomics/blob/master/images/get_genome_data_1.PNG)
 
-The **genome_assembly_annotate.py** script allows the assembly and annotation from raw sequencing reads and/or pre-assembled contigs of multiple genomes simultaneously.
+The **genome_assembly_annotate.py** script allows users to process novel bacterial genomes and efficiently compile a group of genomes for their downstream comparative analyses by:
+1.	performing the assembly and annotation of multiple bacterial genomes from raw sequencing reads and/or pre-assembled contigs 
+and 
+2.	downloading genomic data publically available in the [PATRIC](https://www.patricbrc.org/) database. 
 
-These scripts take advantage of the curated database of publicly accessible bacterial genomes and services hosted by [Pathosystems Resource Integration Center (PATRIC)](https://www.patricbrc.org/).  Users of these scripts will require a [PATRIC](https://www.patricbrc.org/) account and must use the [PATRIC Command Line Interface](https://docs.patricbrc.org/cli_tutorial/).
+The **genome_assembly_annotate.py** script uses the [Comprehensive Genome Analysis Service] (https://docs.patricbrc.org/user_guides/services/comprehensive_genome_analysis_service.html) hosted by [PATRIC](https://www.patricbrc.org/) in order to automate the assembly and annotation workflow, thereby increasing throughput when numerous genomes must be processed.  The **get_genome_data.py** accepts pair-end reads (fastq) or pre-assembled contigs (fasta), which provides flexibility for the user.  The output of **get_genome_data.py** is a full-genome report summarizing the genome assembly and annotation characteristics, assembled genome sequences (contigs fasta files), gene annotation sequences (DNA and protein fasta files), and annotation metadata.
 
-Often, researchers require assembly and annotation of more than one genome for their projects.
-There are many steps involved from processing raw reads of adaptor sequences or low quality base pairs, assembling reads into contigs, and finally gene annotation.
-Thus, processing each genome one-by-one can be cumbersome, time consuming, and error prone.
-The **get_genome_data.py** script overcomes these challenges employing the [Comprehensive Genome Analysis Service](https://docs.patricbrc.org/user_guides/services/comprehensive_genome_analysis_service.html) hosted by [PATRIC](https://www.patricbrc.org/) in order to automate the assembly and annotation workflow, thereby increasing throughput when numerous genomes must be processed.
-Additionally, the **get_genome_data.py** accepts pair-end reads (fastq) or pre-assembled contigs (fasta), which provides flexibility.
-Pair-end reads (fastq) or pre-assembled contigs (fasta) data for numerous genomes can be piped into **get_genome_data.py** by including the appropriate metadata.
-The output of **get_genome_data.py** is a full-genome report summarizing the genome assembly and annotation characteristics, assembled genome sequences (contigs fasta files), gene annotation sequences (DNA and protein fasta files), and annotation metadata.
+To compliment datasets, **get_genome_data.py** allows user to access and download additional genomic data from the [PATRIC](https://www.patricbrc.org/) database, such as reference genomes.  The **get_genome_data.py** allows researchers to easily acquire assembled genome sequences (contigs fasta files), gene annotation sequences (DNA and protein fasta files), and annotation metadata from numerous genomes quickly by providing the PATRIC genome ids in the metadata table.
 
-Furthermore, the **get_genome_data.py** script provided in this library allows researchers to access and download bacterial genomes maintained in the PATRIC database.  Specifically, **get_genome_data.py** allows researchers to acquire assembled genome sequences (contigs fasta files), gene annotation sequences (DNA and protein fasta files), and annotation metadata from numerous genomes quickly.
+Below are the flags available for **get_genome_data.py**.
 
-**flags**
 |	Flag	|	Flag (verbose)	|	Description	|
 |	-----	|	-----	|	-----	|
 |	 -h	|	 --help            	|	Show all flags and descriptions	|
@@ -59,17 +47,6 @@ Furthermore, the **get_genome_data.py** script provided in this library allows r
 |	 -d	|	 --download_data	|	Download genome reports, contigs, and annotations data for assembled/annotated genomes from previously completed jobs to output folder? Enter "yes" or "no". Default is "no".	|
 |	 -p	|	 --patric_download	|	Download genome reports, contigs, and annotations data from PATRIC genomes.	|
 |	 -o	|	 --output_folder	|	Specify output folder for downloaded data.	|
-
-## Output
-**FullGenomeReport.html** - Summarizes genome assembly and gene annotation results.  See below for excerpt data from FullGenomeReport.html output of *Escherichia coli* str. K-12 substr. MG1655 (genome id: 511145.12) pre-assembled contigs annotated using this script.
-
-**Summary of genome assembly and annotation results from FullGenomeReport.html for *E. coli* K12.**
-
-![](https://github.com/TonyMannion/Microbial-Comparative-Genomics/blob/master/images/FullGenomeReport_K12_assembly_annotation.png)
-
-**Circular chromosome showing gene annotations and subsystems from FullGenomeReport.html for *E. coli* K12.**
-
-![](https://github.com/TonyMannion/Microbial-Comparative-Genomics/blob/master/images/FullGenomeReport_K12_chromosome_and_subsystems.png)
 
 # *genome_analysis.py*
 
