@@ -2,8 +2,8 @@
 
 ## Overview
 These are series of Python 2.7 scripts aimed to facilitate and improve the comparative analysis of bacterial genomes.
-These scripts enable genome assembly and gene annotation from raw sequencing reads followed by comparative analyses to understand the similarities and difference between a group of bacterial genomes of interest.
-These scripts take advantage of the curated database of publicly accessible bacterial genomes and services hosted by [Pathosystems Resource Integration Center (PATRIC)](https://www.patricbrc.org/). Users of these scripts will require a [PATRIC](https://www.patricbrc.org/) account and must use the [PATRIC Command Line Interface](https://docs.patricbrc.org/cli_tutorial/).
+These scripts enable genome assembly and gene annotation from raw sequencing reads followed by comparative analyses to understand the similarities and difference within a group of bacterial genomes of interest.
+These scripts take advantage of the curated database of publicly accessible bacterial genomes and services hosted by [Pathosystems Resource Integration Center (PATRIC)](https://www.patricbrc.org/).  Users of these scripts will require a [PATRIC](https://www.patricbrc.org/) account and must use the [PATRIC Command Line Interface](https://docs.patricbrc.org/cli_tutorial/).
 
 Often, researchers require assembly and annotation of more than one genome for their projects.
 There are many steps involved from processing raw reads of adaptor sequences or low quality base pairs, assembling reads into contigs, and finally gene annotation.
@@ -11,12 +11,12 @@ Thus, processing each genome one-by-one can be cumbersome, time consuming, and e
 The **get_genome_data.py** script overcomes these challenges employing the [Comprehensive Genome Analysis Service](https://docs.patricbrc.org/user_guides/services/comprehensive_genome_analysis_service.html) hosted by [PATRIC](https://www.patricbrc.org/) in order to automate the assembly and annotation workflow, thereby increasing throughput when numerous genomes must be processed.
 Additionally, the **get_genome_data.py** accepts pair-end reads (fastq) or pre-assembled contigs (fasta), which provides flexibility.
 Pair-end reads (fastq) or pre-assembled contigs (fasta) data for numerous genomes can be piped into **get_genome_data.py** by including the appropriate metadata.
-The output of **get_genome_data.py** is a full-genome report summarizing the genome assemlby and annotation characteristics, assemlbed genome sequences (contigs fasta files), gene annotation sequences (DNA and protein fasta files), and annotation metadata.
+The output of **get_genome_data.py** is a full-genome report summarizing the genome assembly and annotation characteristics, assembled genome sequences (contigs fasta files), gene annotation sequences (DNA and protein fasta files), and annotation metadata.
 
-Furthermore, the **get_genome_data.py** script provided in this library allows researchers to access and download bacterial genomes maintained in the PATRIC database.  Specifically, **get_genome_data.py** allows reserachers to acquire assemlbed genome sequences (contigs fasta files), gene annotation sequences (DNA and protein fasta files), and annotation metadata from numerous genomes quickly.
+Furthermore, the **get_genome_data.py** script provided in this library allows researchers to access and download bacterial genomes maintained in the PATRIC database.  Specifically, **get_genome_data.py** allows researchers to acquire assembled genome sequences (contigs fasta files), gene annotation sequences (DNA and protein fasta files), and annotation metadata from numerous genomes quickly.
 
-Comparative genomics involves the identification of genetic factors, namely genes, that are shared or differ between bacteria genra, species, and/or strains.
-The **genome_analysis.py** script facilitates the identification of genes and gene families that differentiate bacterial genomes.  This script execute six analysis workflows, which are summarized below.
+Comparative genomics involves the identification of genetic factors, namely genes, which are shared or differ between bacteria genera, species, and/or strains.
+The **genome_analysis.py** script facilitates the identification of genes and gene families that differentiate bacterial genomes.  This script executes six analysis workflows, which are summarized below.
 
 **Overview of Workflow**
 
@@ -28,7 +28,7 @@ The **genome_analysis.py** script facilitates the identification of genes and ge
 
 ![](https://github.com/TonyMannion/Microbial-Comparative-Genomics/blob/master/images/get_genome_data_1.PNG)
 
-The **genome_assembly_annotate.py** script allows the assembley and anntoation from raw sequenicng reads and/or pre-assembled contigs of multiple genomes simultanesouly.
+The **genome_assembly_annotate.py** script allows the assembly and annotation from raw sequencing reads and/or pre-assembled contigs of multiple genomes simultaneously.
 
 **flags**
 |	Flag	|	Flag (verbose)	|	Description	|
@@ -59,8 +59,34 @@ The **genome_assembly_annotate.py** script allows the assembley and anntoation f
 **Workflow of *genome_analysis.py***
 ![](https://github.com/TonyMannion/Microbial-Comparative-Genomics/blob/master/images/genome_analysis_1.png)
 
-The **genome_analysis.py** script performs six different analyses that facilitate the identicaiton comparision of genomes.
+The **genome_analysis.py** script performs six different analyses that facilitate the comparison of genomes.  [Global protein families (i.e., PGfams)]( https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4744870/) determined by PATRIC are used as the basis for determining relationships in the pan-genome. 
 
+1.	Pan-genome phylogenetic tree
+
+Creates PHYLIP formatted matrix of binary presence and absence of PGfams in the pan-genome of the genome group.  The output file is * pan-genome-tree_out.txt * and can be used to make a phylogenetic tree in other programs such as [RAxML](https://cme.h-its.org/exelixis/web/software/raxml/index.html),  [IQ-TREE](http://www.iqtree.org/), or similar program.  Here, we will download [IQ-TREE](http://www.iqtree.org/).
+
+2.	Pan-genome hierarchically-clustered heatmap 
+
+A hierarchically-clustered heatmap (i.e., clustermap) of PGfams in the pan-genome is created using the [Seaborn clustermap function](https://seaborn.pydata.org/generated/seaborn.clustermap.html).  Cluster analysis is performed using the “Euclidean” distance metric and the “average” linkage method on both axis (i.e., genomes and PGfams).  The output is an image of the clustermap (i.e., clustermap.png), which shows the abundance of the genes per genome and their clustering relationships.  (Please note that the depiction of the dendrogram for the PGfam relationships is excluded in clustermap.png image because its dendrogram is too busy.)  The DataFrame corresponding to the clustermap is generated (i.e., gene_family_clustermap_out.txt), which can be analyzed if desired. 
+
+3.	Core and unique genes in pan-genome
+
+The core (i.e., present in all genomes) and unique (i.e., present in only a single genomes) PGfams in the pan-genome are determined and merged into the annotation metadata per genome.
+
+4.	Unique genes in genome subgroups
+
+PGfams unique to subgroups of genomes within the larger group are identified and merged into the annotation metadata for each genome.  The subgroups are indicated in the metadata table.  Sometimes subgroups of interest may be known *a priori* or may be realized following analysis of the pan-genome phylogenetic tree* and/or *pan-genome hierarchically-clustered heatmap* results.
+
+5.	Gene copies versus median gene copy number in genome group
+
+The median copy number for each PGfams in the genome group is calculated and then compared per genome.  The resulting analysis yields how many PGfams are present in a genome and if the number PGfams is equal to, greater than, or equal to the median.  Results are merged into the annotation metadata for each genome
+
+6.	Diamond BLAST for virulence factors, antibiotic resistance, and other genes
+
+[DIAMOND blast](http://www.diamondsearch.org/index.php) is used to determine if genes are homologous to known virulence factor or antibiotic resistance genes.  Virulence factor genes are derived from the [Virulence Factor DataBase (VFDB)](http://www.mgc.ac.cn/VFs/download.htm), and antibiotic resistance genes are derived from [Comprehensive Antibiotic Resistance Database (CARD)]( https://card.mcmaster.ca/download).  Users can also search against a custom database by providing a multiple sequence protein fasta file.  The best match hits per gene are merged into the annotation metadata for each genome.
+
+For each genome, the above analyses are also merged into a single annotation metadata file, thereby allowing all results to be viewed simultaneously.  
+	
 **flags**
 
 |	Flag	|	Flag (verbose)	|	Description	|
@@ -140,7 +166,7 @@ The output of IQ-TREE, pan-genome-tree_out.txt.tree file, is loaded into [FigTre
 ![](https://github.com/TonyMannion/Microbial-Comparative-Genomics/blob/master/images/clustermap.png)
 
 **gene_family_clustermap_out.txt**
-Below is an excerpt of the dataframe associated with the hierarchically-clustered heatmap (ie clustermap) shown above. (Note: Only the first 10 rows are shown in the exceprt.)
+Below is an excerpt of the dataframe associated with the hierarchically-clustered heatmap (ie clustermap) shown above. (Note: Only the first 10 rows are shown in the excerpt.)
 
 |	pgfam	|	Escherichia_coli_str._K-12_substr._MG1655	|	Escherichia_coli_strain_1408270010	|	Escherichia_coli_strain_1409150006	|	Escherichia_coli_strain_1512290008	|	Escherichia_coli_strain_1409160003	|	Escherichia_coli_strain_20170221001	|	Escherichia_coli_NC101	|	Escherichia_coli_strain_1512290026	|	Escherichia_coli_IHE3034	|	Escherichia_coli_UTI89	|
 |	-----	|	-----	|	-----	|	-----	|	-----	|	-----	|	-----	|	-----	|	-----	|	-----	|	-----	|
@@ -158,7 +184,7 @@ Below is an excerpt of the dataframe associated with the hierarchically-clustere
 
 **Annotation metadata with gene analysis**
 
-After each individual comparative analysis step is performed, the results are added to the annotation metadata table for each genome.  To facilitate analyzing this data, the results from previous analyses are also merged into a single file, per genome.  This makes it easy to examine the datasets and answer the questions we posed above.  Below is an excerpt of the merged annotation metadata table for *E. coli* strain 20170221001.(Note: In the excerpt below, some columns were excluded to optomize viewing.)
+After each individual comparative analysis step is performed, the results are added to the annotation metadata table for each genome.  To facilitate analyzing this data, the results from previous analyses are also merged into a single file, per genome.  This makes it easy to examine the datasets and answer the questions we posed above.  Below is an excerpt of the merged annotation metadata table for *E. coli* strain 20170221001.  (Note: In the excerpt below, some columns were excluded to optimize viewing.)
 
 |	genome_name	|	contig_id	|	feature_id	|	type	|	start	|	stop	|	strand	|	function	|	pgfam	|	core_unique_gene	|	gene_count	|	median	|	gene_count-median	|	vs_median	|	subgroup_gene	|	qlen_VF	|	VF_ID	|	slen_VF	|	evalue_VF	|	bitscore_VF	|	pident_VF	|	qcovhsp_VF	|
 |	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|
