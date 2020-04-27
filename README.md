@@ -159,7 +159,7 @@ The following command can be used in the [PATRIC Command Line Interface](https:/
 
 The following command can be used in the [PATRIC Command Line Interface](https://docs.patricbrc.org/cli_tutorial/) to download data for jobs that are completed without checking job status:
 
-`python get_genome_data.py –u user@email.org –m metadata_table.txt –o Example_data` -f no –a no –c no –d yes –p no`
+`python get_genome_data.py –u user@email.org –m metadata_table.txt –o Example_data -f no –a no –c no –d yes –p no`
 
 The genomes processed for the assembly/annotation each have five output files:
 1.	Full genome report (FullGenomeReport.html), which summarizes genome assembly and gene annotation results
