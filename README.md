@@ -1,8 +1,40 @@
 # Microbial-Comparative-Genomics
 
 ## Overview
-These are series of Python 2.7 scripts aimed to facilitate and improve the comparative analysis of bacterial genomes.
-These scripts enable genome assembly and gene annotation from raw sequencing reads followed by comparative analyses to understand the similarities and difference within a group of bacterial genomes of interest.
+The **Microbial-Comparative-Genomics workflow** is composed of Python scripts that integrate with the [Pathosystems Resource Integration Center (PATRIC)](https://www.patricbrc.org/) to perform bacterial genome assembly and gene annotation from raw sequencing reads or pre-assembled contigs followed by comparative analyses to understand the similarities and differences within a group of bacterial genomes.
+
+The **Microbial-Comparative-Genomics workflow** allows users to process multiple genomes simultaneously as well as access genomes curated in the extensive [PATRIC](https://www.patricbrc.org/) database.  Thus, this workflow promotes high-throughput processing and comparative analyses.
+
+The following **dependencies** are required by the **Microbial-Comparative-Genomics workflow**: 
+
+-	[Python 2.7](https://www.python.org/)
+-	[PATRIC account]( https://www.patricbrc.org/)
+-	Install [PATRIC Command Line Interface](https://docs.patricbrc.org/cli_tutorial/)
+-	[Numpy](https://numpy.org/) 
+-	[Pandas](https://pandas.pydata.org/) 
+-	[Matplotlib]( https://matplotlib.org/index.html)
+-	[Seaborn](https://seaborn.pydata.org/) 
+-	[DIAMOND BLAST](http://www.diamondsearch.org/index.php)
+
+
+**Overview of the _Microbial-Comparative-Genomics workflow_**
+
+The **Microbial-Comparative-Genomics workflow** is composed of two Python scripts: **get_genome_data.py** and **genome_analysis.py**.  
+
+-	The **get_genome_data.py** script allows users to perform genome assembly and gene annotation from raw sequencing reads or pre-assembled contigs.  Also, **get_genome_data.py** allows users to download bacterial genomes publically available in [PATRIC](https://www.patricbrc.org/) database.  The **get_genome_data.py** script enables multiple genomes to be process and/or download from [PATRIC](https://www.patricbrc.org/) simultaneously.     
+
+-	The **genome_analysis.py** script allows users to perform several comparative analyses on a group of genomes acquired using **get_genome_data.py**.  The analyses performed by **genome_analysis.py** are aimed to address how similar or different individual or subgroups of genomes are compared to the larger group.  Importantly, **genome_analysis.py** determines phylogenetic relationship based on the pan-genome and identifies which genes are conserved or unique genes within a genome group.  The **genome_analysis.py** script also integrates [DIAMOND BLAST](http://www.diamondsearch.org/index.php) to enable the detection of genes of interest, such as virulence factor or antibiotic resistance genes, to promote investigation into the functional significance of genes.
+
+![](https://github.com/TonyMannion/Microbial-Comparative-Genomics/blob/master/images/overview.PNG)
+
+## *get_genome_data.py*
+
+**Workflow of *get_genome_data.py***
+
+![](https://github.com/TonyMannion/Microbial-Comparative-Genomics/blob/master/images/get_genome_data_1.PNG)
+
+The **genome_assembly_annotate.py** script allows the assembly and annotation from raw sequencing reads and/or pre-assembled contigs of multiple genomes simultaneously.
+
 These scripts take advantage of the curated database of publicly accessible bacterial genomes and services hosted by [Pathosystems Resource Integration Center (PATRIC)](https://www.patricbrc.org/).  Users of these scripts will require a [PATRIC](https://www.patricbrc.org/) account and must use the [PATRIC Command Line Interface](https://docs.patricbrc.org/cli_tutorial/).
 
 Often, researchers require assembly and annotation of more than one genome for their projects.
@@ -14,21 +46,6 @@ Pair-end reads (fastq) or pre-assembled contigs (fasta) data for numerous genome
 The output of **get_genome_data.py** is a full-genome report summarizing the genome assembly and annotation characteristics, assembled genome sequences (contigs fasta files), gene annotation sequences (DNA and protein fasta files), and annotation metadata.
 
 Furthermore, the **get_genome_data.py** script provided in this library allows researchers to access and download bacterial genomes maintained in the PATRIC database.  Specifically, **get_genome_data.py** allows researchers to acquire assembled genome sequences (contigs fasta files), gene annotation sequences (DNA and protein fasta files), and annotation metadata from numerous genomes quickly.
-
-Comparative genomics involves the identification of genetic factors, namely genes, which are shared or differ between bacteria genera, species, and/or strains.
-The **genome_analysis.py** script facilitates the identification of genes and gene families that differentiate bacterial genomes.  This script executes six analysis workflows, which are summarized below.
-
-**Overview of Workflow**
-
-![](https://github.com/TonyMannion/Microbial-Comparative-Genomics/blob/master/images/overview.PNG)
-
-## *get_genome_data.py*
-
-**Workflow of *get_genome_data.py***
-
-![](https://github.com/TonyMannion/Microbial-Comparative-Genomics/blob/master/images/get_genome_data_1.PNG)
-
-The **genome_assembly_annotate.py** script allows the assembly and annotation from raw sequencing reads and/or pre-assembled contigs of multiple genomes simultaneously.
 
 **flags**
 |	Flag	|	Flag (verbose)	|	Description	|
@@ -58,6 +75,8 @@ The **genome_assembly_annotate.py** script allows the assembly and annotation fr
 
 **Workflow of *genome_analysis.py***
 ![](https://github.com/TonyMannion/Microbial-Comparative-Genomics/blob/master/images/genome_analysis_1.png)
+
+Comparative genomics involves the identification of genetic factors, namely genes, which are shared or differ between bacteria genera, species, and/or strains.
 
 The **genome_analysis.py** script performs six different analyses that facilitate the comparison of genomes.  [Global protein families (i.e., PGfams)]( https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4744870/) determined by PATRIC are used as the basis for determining relationships in the pan-genome. 
 
