@@ -64,7 +64,7 @@ Below is summary of the analyses performed by **genome_analysis.py**.
 
 **2.	Pan-genome hierarchically-clustered heatmap**
 
-  A hierarchically-clustered heatmap (i.e., clustermap) of PGfams in the pan-genome is created using the [Seaborn clustermap function](https://seaborn.pydata.org/generated/seaborn.clustermap.html).  Cluster analysis is performed using the “Euclidean” distance metric and the “average” linkage method on both axis (i.e., genomes and PGfams).  The output is an image of the clustermap (i.e., clustermap.png), which shows the abundance of the genes per genome and their clustering relationships.  (Please note that the depiction of the dendrogram for the PGfam relationships is excluded in clustermap.png image because its dendrogram is too busy.)  The DataFrame corresponding to the clustermap is generated (i.e., gene_family_clustermap_out.txt), which can be analyzed if desired. 
+  A hierarchically-clustered heatmap (i.e., clustermap) of PGfams in the pan-genome is created using the [Seaborn clustermap function](https://seaborn.pydata.org/generated/seaborn.clustermap.html).  Cluster analysis is performed using the “Euclidean” distance metric and the “average” linkage method on both axis (i.e., genomes and PGfams).  The output is an image of the clustermap (i.e., clustermap.png), which shows the abundance of the genes per genome and their clustering relationships.  (Please note that the depiction of the dendrogram for the PGfam relationships is excluded in clustermap.png image because its dendrogram is too busy.)  The DataFrame corresponding to the clustermap is generated (i.e., PGfam_clustermap_dataframe.txt), which can be analyzed if desired. 
 
 **3.	Core and unique genes in pan-genome**
 
@@ -107,7 +107,7 @@ Below are the flags available for **genome_analysis.py**.
 
 In this section, an example using **The Microbial-Comparative-Genomics Workflow** is described.  All input data and output results are available in the repository [here](https://github.com/TonyMannion/Microbial-Comparative-Genomics/tree/master/Example_data).
 
-*E. coli* commensal intestinal bacterial found in many species including humans and other mammalian species.  Some *E. coli* strains encode virulence factor genes that allow make them pathogenic.  One virulence factor gene expressed by some *E. coli* strains is colibactin, a genotoxin produced by *pks* gene island, and these strains are associated with UTI, meningitis, and colon cancer in humans and animal models.  In this example, the *get_genome_data.py* and *genome_analysis.py* scripts are used to compare genomes of human and rodent *E. coli* strains that do and do not encode the *pks* gene island.
+*E. coli* commensal intestinal bacterial found in many species including humans and other mammalian species.  Some *E. coli* strains encode virulence factor genes that allow make them pathogenic.  One virulence factor gene expressed by some *E. coli* strains is colibactin, a genotoxin produced by *pks* gene island, and these strains are associated with UTI, meningitis, and colon cancer in humans and animal models.  In this example, the **get_genome_data.py** and **genome_analysis.py** scripts are used to compare genomes of human and rodent *E. coli* strains that do and do not encode the *pks* gene island.
 
 More specifically, we would like to know:
 
@@ -117,9 +117,9 @@ More specifically, we would like to know:
 -	What genes are found only in novel genomes of *E. coli* strains isolated from the rodent?
 -	What genes are unique to novel genome of *E. coli* strains isolated from a rat compared to mice?
 
-Here, *get_genome_data.py* will be used to assembly and annotate six user genomes.  Pre-assembled contigs from five *E. coli* strains isolated from lab mice ([Mannion A. et al. *Genome Announc.* 2016.](https://mra.asm.org/content/4/5/e01082-16)) and Illumina MiSeq 2x250 bp reads from one *E. coli* strain isolated from pet rat ([Fabian NJ. et al. *Vet Microbiol.* 2020.]( https://www.sciencedirect.com/science/article/pii/S0378113519303669?via%3Dihub)).  The sequencing reads (fastq files) and pre-assembled contigs (fasta files) along with their corresponding genome names are recorded in the metadata table shown below.  All of these isolates, except one, were experimentally shown to encode the *pks* gene island.
+Here, **get_genome_data.py** will be used to assembly and annotate six user genomes.  Pre-assembled contigs from five *E. coli* strains isolated from lab mice ([Mannion A. et al. *Genome Announc.* 2016.](https://mra.asm.org/content/4/5/e01082-16)) and Illumina MiSeq 2x250 bp reads from one *E. coli* strain isolated from pet rat ([Fabian NJ. et al. *Vet Microbiol.* 2020.]( https://www.sciencedirect.com/science/article/pii/S0378113519303669?via%3Dihub)).  The sequencing reads (fastq files) and pre-assembled contigs (fasta files) along with their corresponding genome names are recorded in the metadata table shown below.  All of these isolates, except one, were experimentally shown to encode the *pks* gene island.
 
-To complement our genome group, data from four reference *E. coli* genomes will be acquired from PATRIC using *get_genome_data.py*.  These genomes will include: 
+To complement our genome group, data from four reference *E. coli* genomes will be acquired from PATRIC using **get_genome_data.py**.  These genomes will include: 
 - *E. coli* K12: non-pathogenic lab strain
 - *E. coli* NC101: *pks*+ strain isolated from mouse and associated with colon cancer
 - *E. coli* IHE3034: *pks*+ strain from human meningitis
@@ -129,7 +129,7 @@ To complement our genome group, data from four reference *E. coli* genomes will 
 
 ![](https://github.com/TonyMannion/Microbial-Comparative-Genomics/blob/master/images/get_genome_data_2.png)
 
-Since we are curious about the similarities and differences between human versus rodent *E. coli* strains as well as genomes that do and do not encode the *pks* gene island, we use *genome_analysis.py* to identify genes that are unique to these subgroups compared to the larger genome group.  The subgroups of interested are 1) all rodent genomes, 2) the novel rodent genomes, and 3) all *pks*+ genomes. These subgroups are recorded in the metadata table shown below.  
+Since we are curious about the similarities and differences between human versus rodent *E. coli* strains as well as genomes that do and do not encode the *pks* gene island, we use **genome_analysis.py** to identify genes that are unique to these subgroups compared to the larger genome group.  The subgroups of interested are 1) all rodent genomes, 2) the novel rodent genomes, and 3) all *pks*+ genomes. These subgroups are recorded in the metadata table shown below.  
 
 **metadata_table.txt file**
 |	genome_name	|	genome_ids_patric	|	genome_name_patric	|	contigs	|	genome_name_contigs	|	R1	|	R2	|	genome_name_reads	|	subgroup	|	include_all_rodents	|	exclude_all_rodents	|	include_novel_rodents	|	exclude_novel_rodents	|	include_all_pks	|	exclude_all_pks	|
@@ -145,7 +145,7 @@ Since we are curious about the similarities and differences between human versus
 |	Escherichia coli strain 1512290026	|		|		|	Escherichia_coli_strain_1512290026_contigs.fasta	|	Escherichia coli strain 1512290026	|		|		|		|		|	Escherichia coli strain 1512290026	|		|	Escherichia coli strain 1512290026	|		|	Escherichia coli strain 1512290026	|		|
 |	Escherichia coli strain 20170221001	|		|		|		|		|	20170221001_R1.fastq	|	20170221001_R2.fastq	|	Escherichia coli strain 20170221001	|		|	Escherichia coli strain 20170221001	|		|	Escherichia coli strain 20170221001	|		|	Escherichia coli strain 20170221001	|		|
 
-First, we acquire our genome data by ** get_genome_data.py** to assemble/annotate our rodent genomes and download our reference genomes from PATRIC.  To do so, the following command is used in the [PATRIC Command Line Interface](https://docs.patricbrc.org/cli_tutorial/):
+First, we acquire our genome data by **get_genome_data.py** to assemble/annotate our rodent genomes and download our reference genomes from PATRIC.  To do so, the following command is used in the [PATRIC Command Line Interface](https://docs.patricbrc.org/cli_tutorial/):
 
 `python get_genome_data.py –u user@email.org –m metadata_table.txt –o Example_data`
 
@@ -178,14 +178,14 @@ Now that have the data for all our genomes of interest, we will use **genome_ana
 
  `python genome_analysis.py –i Example_data –o Example_analysis –m metadata_table.txt`
 
-The output for each analysis in ** genome_analysis.py** are the following:
-1.	Pan-genome phylogenetic tree: pan-genome-tree_out.txt to generate phylogenetic tree
-2.	Pan-genome hierarchically-clustered heatmap: image of clustermap (clustermap.png file) and DataFrame corresponding to the clustermap (gene_family_clustermap_out.txt)
-3.	Core and unique genes in pan-genome: for each genome, annotation metadata with new column showing which genes are core or unique genes
-4.	Unique genes in genome subgroups: for each genome, annotation metadata with new column showing which genes are found only in the subgroups specified by the metadata
-5.	Gene copies versus median gene copy number in genome group: for each genome, annotation metadata with new columns showing how many gene copies are present, the median copy number in all genomes, and if the number genes is equal to, greater than, or equal to the median 
-6.	DIAMOND BLAST: for each genome, annotation metadata with new columns showing which genes are have hits in the virulence factor and antibiotic resistance databases
-7.	Merged annotation meta: for each genome, all of  the above analyses are merged into a single annotation metadata file
+The output for each analysis in **genome_analysis.py** are the following:
+1.	**Pan-genome phylogenetic tree**: pan-genome-tree_out.txt to generate phylogenetic tree
+2.	**Pan-genome hierarchically-clustered heatmap**: image of clustermap (clustermap.png file) and DataFrame corresponding to the clustermap (PGfam_clustermap_dataframe.txt)
+3.	**Core and unique genes in pan-genome**: for each genome, annotation metadata with new column showing which genes are core or unique genes
+4.	**Unique genes in genome subgroups**: for each genome, annotation metadata with new column showing which genes are found only in the subgroups specified by the metadata
+5.	**Gene copies versus median gene copy number in genome group**: for each genome, annotation metadata with new columns showing how many gene copies are present, the median copy number in all genomes, and if the number genes is equal to, greater than, or equal to the median 
+6.	**DIAMOND BLAST**: for each genome, annotation metadata with new columns showing which genes are have hits in the virulence factor and antibiotic resistance databases
+7.	**Merged annotation metadata**: for each genome, all of  the above analyses are merged into a single annotation metadata file
 
 We can use the output from the pan-genome phylogenetic tree (i.e., pan-genome-tree_out.txt) to answer our first question:
 -	Are *E. coli* strains from human and rodents phylogenetically distinct?
@@ -202,7 +202,7 @@ The hierarchically-clustered heatmap (i.e., clustermap) also shows a relationshi
 
 ![](https://github.com/TonyMannion/Microbial-Comparative-Genomics/blob/master/images/clustermap.png)
 
-We also see on the clustermap some obvious differences in the pan-genome among the different *E. coli* strains.  The DataFrame corresponding to the clustermap (gene_family_clustermap_out.txt) can be used to explore these differences if desired, but we will continue using the other outputs from **genome_analysis.py** to answer the remaining questions.
+We also see on the clustermap some obvious differences in the pan-genome among the different *E. coli* strains.  The DataFrame corresponding to the clustermap (PGfam_clustermap_dataframe.txt) can be used to explore these differences if desired, but we will continue using the other outputs from **genome_analysis.py** to answer the remaining questions.
 
 After each individual comparative analysis step is performed, the results are added to the annotation metadata table for each genome.  To facilitate analyzing this data, the results from previous analyses are also merged into a single file, per genome.  This makes it easy to examine the datasets and answer the questions we posed above.  Below is an excerpt of the merged annotation metadata table for *E. coli* strain 20170221001.  (Note: In the excerpt below, some columns were excluded to optimize viewing.)
 
@@ -227,30 +227,23 @@ After each individual comparative analysis step is performed, the results are ad
 
 Using the merged annotation metadata, we can answer our remaining questions:
 
-What genes are found in all *pks*+ *E. coli* genomes?
+**What genes are found in all *pks*+ *E. coli* genomes?**
 
-- 61 pgfams
-- Includes full pks gene island 
-- 14 other VF genes (>=90% identity and coverage), including S_fimbriae, Salmochelin siderophore and (ibeA) invasion protein IbeA gene
+To answer this question, we can examine the merged annotation metadata for one of the *pks*+ *E. coli* genomes, such as IHE3034.  In the “subgroups” column, we can see there are 61 PGfams unique to these *pks*+ *E. coli* genomes.  Using the virulence factor DIAMOND BLAST result columns, we can these unique genes include *pks* gene island, which is expected, as well as 14 other virulence factor gene homologs (using a ≥90% sequence identify threshold) including S-fimbriae, Salmochelin siderophore biosynthesis, and  the invasion protein IbeA gene.
 
-What genes are found only in genomes of *E. coli* strains isolated from all rodents?
+**What genes are found only in genomes of *E. coli* strains isolated from all rodents?**
 
-- 39 pgfams
-- Including 19 genes annotated with Propanediol uptake and metabolism 
-- In our example, we see a propanediol utilization pathway is present only in the seven *E. coli* strains isolated from rodents (all_rodents subgroup), suggesting these strains could use different carbon and energy sources compared to human strains.
+For this question, let’s examine the merged annotation metadata for one of the *E. coli* genomes that was isolated from rodent, such as NC101.  The “subgroup” shows there are 39 PGfams unique to these seven genomes.  Interestingly, 19 of these genes are found in a continuous cluster in the chromosome and are annotated as belonging to propanediol uptake and metabolism.  Propanediol can serve as an alternative carbon and energy sources in bacteria encoding these uptake and metabolic pathways, suggesting the *E. coli* strains isolated from rodents may have different metabolic capabilities compared to reference strains isolated from humans and this could possibly be related to host (i.e., rodent versus human gastrointestinal tract)
 
-What genes are found only in novel genomes of *E. coli* strains isolated from the rodent?
+**What genes are found only in novel genomes of *E. coli* strains isolated from the rodent?**
 
-- 15 pgfams
-- Mainly hypothetical protein annotations
-- No homology with vf or antibiotic resistence genes
+Now we will examine the merged annotation metadata for one of the novel *E. coli* strains isolated from the rodent.  When we look at *E. coli* strains 1512290008 as representative, we see there are 15 PGfams unique to this subgroup.  These unique gene mainly encode hypothetical protein annotations, and none of the genes had homology to virulence factor or antibiotic resistance genes.  These genes are candidates for further investigation.  For example, their sequences could be further analyzed with other bioinformatic tools such as [Kyoto Encyclopedia of Genes and Genomes (KEGG)]( https://www.genome.jp/kegg/), [InterPro[(http://www.ebi.ac.uk/interpro/search/sequence/), or [NCBI CD-Search]( https://www.ncbi.nlm.nih.gov/Structure/cdd/wrpsb.cgi) to predict protein domains and possibly infer function.
 
-What genes are unique to novel genome of *E. coli* strains isolated from a rat compared to mice?
+**What genes are unique to novel genome of *E. coli* strains isolated from a rat compared to mice?**
 
-- Based on clustermap, there is large block of genes that are unique to this isolate
-- 234 pgfams
-- Mainly hypothetical protein annotations
-- 36 are annotations relating to phage, 28 of these on the same contig, possible phage insert in its genome
+For this last question, we will examine the merged annotation metadata for *E. coli* strains 20170221001, which was isolated from a pet rat.  Based on the clustermap, there appears to be a large block of PGfams that are unique to this isolates.  Looking at annotation metadata, we see there are 234 PGfams unique to this genome.  These unique genomes mainly encode hypothetical protein annotations.  Interestingly though, 36 of these unique genes appear to be related to phage genes with 28/36 of these being found continuously on the same contig.  It seems the genome from this isolate has a phage present.  The sequences of these genes can be further analyzed to identify this phage and its function significance.  
+
+
 
 
 
