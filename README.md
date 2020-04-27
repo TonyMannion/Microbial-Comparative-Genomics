@@ -149,7 +149,9 @@ First, we acquire our genome data by **get_genome_data.py** to assemble/annotate
 
 `python get_genome_data.py –u user@email.org –m metadata_table.txt –o Example_data`
 
-The user will prompted to enter their PATRIC account password.  Genomes from PATRIC will be then downloaded first.  Afterwards, reads (fastq files) and contigs (fasta files) will be uploaded to PATRIC.  Assembly/annotation jobs will then be sent to PATRIC.  The status of the jobs will be checked every five minutes.  Once a job was been completed, the data will be downloaded to the output folder (i.e., ‘”Example_data”).  
+(Note: The metadata table should be in the working directory.  The input reads (fastq files) or contigs (fasta files) can be in the working directory or in another directory as long as the path is indicated in the metadata table.  The output folder will be produced in the working directory.)
+
+The user will prompted to enter their PATRIC account password.  Genomes from PATRIC will be then downloaded first.  Afterwards, reads (fastq files) and contigs (fasta files) will be uploaded to PATRIC.  (The   Assembly/annotation jobs will then be sent to PATRIC.  The status of the jobs will be checked every five minutes.  Once a job was been completed, the data will be downloaded to the output folder (i.e., ‘”Example_data”).  
 
 Sometimes jobs may take several hours to complete.  The command terminal can be left open until all jobs are complete and the data was been downloaded.  Alternatively, the script can be terminated and the resumed later.  Jobs will continue to be process by the PATRIC server.  The **get_genome_data.py** can be run again using different flags to bypass steps already completed in the workflow and begin checking job status again or directly download the data if all the jobs are complete.   
 
@@ -177,6 +179,8 @@ The genomes download from PATRIC have four output files:
 Now that have the data for all our genomes of interest, we will use **genome_analysis.py** to perform the comparative analyses.  The following command is used:
 
  `python genome_analysis.py –i Example_data –o Example_analysis –m metadata_table.txt`
+ 
+ (Note: The metadata table should be in the working directory.  The output folder will be produced in the working directory.  The The DIAMOND BLAST program and databases (dmnd file or multi-sequence fasta file for a custom database) should be in working directory.)
 
 The output for each analysis in **genome_analysis.py** are the following:
 1.	**Pan-genome phylogenetic tree**: pan-genome-tree_out.txt to generate phylogenetic tree
