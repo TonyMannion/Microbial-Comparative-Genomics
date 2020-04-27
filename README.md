@@ -1,4 +1,4 @@
-# The Microbial-Comparative-Genomics Workflow
+# **The Microbial-Comparative-Genomics Workflow**
 
 The **Microbial-Comparative-Genomics Workflow** is composed of two Python scripts: **get_genome_data.py** and **genome_analysis.py**.  
 
@@ -19,18 +19,14 @@ The following **dependencies** are required by the **Microbial-Comparative-Genom
 -	[Seaborn](https://seaborn.pydata.org/) 
 -	[DIAMOND BLAST](http://www.diamondsearch.org/index.php)
 
-# *get_genome_data.py*
-
-**Workflow of *get_genome_data.py***
-
-![](https://github.com/TonyMannion/Microbial-Comparative-Genomics/blob/master/images/get_genome_data_1.PNG)
+# **get_genome_data.py**
 
 The **genome_assembly_annotate.py** script allows users to process novel bacterial genomes and efficiently compile a group of genomes for their downstream comparative analyses by:
 1.	performing the assembly and annotation of multiple bacterial genomes from raw sequencing reads and/or pre-assembled contigs 
 and 
 2.	downloading genomic data publically available in the [PATRIC](https://www.patricbrc.org/) database. 
 
-The **genome_assembly_annotate.py** script uses the [Comprehensive Genome Analysis Service] (https://docs.patricbrc.org/user_guides/services/comprehensive_genome_analysis_service.html) hosted by [PATRIC](https://www.patricbrc.org/) in order to automate the assembly and annotation workflow, thereby increasing throughput when numerous genomes must be processed.  The **get_genome_data.py** accepts pair-end reads (fastq) or pre-assembled contigs (fasta), which provides flexibility for the user.  The output of **get_genome_data.py** is a full-genome report summarizing the genome assembly and annotation characteristics, assembled genome sequences (contigs fasta files), gene annotation sequences (DNA and protein fasta files), and annotation metadata.
+The **genome_assembly_annotate.py** script uses the [Comprehensive Genome Analysis Service](https://docs.patricbrc.org/user_guides/services/comprehensive_genome_analysis_service.html) hosted by [PATRIC](https://www.patricbrc.org/) in order to automate the assembly and annotation workflow, thereby increasing throughput when numerous genomes must be processed.  The **get_genome_data.py** accepts pair-end reads (fastq) or pre-assembled contigs (fasta), which provides flexibility for the user.  The output of **get_genome_data.py** is a full-genome report summarizing the genome assembly and annotation characteristics, assembled genome sequences (contigs fasta files), gene annotation sequences (DNA and protein fasta files), and annotation metadata.
 
 To compliment datasets, **get_genome_data.py** allows user to access and download additional genomic data from the [PATRIC](https://www.patricbrc.org/) database, such as reference genomes.  The **get_genome_data.py** allows researchers to easily acquire assembled genome sequences (contigs fasta files), gene annotation sequences (DNA and protein fasta files), and annotation metadata from numerous genomes quickly by providing the PATRIC genome ids in the metadata table.
 
@@ -48,14 +44,19 @@ Below are the flags available for **get_genome_data.py**.
 |	 -p	|	 --patric_download	|	Download genome reports, contigs, and annotations data from PATRIC genomes.	|
 |	 -o	|	 --output_folder	|	Specify output folder for downloaded data.	|
 
-# *genome_analysis.py*
+Below is an outline of the assembly and annotation workflow for **get_genome_data.py**.
 
-**Workflow of *genome_analysis.py***
+![](https://github.com/TonyMannion/Microbial-Comparative-Genomics/blob/master/images/get_genome_data_1.PNG)
+
+# **genome_analysis.py**
+
+The **genome_analysis.py** script is used to determine the phylogenetic relationship of genomes and identify which genes are core or unique genes in the pan-genome.  As a result, **genome_analysis.py** allows users to investigate the similarities and difference of individual or subgroups of genomes with the larger group.  The **genome_analysis.py** script also integrates [DIAMOND BLAST](http://www.diamondsearch.org/index.php) to enable the detection of genes of interest, such as virulence factor, antibiotic resistance or custom gene databases, that will assist users when interpreting the output data.  The **genome_analysis.py** uses [global protein families (i.e., PGfams)]( https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4744870/) determined by PATRIC as the basis for determining relationships in the pan-genome. 
+
+Below is an outline of the workflow for **genome_analysis.py**.
+
 ![](https://github.com/TonyMannion/Microbial-Comparative-Genomics/blob/master/images/genome_analysis_1.png)
 
-Comparative genomics involves the identification of genetic factors, namely genes, which are shared or differ between bacteria genera, species, and/or strains.
-
-The **genome_analysis.py** script performs six different analyses that facilitate the comparison of genomes.  [Global protein families (i.e., PGfams)]( https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4744870/) determined by PATRIC are used as the basis for determining relationships in the pan-genome. 
+Below is summary of the analyses performed by **genome_analysis.py**.
 
 **1.	Pan-genome phylogenetic tree**
 
@@ -83,7 +84,7 @@ The **genome_analysis.py** script performs six different analyses that facilitat
 
 For each genome, the above analyses are also merged into a single annotation metadata file, thereby allowing all results to be viewed simultaneously.  
 	
-**flags**
+Below are the flags available for **genome_analysis.py**.
 
 |	Flag	|	Flag (verbose)	|	Description	|
 |	-----	|	-----	|	-----	|
@@ -102,7 +103,7 @@ For each genome, the above analyses are also merged into a single annotation met
 |	 -custom_fasta	|	 --custom_fasta	|	Provide custom gene database as multi-sequence fasta file using amino acids.	|
 |	 -merge_all_annotations	|	 --merge_all_annotations	|	Merge all annotation metadata files in output folder? Enter "yes" or "no". Default is "yes".	|
 
-# Example 
+# **Example use of The Microbial-Comparative-Genomics Workflow  **
 
 *E. coli* commensal intestinal bacterial found in many species including humans and other mammalian species.  Some *E. coli* strains encode virulence factor genes that allow make them pathogenic.  One virulence factor gene expressed by some *E. coli* strains is colibactin, a genotoxin produced by *pks* gene island, and these strains are associated with UTI, meningitis, and colon cancer in humans and animal models.  In this example, the *get_genome_data.py* and *genome_analysis.py* scripts are used to compare genomes of human and rodent *E. coli* strains that do and do not encode the *pks* gene island.
 
@@ -231,3 +232,4 @@ What genes are unique to the rat isolate?
 - 234 pgfams
 - Mainly hypothetical protein annotations
 - 36 are annotations relating to phage, 28 of these on the same contig, possible phage insert in its genome
+
