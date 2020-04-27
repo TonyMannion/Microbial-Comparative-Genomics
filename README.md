@@ -1,6 +1,6 @@
 # Microbial-Comparative-Genomics
 
-## Overview
+# Overview
 The **Microbial-Comparative-Genomics workflow** is composed of Python scripts that integrate with the [Pathosystems Resource Integration Center (PATRIC)](https://www.patricbrc.org/) to perform bacterial genome assembly and gene annotation from raw sequencing reads or pre-assembled contigs followed by comparative analyses to understand the similarities and differences within a group of bacterial genomes.
 
 The **Microbial-Comparative-Genomics workflow** allows users to process multiple genomes simultaneously as well as access genomes curated in the extensive [PATRIC](https://www.patricbrc.org/) database.  Thus, this workflow promotes high-throughput processing and comparative analyses.
@@ -27,7 +27,7 @@ The **Microbial-Comparative-Genomics workflow** is composed of two Python script
 
 ![](https://github.com/TonyMannion/Microbial-Comparative-Genomics/blob/master/images/overview.PNG)
 
-## *get_genome_data.py*
+# *get_genome_data.py*
 
 **Workflow of *get_genome_data.py***
 
@@ -71,7 +71,7 @@ Furthermore, the **get_genome_data.py** script provided in this library allows r
 
 ![](https://github.com/TonyMannion/Microbial-Comparative-Genomics/blob/master/images/FullGenomeReport_K12_chromosome_and_subsystems.png)
 
-## *genome_analysis.py*
+# *genome_analysis.py*
 
 **Workflow of *genome_analysis.py***
 ![](https://github.com/TonyMannion/Microbial-Comparative-Genomics/blob/master/images/genome_analysis_1.png)
