@@ -249,7 +249,9 @@ For this last question, we will examine the merged annotation metadata for *E. c
 
 # **Conclusion**
 
-This concludes the user documentation for the Microbial Comparative Genomics Workflow.  Updates and expanded features will be added to future additions.  Please leave comments/feedback here or email them to manniona@mit.edu.  
+This concludes the user documentation for the Microbial Comparative Genomics Workflow.  Updates and expanded features will be added to future versions.  Please leave comments/feedback here or email them to manniona@mit.edu.  
 
 **_Thank you!_**
+
 -Tony
+
