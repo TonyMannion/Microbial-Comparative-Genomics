@@ -59,7 +59,7 @@ The **genome_assembly_annotate.py** script allows the assembley and anntoation f
 **Workflow of *genome_analysis.py***
 ![](https://github.com/TonyMannion/Microbial-Comparative-Genomics/blob/master/images/genome_analysis_1.png)
 
-The **genome_analysis.py** script performs six different analyses that faciliate the identicaiton comparision of genomes.
+The **genome_analysis.py** script performs six different analyses that facilitate the identicaiton comparision of genomes.
 
 **flags**
 
@@ -158,7 +158,7 @@ Below is an excerpt of the dataframe associated with the hierarchically-clustere
 
 **Annotation metadata with gene analysis**
 
-After each individual comparative analysis step is performed, the results are added to the annotation metadata table for each genome.  To faciliate analyzing this data, the results from previous analyses are merged into a single file, per genome.  This makes it easy to examine the datasets and answer the questions we posed above.  Below is an excerpt of the merged annotation metadata table for *E. coli* strain 20170221001.(Note: In the excerpt below, some columns were excluded to optomize viewing.)
+After each individual comparative analysis step is performed, the results are added to the annotation metadata table for each genome.  To facilitate analyzing this data, the results from previous analyses are also merged into a single file, per genome.  This makes it easy to examine the datasets and answer the questions we posed above.  Below is an excerpt of the merged annotation metadata table for *E. coli* strain 20170221001.(Note: In the excerpt below, some columns were excluded to optomize viewing.)
 
 |	genome_name	|	contig_id	|	feature_id	|	type	|	start	|	stop	|	strand	|	function	|	pgfam	|	core_unique_gene	|	gene_count	|	median	|	gene_count-median	|	vs_median	|	subgroup_gene	|	qlen_VF	|	VF_ID	|	slen_VF	|	evalue_VF	|	bitscore_VF	|	pident_VF	|	qcovhsp_VF	|
 |	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|	 -----	|
