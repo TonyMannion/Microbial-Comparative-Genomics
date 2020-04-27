@@ -103,9 +103,9 @@ Below are the flags available for **genome_analysis.py**.
 |	 -custom_fasta	|	 --custom_fasta	|	Provide custom gene database as multi-sequence fasta file using amino acids.	|
 |	 -merge_all_annotations	|	 --merge_all_annotations	|	Merge all annotation metadata files in output folder? Enter "yes" or "no". Default is "yes".	|
 
-# **Example use of The Microbial-Comparative-Genomics Workflow**
+# **Example/Tutorial**
 
-In this section, an example using **The Microbial-Comparative-Genomics Workflow** is described.  All input data and output results are available in the repository [here](https://github.com/TonyMannion/Microbial-Comparative-Genomics/tree/master/Example_data).
+In this section, an example using **The Microbial Comparative Genomics Workflow** is described.  All input data and output results are available in the repository [here](https://github.com/TonyMannion/Microbial-Comparative-Genomics/tree/master/Example_data).
 
 *E. coli* commensal intestinal bacterial found in many species including humans and other mammalian species.  Some *E. coli* strains encode virulence factor genes that allow make them pathogenic.  One virulence factor gene expressed by some *E. coli* strains is colibactin, a genotoxin produced by *pks* gene island, and these strains are associated with UTI, meningitis, and colon cancer in humans and animal models.  In this example, the **get_genome_data.py** and **genome_analysis.py** scripts are used to compare genomes of human and rodent *E. coli* strains that do and do not encode the *pks* gene island.
 
