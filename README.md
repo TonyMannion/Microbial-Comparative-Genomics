@@ -1,6 +1,6 @@
-# **The Microbial-Comparative-Genomics Workflow**
+# **The Microbial Comparative Genomics Workflow**
 
-The **Microbial-Comparative-Genomics Workflow** is composed of two Python scripts: **get_genome_data.py** and **genome_analysis.py**.  
+The **Microbial Comparative Genomics Workflow** is composed of two Python scripts: **get_genome_data.py** and **genome_analysis.py**.  
 
 -	The **get_genome_data.py** script integrates with the [Pathosystems Resource Integration Center (PATRIC)](https://www.patricbrc.org/) to allows users to perform genome assembly and gene annotation from raw sequencing reads or pre-assembled contigs.  Also, **get_genome_data.py** allows users to download bacterial genomes publically available in [PATRIC](https://www.patricbrc.org/) database.  The **get_genome_data.py** script enables multiple genomes to be process and/or download from [PATRIC](https://www.patricbrc.org/) simultaneously, thereby promoting high-throughput acquisition of genomic data for downstream comparative analyses.     
 
@@ -8,7 +8,7 @@ The **Microbial-Comparative-Genomics Workflow** is composed of two Python script
 
 ![](https://github.com/TonyMannion/Microbial-Comparative-Genomics/blob/master/images/overview.PNG)
 
-The following **dependencies** are required by the **Microbial-Comparative-Genomics Workflow**: 
+The following **dependencies** are required by the **Microbial Comparative Genomics Workflow**: 
 
 -	[Python 2.7](https://www.python.org/)
 -	[PATRIC account]( https://www.patricbrc.org/) 
@@ -247,7 +247,9 @@ Now we will examine the merged annotation metadata for one of the novel *E. coli
 
 For this last question, we will examine the merged annotation metadata for *E. coli* strains 20170221001, which was isolated from a pet rat.  Based on the clustermap, there appears to be a large block of PGfams that are unique to this isolates.  Looking at annotation metadata, we see there are 234 PGfams unique to this genome.  These unique genomes mainly encode hypothetical protein annotations.  Interestingly though, 36 of these unique genes appear to be related to phage genes with 28/36 of these being found continuously on the same contig.  It seems the genome from this isolate has a phage present.  The sequences of these genes can be further analyzed to identify this phage and its function significance.  
 
+# **Conclusion**
 
+This concludes the user documentation for the Microbial Comparative Genomics Workflow.  Updates and expanded features will be added to future additions.  Please leave comments/feedback here or email them to manniona@mit.edu.  
 
-
-
+**_Thank you!_**
+-Tony
