@@ -40,8 +40,8 @@ Below are the flags available for **get_genome_data.py**.
 |	 -f	|	 --file_upload	|	Upload read and/or contig files? Enter "yes" or "no". Default is "yes". If file with same name has already been uploaded to PATRIC, it will be overwritten by the newly uploaded file.	|
 |	 -a	|	 --assembly_annotate	|	Execute assembly and annotate pipeline? Enter "yes" or "no". Default is "yes".	|
 |	 -c	|	 --check_job	|	Check status of assembly/annotation job? Enter "yes" or "no". Default is "yes".  When job is complete, genome reports, contigs, and annotations data will be downloaded to output folder.	|
-|	 -d	|	 --download_data	|	Download genome reports, contigs, and annotations data for assembled/annotated genomes from previously completed jobs to output folder? Enter "yes" or "no". Default is "no".	|
-|	 -p	|	 --patric_download	|	Download genome reports, contigs, and annotations data from PATRIC genomes.	|
+|	 -d	|	 --download_data	|	Download genome reports, contigs, and annotations data for assembled/annotated genomes for previously completed jobs to output folder? Enter "yes" or "no". Default is "no".	|
+|	 -p	|	 --patric_download	|	Download genome reports, contigs, and annotations data for PATRIC genomes? Enter "yes" or "no". Default is "yes".	|
 |	 -o	|	 --output_folder	|	Specify output folder for downloaded data.	|
 
 Below is an outline of the assembly and annotation workflow for **get_genome_data.py**.
@@ -103,7 +103,9 @@ Below are the flags available for **genome_analysis.py**.
 |	 -custom_fasta	|	 --custom_fasta	|	Provide custom gene database as multi-sequence fasta file using amino acids.	|
 |	 -merge_all_annotations	|	 --merge_all_annotations	|	Merge all annotation metadata files in output folder? Enter "yes" or "no". Default is "yes".	|
 
-# **Example use of The Microbial-Comparative-Genomics Workflow **
+# **Example use of The Microbial-Comparative-Genomics Workflow**
+
+In this section, an example using **The Microbial-Comparative-Genomics Workflow** is described.  All input data and output results are available in the repository.
 
 *E. coli* commensal intestinal bacterial found in many species including humans and other mammalian species.  Some *E. coli* strains encode virulence factor genes that allow make them pathogenic.  One virulence factor gene expressed by some *E. coli* strains is colibactin, a genotoxin produced by *pks* gene island, and these strains are associated with UTI, meningitis, and colon cancer in humans and animal models.  In this example, the *get_genome_data.py* and *genome_analysis.py* scripts are used to compare genomes of human and rodent *E. coli* strains that do and do not encode the *pks* gene island.
 
@@ -114,8 +116,6 @@ More specifically, we would like to know:
 -	What genes are found only in genomes of *E. coli* strains isolated from all rodents?
 -	What genes are found only in novel genomes of *E. coli* strains isolated from the rodent?
 -	What genes are unique to novel genome of *E. coli* strains isolated from a rat compared to mice?
-
-All input data and output results are available in the repository.
 
 Here, *get_genome_data.py* will be used to assembly and annotate six user genomes.  Pre-assembled contigs from five *E. coli* strains isolated from lab mice ([Mannion A. et al. *Genome Announc.* 2016.](https://mra.asm.org/content/4/5/e01082-16)) and Illumina MiSeq 2x250 bp reads from one *E. coli* strain isolated from pet rat ([Fabian NJ. et al. *Vet Microbiol.* 2020.]( https://www.sciencedirect.com/science/article/pii/S0378113519303669?via%3Dihub)).  The sequencing reads (fastq files) and pre-assembled contigs (fasta files) along with their corresponding genome names are recorded in the metadata table shown below.  All of these isolates, except one, were experimentally shown to encode the *pks* gene island.
 
@@ -145,9 +145,36 @@ Since we are curious about the similarities and differences between human versus
 |	Escherichia coli strain 1512290026	|		|		|	Escherichia_coli_strain_1512290026_contigs.fasta	|	Escherichia coli strain 1512290026	|		|		|		|		|	Escherichia coli strain 1512290026	|		|	Escherichia coli strain 1512290026	|		|	Escherichia coli strain 1512290026	|		|
 |	Escherichia coli strain 20170221001	|		|		|		|		|	20170221001_R1.fastq	|	20170221001_R2.fastq	|	Escherichia coli strain 20170221001	|		|	Escherichia coli strain 20170221001	|		|	Escherichia coli strain 20170221001	|		|	Escherichia coli strain 20170221001	|		|
 
-## Outputs
+The following command is used in the [PATRIC Command Line Interface](https://docs.patricbrc.org/cli_tutorial/):
 
-### Pan-genome Phylogentic Tree
+`python get_genome_data.py –u user@email.org –m metadata_table.txt –o Example_data`
+
+The user will prompted to enter their PATRIC account password.  Genomes from PATRIC will be then downloaded first.  Afterwards, reads (fastq files) and contigs (fasta files) will be uploaded to PATRIC.  Assembly/annotation jobs will then be sent to PATRIC.  The status of the jobs will be checked every five minutes.  Once a job was been completed, the data will be downloaded to the output folder (i.e., ‘”Example_data”).  
+
+Sometimes jobs may take several hours to complete.  The command terminal can be left open until all jobs are complete and the data was been downloaded.  Alternatively, the script can be terminated and the resumed later.  Jobs will continue to be process by the PATRIC server.  The **get_genome_data.py** can be run again using different flags to bypass steps already completed in the workflow and begin checking job status again or directly download the data if all the jobs are complete.   
+
+The following command can be used in the [PATRIC Command Line Interface](https://docs.patricbrc.org/cli_tutorial/) to begin checking job status again and download data when jobs are completed:
+
+`python get_genome_data.py –u user@email.org –m metadata_table.txt –o Example_data -f no -a no –p no`
+
+The following command can be used in the [PATRIC Command Line Interface](https://docs.patricbrc.org/cli_tutorial/) to download data for jobs that are completed without checking job status:
+
+`python get_genome_data.py –u user@email.org –m metadata_table.txt –o Example_data` -f no –a no –c no –d yes –p no`
+
+The genomes processed for the assembly/annotation each have five output files:
+1.	Full genome report (FullGenomeReport.html), which summarizes genome assembly and gene annotation results
+2.	Assembled genome sequence (contigs.fasta file)
+3.	Gene annotations in nucleotides sequence (DNA.fasta)
+4.	Gene annotations in protein sequence (protein.fasta)
+5.	Annotation metadata  (annotation.txt)
+
+The genomes download from PATRIC have four output files:
+1.	Assembled genome sequence (contigs.fasta file)
+2.	Gene annotations in nucleotides sequence (DNA.fasta)
+3.	Gene annotations in protein sequence (protein.fasta)
+4.	Annotation metadata  (annotation.txt)
+
+### Pan-genome Phylogenetic Tree
 The pan-genome-tree_out.txt file is a matrix of binary presence and absence of core and accessory genes that is in PHYLIP format.
 A phylogenetic tree can be created using analyzed by [RAxML](https://cme.h-its.org/exelixis/web/software/raxml/index.html),  [IQ-TREE](http://www.iqtree.org/), or similar program.  Here, we will download [IQ-TREE](http://www.iqtree.org/) and then use this program create the phylogenetic tree with the command below.
 
