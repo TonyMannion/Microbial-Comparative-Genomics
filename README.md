@@ -180,47 +180,29 @@ Now that have the data for all our genomes of interest, we will use **genome_ana
 
 The output for each analysis in ** genome_analysis.py** are the following:
 1.	Pan-genome phylogenetic tree: pan-genome-tree_out.txt to generate phylogenetic tree
-2.	Pan-genome hierarchically-clustered heatmap: image of clustermap (clustermap.png file) and DataFrame corresponding to the clustermap(gene_family_clustermap_out.txt)
+2.	Pan-genome hierarchically-clustered heatmap: image of clustermap (clustermap.png file) and DataFrame corresponding to the clustermap (gene_family_clustermap_out.txt)
 3.	Core and unique genes in pan-genome: for each genome, annotation metadata with new column showing which genes are core or unique genes
 4.	Unique genes in genome subgroups: for each genome, annotation metadata with new column showing which genes are found only in the subgroups specified by the metadata
 5.	Gene copies versus median gene copy number in genome group: for each genome, annotation metadata with new columns showing how many gene copies are present, the median copy number in all genomes, and if the number genes is equal to, greater than, or equal to the median 
 6.	DIAMOND BLAST: for each genome, annotation metadata with new columns showing which genes are have hits in the virulence factor and antibiotic resistance databases
 7.	Merged annotation meta: for each genome, all of  the above analyses are merged into a single annotation metadata file
 
-### Pan-genome Phylogenetic Tree
-The pan-genome-tree_out.txt file is a matrix of binary presence and absence of core and accessory genes that is in PHYLIP format.
-A phylogenetic tree can be created using analyzed by [RAxML](https://cme.h-its.org/exelixis/web/software/raxml/index.html),  [IQ-TREE](http://www.iqtree.org/), or similar program.  Here, we will download [IQ-TREE](http://www.iqtree.org/) and then use this program create the phylogenetic tree with the command below.
+We can use the output from the pan-genome phylogenetic tree (i.e., pan-genome-tree_out.txt) to answer our first question:
+-	Are *E. coli* strains from human and rodents phylogenetically distinct?
+
+The pan-genome-tree_out.txt file is a matrix of binary presence and absence of core and accessory genes that is in PHYLIP format.  A phylogenetic tree can be created using analyzed by [RAxML](https://cme.h-its.org/exelixis/web/software/raxml/index.html),  [IQ-TREE](http://www.iqtree.org/), or similar program.  Here, we will download [IQ-TREE](http://www.iqtree.org/) and then use this program create the phylogenetic tree with the command below.
 
 `directory\to\bin\iqtree -s directory\to\pan-genome-tree_out.txt -bb 1000` 
 
-The output of IQ-TREE, pan-genome-tree_out.txt.tree file, is loaded into [FigTree](http://tree.bio.ed.ac.uk/software/figtree/) or similar tool to visualize the phylogenetic tree. In the image below, [FigTree](http://tree.bio.ed.ac.uk/software/figtree/) was used.  It appears from the pan-genome phylogenetic tree that the genomes of *E. coli* strains isolated from rodent hosts are more similar to each other than to the strians from human hosts.
-
-**Pan-genome phylogenetic Tree**
+The output of IQ-TREE, pan-genome-tree_out.txt.tree file, is loaded into [FigTree](http://tree.bio.ed.ac.uk/software/figtree/) or similar tool to visualize the phylogenetic tree. In the image below, [FigTree](http://tree.bio.ed.ac.uk/software/figtree/) was used.  It appears from the pan-genome phylogenetic tree that the genomes of *E. coli* strains isolated from rodent hosts are more similar to each other than to the strains from human hosts.
 
 ![](https://github.com/TonyMannion/Microbial-Comparative-Genomics/blob/master/images/pan-genome-tree.png)
 
-**Hierarchically-clustered heatmap (ie clustermap) of protein families in pan-genome**
+The hierarchically-clustered heatmap (i.e., clustermap) also shows a relationship among the genomes based on the copy number of PGfams.  We can use this output to also answer our first question.  Based on this clustermap, the *E. coli* strains from the rodents cluster more closely with each other than the strains from humans. 
 
 ![](https://github.com/TonyMannion/Microbial-Comparative-Genomics/blob/master/images/clustermap.png)
 
-**gene_family_clustermap_out.txt**
-Below is an excerpt of the dataframe associated with the hierarchically-clustered heatmap (ie clustermap) shown above. (Note: Only the first 10 rows are shown in the excerpt.)
-
-|	pgfam	|	Escherichia_coli_str._K-12_substr._MG1655	|	Escherichia_coli_strain_1408270010	|	Escherichia_coli_strain_1409150006	|	Escherichia_coli_strain_1512290008	|	Escherichia_coli_strain_1409160003	|	Escherichia_coli_strain_20170221001	|	Escherichia_coli_NC101	|	Escherichia_coli_strain_1512290026	|	Escherichia_coli_IHE3034	|	Escherichia_coli_UTI89	|
-|	-----	|	-----	|	-----	|	-----	|	-----	|	-----	|	-----	|	-----	|	-----	|	-----	|	-----	|
-|	PGF_08225224	|	50	|	156	|	167	|	161	|	116	|	123	|	139	|	118	|	95	|	120	|
-|	PGF_01000105	|	1	|	40	|	42	|	47	|	31	|	14	|	21	|	12	|	9	|	29	|
-|	PGF_03024018	|	18	|	0	|	0	|	0	|	0	|	0	|	7	|	0	|	6	|	6	|
-|	PGF_05075091	|	1	|	13	|	1	|	1	|	1	|	1	|	1	|	1	|	1	|	1	|
-|	PGF_00047661	|	0	|	6	|	5	|	6	|	4	|	0	|	1	|	1	|	0	|	2	|
-|	PGF_06366833	|	4	|	1	|	1	|	1	|	1	|	2	|	2	|	1	|	6	|	4	|
-|	PGF_07937889	|	2	|	1	|	1	|	1	|	0	|	2	|	1	|	1	|	5	|	3	|
-|	PGF_10529284	|	3	|	1	|	1	|	1	|	2	|	1	|	1	|	1	|	4	|	3	|
-|	PGF_10443983	|	0	|	1	|	1	|	1	|	0	|	1	|	3	|	1	|	2	|	2	|
-|	PGF_00369678	|	1	|	1	|	1	|	1	|	1	|	0	|	2	|	1	|	4	|	2	|
-|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|
-
-**Annotation metadata with gene analysis**
+We also see on the clustermap some obvious differences in the pan-genome among the different *E. coli* strains.  The DataFrame corresponding to the clustermap (gene_family_clustermap_out.txt) can be used to explore these differences if desired, but we will continue using the other outputs from **genome_analysis.py** to answer the remaining questions.
 
 After each individual comparative analysis step is performed, the results are added to the annotation metadata table for each genome.  To facilitate analyzing this data, the results from previous analyses are also merged into a single file, per genome.  This makes it easy to examine the datasets and answer the questions we posed above.  Below is an excerpt of the merged annotation metadata table for *E. coli* strain 20170221001.  (Note: In the excerpt below, some columns were excluded to optimize viewing.)
 
@@ -243,33 +225,32 @@ After each individual comparative analysis step is performed, the results are ad
 |	Escherichia_coli_strain_20170221001	|	assembly_contig_1	|	fig-2.7989.peg.15	|	CDS	|	15476	|	14913	|	-	|	Type-1 fimbrial protein, A chain	|	PGF_02911992	|	core	|	3	|	3	|	0	|	equal to median	|		|	187	|	VFG042713(gi:15801631) (Z2200) putative major fimbrial subunit [F9 fimbriae (AI090)] [Escherichia coli O157:H7 str. EDL933]	|	187	|	1.90E-95	|	345.9	|	99.5	|	100	|
 |	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|	…	|
 
-## Analysis
+Using the merged annotation metadata, we can answer our remaining questions:
 
-How similar are human vs rodent genomes?
-
-- phylogentic tree and clustermap
-
-What genes are found in all pks+ genomes?
+What genes are found in all *pks*+ *E. coli* genomes?
 
 - 61 pgfams
 - Includes full pks gene island 
 - 14 other VF genes (>=90% identity and coverage), including S_fimbriae, Salmochelin siderophore and (ibeA) invasion protein IbeA gene
 
-What genes are found only in all rodent genomes?
+What genes are found only in genomes of *E. coli* strains isolated from all rodents?
 
 - 39 pgfams
 - Including 19 genes annotated with Propanediol uptake and metabolism 
 - In our example, we see a propanediol utilization pathway is present only in the seven *E. coli* strains isolated from rodents (all_rodents subgroup), suggesting these strains could use different carbon and energy sources compared to human strains.
 
-What gene are found only in the novel rodent genomes?
+What genes are found only in novel genomes of *E. coli* strains isolated from the rodent?
 
 - 15 pgfams
 - Mainly hypothetical protein annotations
 - No homology with vf or antibiotic resistence genes
 
-What genes are unique to the rat isolate?
+What genes are unique to novel genome of *E. coli* strains isolated from a rat compared to mice?
 
 - Based on clustermap, there is large block of genes that are unique to this isolate
 - 234 pgfams
 - Mainly hypothetical protein annotations
 - 36 are annotations relating to phage, 28 of these on the same contig, possible phage insert in its genome
+
+
+
