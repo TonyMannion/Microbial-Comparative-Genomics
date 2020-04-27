@@ -80,7 +80,7 @@ Below is summary of the analyses performed by **genome_analysis.py**.
 
 **6.	Diamond BLAST for virulence factors, antibiotic resistance, and other genes**
 
-  [DIAMOND blast](http://www.diamondsearch.org/index.php) is used to determine if genes are homologous to known virulence factor or antibiotic resistance genes.  Virulence factor genes are derived from the [Virulence Factor DataBase (VFDB)](http://www.mgc.ac.cn/VFs/download.htm), and antibiotic resistance genes are derived from [Comprehensive Antibiotic Resistance Database (CARD)]( https://card.mcmaster.ca/download).  Users can also search against a custom database by providing a multiple sequence protein fasta file.  The best match hits per gene are merged into the annotation metadata for each genome.
+  [DIAMOND BLAST](http://www.diamondsearch.org/index.php) is used to determine if genes are homologous to known virulence factor or antibiotic resistance genes.  Virulence factor genes are derived from the [Virulence Factor DataBase (VFDB)](http://www.mgc.ac.cn/VFs/download.htm), and antibiotic resistance genes are derived from [Comprehensive Antibiotic Resistance Database (CARD)]( https://card.mcmaster.ca/download).  Users can also search against a custom database by providing a multiple sequence protein fasta file.  The best match hits per gene are merged into the annotation metadata for each genome.
 
 For each genome, the above analyses are also merged into a single annotation metadata file, thereby allowing all results to be viewed simultaneously.  
 	
