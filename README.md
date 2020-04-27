@@ -105,7 +105,7 @@ Below are the flags available for **genome_analysis.py**.
 
 # **Example use of The Microbial-Comparative-Genomics Workflow**
 
-In this section, an example using **The Microbial-Comparative-Genomics Workflow** is described.  All input data and output results are available in the repository.
+In this section, an example using **The Microbial-Comparative-Genomics Workflow** is described.  All input data and output results are available in the repository [here](https://github.com/TonyMannion/Microbial-Comparative-Genomics/tree/master/Example_data).
 
 *E. coli* commensal intestinal bacterial found in many species including humans and other mammalian species.  Some *E. coli* strains encode virulence factor genes that allow make them pathogenic.  One virulence factor gene expressed by some *E. coli* strains is colibactin, a genotoxin produced by *pks* gene island, and these strains are associated with UTI, meningitis, and colon cancer in humans and animal models.  In this example, the *get_genome_data.py* and *genome_analysis.py* scripts are used to compare genomes of human and rodent *E. coli* strains that do and do not encode the *pks* gene island.
 
@@ -145,7 +145,7 @@ Since we are curious about the similarities and differences between human versus
 |	Escherichia coli strain 1512290026	|		|		|	Escherichia_coli_strain_1512290026_contigs.fasta	|	Escherichia coli strain 1512290026	|		|		|		|		|	Escherichia coli strain 1512290026	|		|	Escherichia coli strain 1512290026	|		|	Escherichia coli strain 1512290026	|		|
 |	Escherichia coli strain 20170221001	|		|		|		|		|	20170221001_R1.fastq	|	20170221001_R2.fastq	|	Escherichia coli strain 20170221001	|		|	Escherichia coli strain 20170221001	|		|	Escherichia coli strain 20170221001	|		|	Escherichia coli strain 20170221001	|		|
 
-The following command is used in the [PATRIC Command Line Interface](https://docs.patricbrc.org/cli_tutorial/):
+First, we acquire our genome data by ** get_genome_data.py** to assemble/annotate our rodent genomes and download our reference genomes from PATRIC.  To do so, the following command is used in the [PATRIC Command Line Interface](https://docs.patricbrc.org/cli_tutorial/):
 
 `python get_genome_data.py –u user@email.org –m metadata_table.txt –o Example_data`
 
@@ -173,6 +173,19 @@ The genomes download from PATRIC have four output files:
 2.	Gene annotations in nucleotides sequence (DNA.fasta)
 3.	Gene annotations in protein sequence (protein.fasta)
 4.	Annotation metadata  (annotation.txt)
+
+Now that have the data for all our genomes of interest, we will use **genome_analysis.py** to perform the comparative analyses.  The following command is used in the [PATRIC Command Line Interface](https://docs.patricbrc.org/cli_tutorial/):
+
+ `python genome_analysis.py –i Example_data –o Example_analysis –m metadata_table.txt`
+
+The output for each analysis in ** genome_analysis.py** are the following:
+1.	Pan-genome phylogenetic tree: pan-genome-tree_out.txt to generate phylogenetic tree
+2.	Pan-genome hierarchically-clustered heatmap: image of clustermap (clustermap.png file) and DataFrame corresponding to the clustermap(gene_family_clustermap_out.txt)
+3.	Core and unique genes in pan-genome: for each genome, annotation metadata with new column showing which genes are core or unique genes
+4.	Unique genes in genome subgroups: for each genome, annotation metadata with new column showing which genes are found only in the subgroups specified by the metadata
+5.	Gene copies versus median gene copy number in genome group: for each genome, annotation metadata with new columns showing how many gene copies are present, the median copy number in all genomes, and if the number genes is equal to, greater than, or equal to the median 
+6.	DIAMOND BLAST: for each genome, annotation metadata with new columns showing which genes are have hits in the virulence factor and antibiotic resistance databases
+7.	Merged annotation meta: for each genome, all of  the above analyses are merged into a single annotation metadata file
 
 ### Pan-genome Phylogenetic Tree
 The pan-genome-tree_out.txt file is a matrix of binary presence and absence of core and accessory genes that is in PHYLIP format.
@@ -260,4 +273,3 @@ What genes are unique to the rat isolate?
 - 234 pgfams
 - Mainly hypothetical protein annotations
 - 36 are annotations relating to phage, 28 of these on the same contig, possible phage insert in its genome
-
