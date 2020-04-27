@@ -174,7 +174,7 @@ The genomes download from PATRIC have four output files:
 3.	Gene annotations in protein sequence (protein.fasta)
 4.	Annotation metadata  (annotation.txt)
 
-Now that have the data for all our genomes of interest, we will use **genome_analysis.py** to perform the comparative analyses.  The following command is used in the [PATRIC Command Line Interface](https://docs.patricbrc.org/cli_tutorial/):
+Now that have the data for all our genomes of interest, we will use **genome_analysis.py** to perform the comparative analyses.  The following command is used:
 
  `python genome_analysis.py –i Example_data –o Example_analysis –m metadata_table.txt`
 
@@ -190,7 +190,7 @@ The output for each analysis in **genome_analysis.py** are the following:
 We can use the output from the pan-genome phylogenetic tree (i.e., pan-genome-tree_out.txt) to answer our first question:
 -	Are *E. coli* strains from human and rodents phylogenetically distinct?
 
-The pan-genome-tree_out.txt file is a matrix of binary presence and absence of core and accessory genes that is in PHYLIP format.  A phylogenetic tree can be created using analyzed by [RAxML](https://cme.h-its.org/exelixis/web/software/raxml/index.html),  [IQ-TREE](http://www.iqtree.org/), or similar program.  Here, we will download [IQ-TREE](http://www.iqtree.org/) and then use this program create the phylogenetic tree with the command below.
+The pan-genome-tree_out.txt file is a matrix of binary presence and absence of core and accessory genes that is in PHYLIP format.  A phylogenetic tree can be created using analyzed by [RAxML](https://cme.h-its.org/exelixis/web/software/raxml/index.html),  [IQ-TREE](http://www.iqtree.org/), or similar program.  Here, we will download [IQ-TREE](http://www.iqtree.org/) and then use this program create the phylogenetic tree with the following command:
 
 `directory\to\bin\iqtree -s directory\to\pan-genome-tree_out.txt -bb 1000` 
 
