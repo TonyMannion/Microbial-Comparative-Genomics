@@ -9,7 +9,7 @@ The following **dependencies** are required by the **Microbial-Comparative-Genom
 
 -	[Python 2.7](https://www.python.org/)
 -	[PATRIC account]( https://www.patricbrc.org/)
--	Install [PATRIC Command Line Interface](https://docs.patricbrc.org/cli_tutorial/)
+-	[PATRIC Command Line Interface](https://docs.patricbrc.org/cli_tutorial/)
 -	[Numpy](https://numpy.org/) 
 -	[Pandas](https://pandas.pydata.org/) 
 -	[Matplotlib]( https://matplotlib.org/index.html)
