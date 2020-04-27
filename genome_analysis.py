@@ -72,7 +72,7 @@ def make_clustermap():
 	#save clustermap dataframe
 	print "Output clustermap dataframe..."
 	df_cm2=pd.DataFrame(cm.data2d).transpose()
-	df_cm2.to_csv(output_folder+'/'+'gene_family_clustermap_out.txt',sep='\t')
+	df_cm2.to_csv(output_folder+'/'+'PGfam_clustermap_dataframe.txt',sep='\t')
 
 def core_unique_genes():
 	#concat
