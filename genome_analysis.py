@@ -141,7 +141,7 @@ def median_analysis():
 		df_concat['genome_name_pgfam']=df_concat['genome_name']+'_'+df_concat['pgfam']
 		#annotation metadata
 		df_merged=pd.merge(df_temp,df_concat,left_on='genome_name_pgfam',right_on='genome_name_pgfam',how="left").rename(columns={'genome_name_y': 'genome_name','pgfam_x':'pgfam'}).drop(['pgfam_y','genome_name_x','genome_name_pgfam','count'],axis=1)
-		col_order=['genome_id','genome_name','contig_id','feature_id','type','location','start','stop','strand','function','aliases','plfam','pgfam','figfam','evidence_codes','nucleotide_sequence','aa_sequence','gene_count','median','gene_count-median','vs_median']
+		col_order=['genome_name','contig_id','feature_id','type','location','start','stop','strand','function','aliases','plfam','pgfam','figfam','evidence_codes','nucleotide_sequence','aa_sequence','gene_count','median','gene_count-median','vs_median']
 		df_merged2=df_merged[col_order].to_csv(output_folder+'/'+str(col)+'_annotation_median_analysis.txt',sep='\t',index=False)
 		print "Median gene analysis done for "+str(col)+'...'
 	#remove intermediate files
