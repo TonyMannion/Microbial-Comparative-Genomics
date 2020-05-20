@@ -22,7 +22,7 @@ os.system('p3-login ' + str(args.username) + ' > patric_domain_temp_genome_assem
 patric_domain = open('patric_domain_temp_genome_assemlby_annotation.txt', "rb").readlines()[1].replace('Logged in with username ', '').rstrip()
 #download from patric
 if str(args.patric_dl) == 'yes':
-	df_genome_names = pd.read_csv(str(args.metadata_file),sep='\t',usecols=['genome_ids_patric','genome_name_patric']), dtype=object).replace(' ','_', regex=True)
+	df_genome_names = pd.read_csv(str(args.metadata_file),sep='\t',usecols=['genome_ids_patric','genome_name_patric'], dtype=object).replace(' ','_', regex=True)
 	genome_ids_list = df_genome_names['genome_ids_patric'].dropna().tolist()
 	genome_name_list = df_genome_names['genome_name_patric'].dropna().tolist()
 	zip(genome_ids_list,genome_name_list)
@@ -40,10 +40,10 @@ if str(args.patric_dl) == 'yes':
 		os.system('p3-genome-fasta --feature '+str(genome_id)+' > '+str(args.output_folder)+'/'+str(genome_name)+'_DNA.fasta')
 #upload data
 if str(args.upload_files) == 'yes':
-	df_reads = pd.read_csv(str(args.metadata_file), sep='\t', usecols=['R1','R2','genome_name_reads'])
+	df_reads = pd.read_csv(str(args.metadata_file), sep='\t', usecols=['R1','R2','genome_name_reads'], dtype=object)
 	R1_list = df_reads['R1'].dropna().tolist()
 	R2_list = df_reads['R2'].dropna().tolist()
-	df_contigs = pd.read_csv(str(args.metadata_file), sep='\t', usecols=['contigs','genome_name_contigs'])
+	df_contigs = pd.read_csv(str(args.metadata_file), sep='\t', usecols=['contigs','genome_name_contigs'], dtype=object)
 	contigs_list = df_contigs['contigs'].dropna().tolist()
 	for R1 in R1_list:
 		print 'Uploading ' + str(R1) + ' to PATRIC...'
@@ -57,7 +57,7 @@ if str(args.upload_files) == 'yes':
 #assembly annotate
 if str(args.assembly_annotate) == 'yes':
 #reads
-	df_reads = pd.read_csv(str(args.metadata_file), sep='\t', usecols=['R1','R2','genome_name_reads']).replace(' ','_', regex=True)
+	df_reads = pd.read_csv(str(args.metadata_file), sep='\t', usecols=['R1','R2','genome_name_reads'], dtype=object).replace(' ','_', regex=True)
 	R1_list = df_reads['R1'].dropna().tolist()
 	R2_list = df_reads['R2'].dropna().tolist()
 	genome_name_list_reads = df_reads['genome_name_reads'].dropna().tolist()
@@ -75,7 +75,7 @@ if str(args.assembly_annotate) == 'yes':
 		job_id = open(str(genome_name) + '_job_ID_temp_genome_assemlby_annotation.txt', "rb").readline().replace('Started task ', '').rstrip()
 		print "Comprehensive Genome Analysis job sent for " + str(genome_name) + ' as job id ' + job_id
 #contigs
-	df_contigs = pd.read_csv(str(args.metadata_file), sep='\t', usecols=['contigs','genome_name_contigs']).replace(' ','_', regex=True)
+	df_contigs = pd.read_csv(str(args.metadata_file), sep='\t', usecols=['contigs','genome_name_contigs'], dtype=object).replace(' ','_', regex=True)
 	contigs_list = df_contigs['contigs'].dropna().tolist()
 	genome_name_list_contigs = df_contigs['genome_name_contigs'].dropna().tolist()
 	zip(contigs_list,genome_name_list_contigs)
@@ -93,9 +93,9 @@ if str(args.assembly_annotate) == 'yes':
 		print "Comprehensive Genome Analysis job sent for " + str(genome_name) + ' as job id ' + job_id
 #check job
 if str(args.check_job) == 'yes':
-	df_reads = pd.read_csv(str(args.metadata_file), sep='\t', usecols=['R1','R2','genome_name_reads']).replace(' ','_', regex=True)
+	df_reads = pd.read_csv(str(args.metadata_file), sep='\t', usecols=['R1','R2','genome_name_reads'], dtype=object).replace(' ','_', regex=True)
 	genome_name_list_reads = df_reads['genome_name_reads'].dropna().tolist()
-	df_contigs = pd.read_csv(str(args.metadata_file), sep='\t', usecols=['contigs','genome_name_contigs']).replace(' ','_', regex=True)
+	df_contigs = pd.read_csv(str(args.metadata_file), sep='\t', usecols=['contigs','genome_name_contigs'], dtype=object).replace(' ','_', regex=True)
 	genome_name_list_contigs = df_contigs['genome_name_contigs'].dropna().tolist()
 	genome_name_list = genome_name_list_reads + genome_name_list_contigs
 	for genome_name in genome_name_list:
