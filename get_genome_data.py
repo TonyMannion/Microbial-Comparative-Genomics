@@ -22,7 +22,7 @@ os.system('p3-login ' + str(args.username) + ' > patric_domain_temp_genome_assem
 patric_domain = open('patric_domain_temp_genome_assemlby_annotation.txt', "rb").readlines()[1].replace('Logged in with username ', '').rstrip()
 #download from patric
 if str(args.patric_dl) == 'yes':
-	df_genome_names = pd.read_csv(str(args.metadata_file),sep='\t',usecols=['genome_ids_patric','genome_name_patric']).replace(' ','_', regex=True)
+	df_genome_names = pd.read_csv(str(args.metadata_file),sep='\t',usecols=['genome_ids_patric','genome_name_patric']), dtype=object).replace(' ','_', regex=True)
 	genome_ids_list = df_genome_names['genome_ids_patric'].dropna().tolist()
 	genome_name_list = df_genome_names['genome_name_patric'].dropna().tolist()
 	zip(genome_ids_list,genome_name_list)
