@@ -30,7 +30,7 @@ os.mkdir(output_folder)
 def make_tree():
 	print 'Creating binary matrix of protein families in PHYLIP format for pan-genome phylogenetic tree...'
 	#concat
-	df_genome_names=pd.read_csv(str(args.metadata_file),sep='\t',usecols=['genome_name']).replace(' ','_', regex=True)
+	df_genome_names=pd.read_csv(str(args.metadata_file),sep='\t',usecols=['genome_name'], dtype=object).replace(' ','_', regex=True)
 	genome_name_list=df_genome_names['genome_name'].dropna().tolist()
 	df_concat=pd.concat([pd.read_csv(str(args.input_folder)+'/'+str(genome_name)+'_annotation.txt',sep='\t') for genome_name in genome_name_list])
 	#groupby
@@ -51,7 +51,7 @@ def make_tree():
 
 def make_clustermap():
 	#concat
-	df_genome_names=pd.read_csv(str(args.metadata_file),sep='\t',usecols=['genome_name']).replace(' ','_', regex=True)
+	df_genome_names=pd.read_csv(str(args.metadata_file),sep='\t',usecols=['genome_name'], dtype=object).replace(' ','_', regex=True)
 	genome_name_list=df_genome_names['genome_name'].dropna().tolist()
 	df_concat=pd.concat([pd.read_csv(str(args.input_folder)+'/'+str(genome_name)+'_annotation.txt',sep='\t') for genome_name in genome_name_list])
 	#groupby
@@ -76,7 +76,7 @@ def make_clustermap():
 
 def core_unique_genes():
 	#concat
-	df_genome_names=pd.read_csv(str(args.metadata_file),sep='\t',usecols=['genome_name']).replace(' ','_', regex=True)
+	df_genome_names=pd.read_csv(str(args.metadata_file),sep='\t',usecols=['genome_name'], dtype=object).replace(' ','_', regex=True)
 	genome_name_list=df_genome_names['genome_name'].dropna().tolist()
 	df_concat=pd.concat([pd.read_csv(str(args.input_folder)+'/'+str(genome_name)+'_annotation.txt',sep='\t') for genome_name in genome_name_list])
 	#groupby
@@ -89,7 +89,7 @@ def core_unique_genes():
 	df['core_unique_gene']='core'
 	df2=df.iloc[:,[0,-1]].to_csv(output_folder+'/'+'temp_core_filter_out.txt',sep='\t',index=False)
 	#unique
-	df_genome_names=pd.read_csv(str(args.metadata_file),sep='\t',usecols=['genome_name']).replace(' ','_', regex=True)
+	df_genome_names=pd.read_csv(str(args.metadata_file),sep='\t',usecols=['genome_name'], dtype=object).replace(' ','_', regex=True)
 	genome_name_list=df_genome_names['genome_name'].dropna().tolist()
 	for genome in genome_name_list:
 		exclude_genome_list=df_genome_names['genome_name'].dropna().tolist()
@@ -107,7 +107,7 @@ def core_unique_genes():
 	for temp_file in temp_filter_files:
 		os.remove(str(temp_file))
 	#merge
-	df_genome_names=pd.read_csv(str(args.metadata_file),sep='\t',usecols=['genome_name']).replace(' ','_', regex=True)
+	df_genome_names=pd.read_csv(str(args.metadata_file),sep='\t',usecols=['genome_name'], dtype=object).replace(' ','_', regex=True)
 	genome_name_list=df_genome_names['genome_name'].dropna().tolist()
 	for genome in genome_name_list:
 		df_an=pd.read_csv(str(args.input_folder)+'/'+str(genome)+'_annotation.txt',sep='\t')
@@ -118,7 +118,7 @@ def core_unique_genes():
 
 def median_analysis():
 	#concat
-	df_genome_names=pd.read_csv(str(args.metadata_file),sep='\t',usecols=['genome_name']).replace(' ','_', regex=True)
+	df_genome_names=pd.read_csv(str(args.metadata_file),sep='\t',usecols=['genome_name'], dtype=object).replace(' ','_', regex=True)
 	genome_name_list=df_genome_names['genome_name'].dropna().tolist()
 	df_concat=pd.concat([pd.read_csv(str(args.input_folder)+'/'+str(genome_name)+'_annotation.txt',sep='\t') for genome_name in genome_name_list])
 	#groupby
@@ -156,7 +156,7 @@ def subgroup_genes():
 	df_concat['count']=1
 	df_groupby=df_concat.groupby(['genome_name','pgfam'],as_index=False).sum().pivot(columns='genome_name',index='pgfam',values='count').fillna(0).to_csv(output_folder+'/'+'gene_family_groupby_out.txt',sep='\t') 
 	#make lists from metadata
-	df_metadata=pd.read_csv(str(args.metadata_file),sep='\t').replace(' ','_', regex=True)
+	df_metadata=pd.read_csv(str(args.metadata_file),sep='\t', dtype=object).replace(' ','_', regex=True)
 	subgroup_list=df_metadata['subgroup'].dropna().tolist()
 	genome_name_list=df_metadata['genome_name'].dropna().tolist()
 	#subgroups
@@ -177,7 +177,7 @@ def subgroup_genes():
 	for temp_file in temp_filter_files:
 		os.remove(str(temp_file))
 	#merge
-	df_genome_names=pd.read_csv(str(args.metadata_file),sep='\t',usecols=['genome_name']).replace(' ','_', regex=True)
+	df_genome_names=pd.read_csv(str(args.metadata_file),sep='\t',usecols=['genome_name'], dtype=object).replace(' ','_', regex=True)
 	genome_name_list=df_genome_names['genome_name'].dropna().tolist()
 	for genome in genome_name_list:
 		df_an=pd.read_csv(str(args.input_folder)+'/'+str(genome)+'_annotation.txt',sep='\t')
@@ -188,7 +188,7 @@ def subgroup_genes():
 
 def blaster(type,database_file): #type=VF,RES,or custom
 	#read metadata
-	df_genome_names=pd.read_csv(str(args.metadata_file),sep='\t',usecols=['genome_name']).replace(' ','_', regex=True)
+	df_genome_names=pd.read_csv(str(args.metadata_file),sep='\t',usecols=['genome_name'], dtype=object).replace(' ','_', regex=True)
 	genome_name_list=df_genome_names['genome_name'].dropna().tolist()
 	#blast
 	for genome_name in genome_name_list:
@@ -202,7 +202,7 @@ def blaster(type,database_file): #type=VF,RES,or custom
 def merge_all_annotations():
 	
 	#read metadata
-	df_genome_names=pd.read_csv(str(args.metadata_file),sep='\t',usecols=['genome_name']).replace(' ','_', regex=True)
+	df_genome_names=pd.read_csv(str(args.metadata_file),sep='\t',usecols=['genome_name'], dtype=object).replace(' ','_', regex=True)
 	genome_name_list=df_genome_names['genome_name'].dropna().tolist()
 	for genome_name in genome_name_list:
 		print 'Merging all annotation metadata for '+str(genome_name)+'...'
